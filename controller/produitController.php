@@ -3,6 +3,9 @@ include "../config.php";
 include "../dao/daoProduit.php";
 
 $daoProduit = new DaoProduit($pdo);
-$nomOfProduit = isset($_GET['nomOfProduit']) ? $_GET['nomOfProduit'] : "";
-$produit = $daoProduit->findProduct($nomOfProduit);
+$idOfProduit = isset($_GET['idOfProduit']) ? $_GET['idOfProduit'] : "";
+$produit = $daoProduit->findProduct($idOfProduit);
+$categoryOfProduct = $produit->getCategorie();
+$produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
+
 ?>

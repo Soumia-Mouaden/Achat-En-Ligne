@@ -255,26 +255,36 @@ include "../controller/produitController.php";
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="related__products__slider owl-carousel">
 
+                    <?php foreach ($produits as $produitC) : 
+                        if (isset($produitC)) {
+                            $imageProduitC = $produitC->getImage();
+                            $categorieProduitC = $produitC->getCategorie();
+                            $nomProduitC = $produitC->getNom();
+                            $prixProduitC = $produitC->getPrix();
+                        }
+                    ?>   
                     <div class="col-lg-3">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/img.jpg">
+                            <div class="product__item__pic set-bg" data-setbg="<?php echo $imageProduitC; ?>">
                                 <div class="product__label">
-                                    <span>Nom catégorie</span>
+                                    <span><?php echo $categorieProduitC; ?></span>
                                 </div>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#">Nom produit</a></h6>
-                                <div class="product__item__price">Prix MAD</div>
+                                <h6><a href="#"><?php echo $nomProduitC; ?></a></h6>
+                                <div class="product__item__price"><?php echo $prixProduitC;?> MAD pour 1Kg</div>
                                 <div class="cart_add">
                                     <a href="#">Acheter</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-         
+                    <?php endforeach; ?>
+                    
                 </div>
             </div>
         </div>
@@ -343,30 +353,30 @@ include "../controller/produitController.php";
             </div>
         </div>
     </div>
-</footer>
-<!-- Footer Section End -->
+    </footer>
+    <!-- Footer Section End -->
 
-<!-- Search Begin -->
-<div class="search-model">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
-        </form>
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
     </div>
-</div>
-<!-- Search End -->
+    <!-- Search End -->
 
-<!-- Js Plugins -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/jquery.barfiller.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/jquery.slicknav.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.nicescroll.min.js"></script>
-<script src="js/main.js"></script>
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.barfiller.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

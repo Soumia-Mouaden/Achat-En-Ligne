@@ -15,25 +15,12 @@ class DaoProduit
             die();
         }
     }
-    // public function save(User $utilisateur)
-    // {
-    //     $stm = $this->dbh->prepare("INSERT INTO user VALUES (?, ?, ?, ?, ?, ?)");
 
-    //     $stm->bindValue(1, $utilisateur->getEmail());
-    //     $stm->bindValue(2, $utilisateur->getPassword());
-    //     $stm->bindValue(3, $utilisateur->getName());
-    //     $stm->bindValue(4, $utilisateur->getSurname());
-    //     $stm->bindValue(5, $utilisateur->getTelephone());
-    //     $stm->bindValue(6, $utilisateur->getGender());
-
-    //     $stm->execute();
-    // }
-
-    public function findProduct($nomOfProduit)
+    public function findProduct($idOfProduit)
     {
         $produit = null;
         $stm = $this->dbh->prepare("SELECT * FROM Produit where nom=?");
-        $stm->bindValue(1, $nomOfProduit);
+        $stm->bindValue(1, $idOfProduit);
 
         $stm->execute();
 
@@ -42,6 +29,23 @@ class DaoProduit
             $produit = new Produit($result['id'],$result['nom'],$result['categorie'], $result['image'], $result['prix'], $result['description'],$result['ingredients'],$result['allergie'],$result['conservation']);
         }
         return $produit;
+    }
+
+    public function ProductsOfCategory($categoryOfProduct,$idOfProduct)
+    {
+        $stm = $this->dbh->prepare("SELECT * FROM Produit WHERE categorie=? AND id!=?");
+        $stm->bindValue(1, $categoryOfProduct);
+        $stm->bindValue(2, $idOfProduct);
+        $stm->execute();
+        $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+        $produits = [];
+        foreach ($result as $row) {
+            $produit = new Produit($row['id'],$row['nom'],$row['categorie'], $row['image'], $row['prix'], $row['description'],$row['ingredients'],$row['allergie'],$row['conservation']);
+            $produits[] = $produit;
+        }
+
+        return $produits;
     }
 
 }
