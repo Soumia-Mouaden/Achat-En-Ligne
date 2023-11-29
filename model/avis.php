@@ -51,7 +51,7 @@ class Avis
     /**
      * @param mixed $id_Utilisateur
      */
-    public function setId_Utilisateur($tel)
+    public function setId_Utilisateur($id_Utilisateur)
     {
         $this->id_Utilisateur = $id_Utilisateur;
     }

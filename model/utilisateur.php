@@ -1,9 +1,9 @@
 <?php
 class Utilisateur
 {
-    private $nom, $prenom,$tel, $email, $genre, $mdp, $ville, $role;
+    private $nom, $prenom,$tel, $email, $gender, $mdp, $ville, $role;
 
-    public function __construct($nom, $prenom,$tel, $email, $genre, $mdp, $ville, $role)
+    public function __construct($nom, $prenom,$tel, $email, $gender, $mdp, $ville, $role)
     {
         $this->nom = $nom;
         $this->prenom = $prenom;
@@ -65,14 +65,14 @@ class Utilisateur
      */
     public function getGenre()
     {
-        return $this->genre;
+        return $this->gender;
     }
     /**
-     * @param mixed $genre
+     * @param mixed $gender
      */
-    public function setGenre($genre)
+    public function setGenre($gender)
     {
-        $this->genre = $genre;
+        $this->gender = $gender;
     }
 
     /**
