@@ -1,10 +1,5 @@
 <?php
-include "../config.php";
-include "../dao/daoProduit.php";
-
-$daoProduit = new DaoProduit($pdo);
-$nomOfProduit = isset($_GET['nomOfProduit']) ? $_GET['nomOfProduit'] : "";
-$produit = $daoProduit->findProduct($nomOfProduit);
+include "../controller/produitController.php";
 ?>
 
 <!DOCTYPE html>
@@ -262,6 +257,7 @@ $produit = $daoProduit->findProduct($nomOfProduit);
             </div>
             <div class="row">
                 <div class="related__products__slider owl-carousel">
+
                     <div class="col-lg-3">
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="img/img.jpg">
@@ -278,86 +274,7 @@ $produit = $daoProduit->findProduct($nomOfProduit);
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/img.jpg">
-                                <div class="product__label">
-                                    <span>Nom catégorie</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Nom produit</a></h6>
-                                <div class="product__item__price">prix MAD</div>
-                                <div class="cart_add">
-                                    <a href="#">Acheter</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/img.jpg">
-                                <div class="product__label">
-                                    <span>Nom catégorie</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Nom produit</a></h6>
-                                <div class="product__item__price">prix MAD</div>
-                                <div class="cart_add">
-                                    <a href="#">Acheter</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/img.jpg">
-                                <div class="product__label">
-                                    <span>Nom catégorie</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Nom produit</a></h6>
-                                <div class="product__item__price">prix MAD</div>
-                                <div class="cart_add">
-                                    <a href="#">Acheter</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/img.jpg">
-                                <div class="product__label">
-                                    <span>Nom catégorie</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Nom produit</a></h6>
-                                <div class="product__item__price">prix MAD</div>
-                                <div class="cart_add">
-                                    <a href="#">Acheter</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/img.jpg">
-                                <div class="product__label">
-                                    <span>Nom catégorie</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Nom produit</a></h6>
-                                <div class="product__item__price">prix MAD</div>
-                                <div class="cart_add">
-                                    <a href="#">Acheter</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+         
                 </div>
             </div>
         </div>
