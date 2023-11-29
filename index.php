@@ -21,16 +21,16 @@ include "model/produit.php";
     rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="view/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="view/css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="view/css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="view/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="view/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="view/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="view/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="view/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="view/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="view/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -180,8 +180,36 @@ include "model/produit.php";
     <section  id="product-section"class="product spad general-product">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+            <?php
+            // Assuming you have fetched the product data from the database and stored it in an array called $products
+            foreach ($products as $product) {
+                $image = $product['image'];
+                $name = $product['name'];
+                $price = $product['price'];
+                $category = $product['category'];
+                if ($category == "GateauBeldi") {
+                    echo '
+                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/shop/view/img/shop/gateauBeldi<?php  $image; ?>">
+                            <div class="product__label">
+                                <span><?php echo $name; ?></span>
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#"><?php echo $name; ?></a></h6>
+                            <div class="product__item__price"><?php echo $price; ?> MAD</div>
+                            <div class="cart_add">
+                                <a href="#">Commander</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> ';
+
+            
+            ?>            <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        je que le produit vient de la base de données avec son image et son nom et son prix
                         <div class="product__item__pic set-bg" data-setbg="img/shop/gateaubeldi.jpg">
                             <div class="product__label">
                                 <span>Gateaux beldi</span>
