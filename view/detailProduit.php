@@ -34,7 +34,7 @@ $produit = $daoProduit->findProduct($nomOfProduit);
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style1.css" type="text/css">  
+    <link rel="stylesheet" href="css/Style.css" type="text/css">  
 </head>
 
 <body>
