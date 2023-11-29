@@ -144,6 +144,7 @@ include "model/produit.php";
                         <div class="categories__item__icon">
                             <span class="flaticon-029-cupcake-3"></span>
                             <h5>Gateaux beldi</h5>
+                            
                         </div>
                     </div>
                     <div class="categories__item" data-category="GateauAuMiel">
