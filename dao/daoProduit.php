@@ -47,6 +47,13 @@ class DaoProduit
 
         return $produits;
     }
+    public function listProduits(){
+        $stm = $this->dbh->prepare("SELECT * FROM Produit");
+        $stm->execute();
+        $result=$stm;
+        return  $result;
+
+    }
 
 }
 

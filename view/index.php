@@ -1,8 +1,8 @@
+<?php include "../dao/daoProduit.php";
 
-<?php
-include "model/produit.php";
+$dao = new DaoProduit();
+$allProducts = $dao->listProduits();
 ?>
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -20,17 +20,17 @@ include "model/produit.php";
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="view/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="view/css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="view/css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="view/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="view/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="view/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="view/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="view/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="view/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="view/css/style.css" type="text/css">
+         <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
 <body>
@@ -108,14 +108,14 @@ include "model/produit.php";
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="hero__item set-bg">
-            <div class="video-container">
+        <div class="video-container">
                 <video class="set-bg" autoplay loop muted playsinline>
                     <source src="img/hero/hero-1.mp4" type="video/mp4">
                     <!-- Ajoutez d'autres sources pour prendre en charge différents formats de vidéo -->
                     Votre navigateur ne prend pas en charge la balise vidéo.
                 </video>
-            </div>
             
+            </div>
             <div class="container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; "">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
@@ -144,7 +144,7 @@ include "model/produit.php";
                         <div class="categories__item__icon">
                             <span class="flaticon-029-cupcake-3"></span>
                             <h5>Gateaux beldi</h5>
-                            
+
                         </div>
                     </div>
                     <div class="categories__item" data-category="GateauAuMiel">
@@ -182,98 +182,117 @@ include "model/produit.php";
         <div class="container">
             <div class="row">
             <?php
-            // Assuming you have fetched the product data from the database and stored it in an array called $products
-            foreach ($products as $product) {
-                $image = $product['image'];
-                $name = $product['name'];
-                $price = $product['price'];
-                $category = $product['category'];
-                if ($category == "GateauBeldi") {
-                    echo '
-                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/view/img/shop/gateauBeldi<?php  $image; ?>">
-                            <div class="product__label">
-                                <span><?php echo $name; ?></span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#"><?php echo $name; ?></a></h6>
-                            <div class="product__item__price"><?php echo $price; ?> MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> ';
-
-            
-            ?>            <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        je que le produit vient de la base de données avec son image et son nom et son prix
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateaubeldi.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">CORNE DE GAZELLE CLASSIQUE</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauaumiel.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au meil</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">BRIWATTES AU MIEL</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/fekkas.jpg">
-                            <div class="product__label">
-                                <span>Fekkas</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Fekkas aux amandes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/dattesellou.jpg">
-                            <div class="product__label">
-                                <span>Dattes et sellou</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Dattes fourrées</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                // Deserialize $allProducts from the URL parameter
                 
+                
+                // Assuming you have fetched the product data from the database and stored it in an array called $allProducts
+                while($product=$allProducts->fetch(PDO::FETCH_ASSOC)) {
+                    $image = $product['image'];
+                    $name = $product['nom'];
+                    $price = $product['prix'];
+                    $category = $product['categorie'];
+        
+                    if ($category == "GateauBeldi" && $image == "Corne_de_gazelle_classique.jpg") {
+                        echo '
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/' . $image . '">
+                                    <div class="product__label">
+                                        <span>' . $name . '</span>
+                                    </div>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">' . $name . '</a></h6>
+                                    <div class="product__item__price">' . $price . ' MAD</div>
+                                    <div class="cart_add">
+                                        <a href="#">Commander</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+                    }
+            
+                if ($category == "GateauAuMiel" && $image == "1.jpg") {
+                    echo '
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/' . $image . '">
+                    <div class="product__label">
+                    <span>' . $name . '</span>
+                    </div>
+                    </div>
+                    <div class="product__item__text">
+                    <h6><a href="#">' . $name . '</a></h6>
+                    <div class="product__item__price">' . $price . ' MAD</div>
+                        <div class="cart_add">
+                        <a href="#">Commander</a>
+                   </div>
+                   </div>
+                   </div>
+                   </div>';
+                }
+                if ($category == "Fekkas" && $image == "1.jpg") {
+                    echo '
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="img/shop/fekkas/' . $image . '">
+                    <div class="product__label">
+                    <span>' . $name . '</span>
+                    </div>
+                    </div>
+                    <div class="product__item__text">
+                    <h6><a href="#">' . $name . '</a></h6>
+                    <div class="product__item__price">' . $price . ' MAD</div>
+                        <div class="cart_add">
+                        <a href="#">Commander</a>
+                   </div>
+                   </div>
+                   </div>
+                   </div>';
+                }
+                if ($category == "DattesEtSellou" && $image == "1.jpg") {
+                    echo '
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="img/shop/datteetsellou/' . $image . '">
+                    <div class="product__label">
+                    <span>' . $name . '</span>
+                    </div>
+                    </div>
+                    <div class="product__item__text">
+                    <h6><a href="#">' . $name . '</a></h6>
+                    <div class="product__item__price">' . $price . ' MAD</div>
+                        <div class="cart_add">
+                        <a href="#">Commander</a>
+                   </div>
+                   </div>
+                   </div>
+                   </div>';
+                }
+                if ($category == "COMPOSITIONS" && $image == "1.jpg") {
+                    echo '
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="img/shop/COMPOSITIONS/' . $image . '">
+                    <div class="product__label">
+                    <span>' . $name . '</span>
+                    </div>
+                    </div>
+                    <div class="product__item__text">
+                    <h6><a href="#">' . $name . '</a></h6>
+                    <div class="product__item__price">' . $price . ' MAD</div>
+                        <div class="cart_add">
+                        <a href="#">Commander</a>
+                   </div>
+                   </div>
+                   </div>
+                   </div>';
+                }
+
+                
+            }
+       
+?>
             </div>
         </div>
     </section>

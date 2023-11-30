@@ -497,7 +497,7 @@ ol {
   Hero
 -----------------------*/
 .hero__item {
-  height: 700px;
+  height: 600px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
