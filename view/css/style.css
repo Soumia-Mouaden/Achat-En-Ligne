@@ -1612,7 +1612,6 @@ ol {
 .product__details__option .pro-qty {
   height: 50px;
   width: 140px;
-  border: 1px solid #e1e1e1;
   padding: 0 20px;
 }
 .product__details__option .pro-qty .qtybtn {

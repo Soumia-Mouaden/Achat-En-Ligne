@@ -166,7 +166,7 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                             <p>Quantité: <span>(en Kg)</span></p>
 
                             <div class="quantity">
-                                <div class="pro-qty">
+                                <div class="pro-qty" style="border: 1px solid #e1e1e1;">
                                     <input type="text" value="2">
                                 </div>
                             </div>
@@ -428,16 +428,32 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                                 }
                             ?> MAD pour 1Kg
                         </h6>
-
-                        <div class="product__details__option mt-5 mb-0">
-                            <p>Quantité: <span>(en Kg)</span></p>
-
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="2">
+                        <style>
+                            /* Ajoutez des styles CSS personnalisés ici */
+                            .custom-border {
+                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Couleur et épaisseur de la bordure */
+                            border-radius: 0px; /* Rayon de la bordure pour rendre le coin arrondi */
+                            padding: 10px; /* Espace à l'intérieur de la bordure */
+                            width:150px;
+                            }
+                        </style>
+                        <div class="product__details__option mt-5 mb-0 row">
+                            <div class="col-md-6">
+                                <p>Quantité: <span>(en Kg)</span></p>
+                                <div class="quantity" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                                    <div class="pro-qty">
+                                        <input type="text" value="2">
+                                    </div>
                                 </div>
                             </div>
-                            <button type="button" class="primary-btn" data-toggle="modal" data-target="#myModal">Commander</button>
+                            <div class="col-md-6">
+                                <p>Prix Total: <span>(en MAD)</span></p>
+                                <label for="exampleTextarea" class="custom-border" style="text-align:center;">Votre </label>
+                            </div>
+                            <div>
+                                <p>Choisissez votre localisaton:</p>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10784.188505644011!2d19.053119335158936!3d47.48899529453826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1543907528304" height="300" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
