@@ -19,7 +19,7 @@ class DaoProduit
     public function findProduct($idOfProduit)
     {
         $produit = null;
-        $stm = $this->dbh->prepare("SELECT * FROM Produit where nom=?");
+        $stm = $this->dbh->prepare("SELECT * FROM Produit where id=?");
         $stm->bindValue(1, $idOfProduit);
 
         $stm->execute();
@@ -54,6 +54,7 @@ class DaoProduit
         return  $result;
 
     }
+
 
 }
 

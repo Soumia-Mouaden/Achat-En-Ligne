@@ -205,9 +205,10 @@ $allProducts = $dao->listProduits();
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">' . $name . '</a></h6>
-                                    <div class="product__item__price">' . $price . ' MAD</div>
+                                    <div class="product__item__price">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
-                                        <a href="detailProduit.php?idOfProduit="'.$idOfProduit.'" >Commander</a>
+                                    <a href="detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+
                                     </div>
                                 </div>
                             </div>
@@ -225,12 +226,10 @@ $allProducts = $dao->listProduits();
                     </div>
                     <div class="product__item__text">
                     <h6><a href="#">' . $name . '</a></h6>
-                    <div class="product__item__price">' . $price . ' MAD</div>
+                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
-                        <form action="detailProduit.php" method="post">
-                        <input type="hidden" name="idOfProduit" value="<?php echo $idOfProduit; ?>">
-                        <a href="#"><button type="submit">Commander</button></a>
-                        </form>
+                        <a href="detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                        
 
                        
                    </div>
@@ -249,9 +248,9 @@ $allProducts = $dao->listProduits();
                     </div>
                     <div class="product__item__text">
                     <h6><a href="#">' . $name . '</a></h6>
-                    <div class="product__item__price">' . $price . ' MAD</div>
+                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
-                        <a href="#">Commander</a>
+                        <a href="detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
                    </div>
                    </div>
                    </div>
@@ -268,9 +267,9 @@ $allProducts = $dao->listProduits();
                     </div>
                     <div class="product__item__text">
                     <h6><a href="#">' . $name . '</a></h6>
-                    <div class="product__item__price">' . $price . ' MAD</div>
+                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
-                        <a href="#">Commander</a>
+                        <a href="detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
                    </div>
                    </div>
                    </div>
@@ -287,9 +286,9 @@ $allProducts = $dao->listProduits();
                     </div>
                     <div class="product__item__text">
                     <h6><a href="#">' . $name . '</a></h6>
-                    <div class="product__item__price">' . $price . ' MAD</div>
+                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
-                        <a href="#">Commander</a>
+                        <a href="detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
                    </div>
                    </div>
                    </div>
@@ -327,9 +326,9 @@ $allProducts = $dao->listProduits();
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">' . $name . '</a></h6>
-                                    <div class="product__item__price">' . $price . ' MAD</div>
+                                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
-                                        <a href="#">Commander</a>
+                                        <a href="detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
                                     </div>
                                 </div>
                             </div>
@@ -361,9 +360,9 @@ $allProducts = $dao->listProduits();
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">' . $name . '</a></h6>
-                                    <div class="product__item__price">' . $price . ' MAD</div>
+                                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
-                                        <a href="#">Commander</a>
+                                        <a href="detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
                                     </div>
                                 </div>
                             </div>
@@ -384,7 +383,7 @@ $allProducts = $dao->listProduits();
                     $name = $product['nom'];
                     $price = $product['prix'];
                     $category = $product['categorie'];
-        
+                    
                     if ($category == "Fekkas" ) {
                         echo '
                         <div class="col-lg-3 col-md-6 col-sm-6">
@@ -396,9 +395,9 @@ $allProducts = $dao->listProduits();
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">' . $name . '</a></h6>
-                                    <div class="product__item__price">' . $price . ' MAD</div>
+                                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
-                                        <a href="#">Commander</a>
+                                        <a href="detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
                                     </div>
                                 </div>
                             </div>
@@ -431,9 +430,9 @@ $allProducts = $dao->listProduits();
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">' . $name . '</a></h6>
-                                    <div class="product__item__price">' . $price . ' MAD</div>
+                                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
-                                        <a href="#">Commander</a>
+                                        <a href="detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
                                     </div>
                                 </div>
                             </div>
@@ -466,9 +465,9 @@ $allProducts = $dao->listProduits();
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">' . $name . '</a></h6>
-                                    <div class="product__item__price">' . $price . ' MAD</div>
+                                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
-                                        <a href="#">Commander</a>
+                                        <a href="detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
                                     </div>
                                 </div>
                             </div>
