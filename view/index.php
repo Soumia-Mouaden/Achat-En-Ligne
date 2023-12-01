@@ -108,6 +108,7 @@ $allProducts = $dao->listProduits();
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="hero__item set-bg">
+       
         <div class="video-container">
                 <video class="set-bg" autoplay loop muted playsinline>
                     <source src="img/hero/hero-1.mp4" type="video/mp4">
@@ -191,12 +192,13 @@ $allProducts = $dao->listProduits();
                     $name = $product['nom'];
                     $price = $product['prix'];
                     $category = $product['categorie'];
+                    $idOfProduit = $product['id'];
         
-                    if ($category == "GateauBeldi" && $image == "Corne_de_gazelle_classique.jpg") {
+                    if ($category == "GateauBeldi" && $image == "img/shop/gateauBeldi/Corne_de_gazelle_classique.jpg") {
                         echo '
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/' . $image . '">
+                                <div class="product__item__pic set-bg" data-setbg="' . $image . '">
                                     <div class="product__label">
                                         <span>' . $name . '</span>
                                     </div>
@@ -212,11 +214,35 @@ $allProducts = $dao->listProduits();
                         </div>';
                     }
             
-                if ($category == "GateauAuMiel" && $image == "1.jpg") {
+                if ($category == "GateauAuMiel" && $image == "img/shop/gateauAuMiel/1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/' . $image . '">
+                    <div class="product__item__pic set-bg" data-setbg="' . $image . '">
+                    <div class="product__label">
+                    <span>' . $name . '</span>
+                    </div>
+                    </div>
+                    <div class="product__item__text">
+                    <h6><a href="#">' . $name . '</a></h6>
+                    <div class="product__item__price">' . $price . ' MAD</div>
+                        <div class="cart_add">
+                        <form action="detailProduit.php" method="post">
+                        <input type="hidden" name="idOfProduit" value="<?php echo $idOfProduit; ?>">
+                        <a href="#"><button type="submit">Commander</button></a>
+                        </form>
+
+                       
+                   </div>
+                   </div>
+                   </div>
+                   </div>';
+                }
+                if ($category == "Fekkas" && $image == "img/shop/fekkas/1.jpg") {
+                    echo '
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="' . $image . '">
                     <div class="product__label">
                     <span>' . $name . '</span>
                     </div>
@@ -231,11 +257,11 @@ $allProducts = $dao->listProduits();
                    </div>
                    </div>';
                 }
-                if ($category == "Fekkas" && $image == "1.jpg") {
+                if ($category == "DattesEtSellou" && $image == "img/shop/datteetsellou/1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/shop/fekkas/' . $image . '">
+                    <div class="product__item__pic set-bg" data-setbg="' . $image . '">
                     <div class="product__label">
                     <span>' . $name . '</span>
                     </div>
@@ -250,30 +276,11 @@ $allProducts = $dao->listProduits();
                    </div>
                    </div>';
                 }
-                if ($category == "DattesEtSellou" && $image == "1.jpg") {
+                if ($category == "COMPOSITIONS" && $image == "img/shop/COMPOSITIONS/1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/shop/datteetsellou/' . $image . '">
-                    <div class="product__label">
-                    <span>' . $name . '</span>
-                    </div>
-                    </div>
-                    <div class="product__item__text">
-                    <h6><a href="#">' . $name . '</a></h6>
-                    <div class="product__item__price">' . $price . ' MAD</div>
-                        <div class="cart_add">
-                        <a href="#">Commander</a>
-                   </div>
-                   </div>
-                   </div>
-                   </div>';
-                }
-                if ($category == "COMPOSITIONS" && $image == "1.jpg") {
-                    echo '
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/shop/COMPOSITIONS/' . $image . '">
+                    <div class="product__item__pic set-bg" data-setbg="' . $image . '">
                     <div class="product__label">
                     <span>' . $name . '</span>
                     </div>
@@ -301,214 +308,33 @@ $allProducts = $dao->listProduits();
     <section class="product spad category-product" id="GateauBeldi">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Corne_de_gazelle_classique.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
+            <?php
+            $allProducts->execute();
+            while($product=$allProducts->fetch(PDO::FETCH_ASSOC)) {
+                    $image = $product['image'];
+                    $name = $product['nom'];
+                    $price = $product['prix'];
+                    $category = $product['categorie'];
+        
+                    if ($category == "GateauBeldi" ) {
+                        echo '
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="' . $image . '">
+                                    <div class="product__label">
+                                        <span>' . $category . '</span>
+                                    </div>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">' . $name . '</a></h6>
+                                    <div class="product__item__price">' . $price . ' MAD</div>
+                                    <div class="cart_add">
+                                        <a href="#">Commander</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">CORNE DE GAZELLE CLASSIQUE</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Corne_de_Gazelle_aux_graines_de_sésamesjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Corne de Gazelle aux graines de sésames</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Corne_de_gazelle_de_tetouan.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">CORNE DE GAZELLE DE TÉTOUAN</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Corne_de_Gazelle_mfenedjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Corne de_Gazelle m'fened</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Gâteau_aux_dattesjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Gâteau aux dattes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Ghriba_au_beurre_et_aux_amandesjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Ghriba au beurre et aux amandes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/GHRIBA_AU_BEURREjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">GHRIBA AU BEURRE</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Ghriba_aux_amandesjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Ghriba aux amandes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Ghriba_aux_noix.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Ghriba aux noix</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Maamoulejpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Maamoule</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/MINI_CORNES_DE_GAZELLE_CLASSIQUEjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">MINI CORNES DE GAZELLE CLASSIQUE</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Mini_ghriba_au_beurrejpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Mini ghriba au beurre</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Mini_Ghriba_aux_amandes.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Mini Ghriba aux amandes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </div>';
+                    }}?>  
             </div>
         </div>
     </section>
@@ -516,118 +342,33 @@ $allProducts = $dao->listProduits();
     <section class="product spad category-product" id="GateauAuMiel">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/1.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
+            <?php
+            $allProducts->execute();
+            while($product=$allProducts->fetch(PDO::FETCH_ASSOC)) {
+                    $image = $product['image'];
+                    $name = $product['nom'];
+                    $price = $product['prix'];
+                    $category = $product['categorie'];
+        
+                    if ($category == "GateauAuMiel" ) {
+                        echo '
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="' . $image . '">
+                                    <div class="product__label">
+                                        <span>' . $category . '</span>
+                                    </div>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">' . $name . '</a></h6>
+                                    <div class="product__item__price">' . $price . ' MAD</div>
+                                    <div class="cart_add">
+                                        <a href="#">Commander</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Cigare au lait et aux amandes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/2.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">M'HANCHA COUPÉ</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/3.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">M’hancha classique</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/4.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Briwattes au miel</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/5.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Mini Briwattes au miel</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/6.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Chebbakia</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/7.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Makroute</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </div>';
+                    }}?>  
             </div>
         </div>
     </section>
@@ -636,54 +377,33 @@ $allProducts = $dao->listProduits();
     <section class="product spad category-product" id="Fekkas">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/fekkas/1.jpg">
-                            <div class="product__label">
-                                <span>Fekkas</span>
+            <?php
+            $allProducts->execute();
+            while($product=$allProducts->fetch(PDO::FETCH_ASSOC)) {
+                    $image = $product['image'];
+                    $name = $product['nom'];
+                    $price = $product['prix'];
+                    $category = $product['categorie'];
+        
+                    if ($category == "Fekkas" ) {
+                        echo '
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="' . $image . '">
+                                    <div class="product__label">
+                                        <span>' . $category . '</span>
+                                    </div>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">' . $name . '</a></h6>
+                                    <div class="product__item__price">' . $price . ' MAD</div>
+                                    <div class="cart_add">
+                                        <a href="#">Commander</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Fekkas aux amandes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/fekkas/2.jpg">
-                            <div class="product__label">
-                                <span>Fekkas</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Fekkas aux noix</a></h6>
-                            <div class="product__item__price">$30.00</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/fekkas/3.jpg">
-                            <div class="product__label">
-                                <span>Fekkas</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Fekkas à la créme fraiche</a></h6>
-                            <div class="product__item__price">$31.00</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </div>';
+                    }}?> 
             </div>
         </div>
     </section>
@@ -692,40 +412,33 @@ $allProducts = $dao->listProduits();
     <section class="product spad category-product" id="DattesEtSellou">
         <div class="container">
             <div class="row">
-                
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/datteetsellou/1.jpg">
-                            <div class="product__label">
-                                <span>Dattes et sellou</span>
+            <?php
+            $allProducts->execute();
+            while($product=$allProducts->fetch(PDO::FETCH_ASSOC)) {
+                    $image = $product['image'];
+                    $name = $product['nom'];
+                    $price = $product['prix'];
+                    $category = $product['categorie'];
+        
+                    if ($category == "DattesEtSellou" ) {
+                        echo '
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="' . $image . '">
+                                    <div class="product__label">
+                                        <span>' . $category . '</span>
+                                    </div>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">' . $name . '</a></h6>
+                                    <div class="product__item__price">' . $price . ' MAD</div>
+                                    <div class="cart_add">
+                                        <a href="#">Commander</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">sellou traditionnel</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/datteetsellou/2.jpg">
-                            <div class="product__label">
-                                <span>Dattes et sellou</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Dattes fourrées</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </div>';
+                    }}?> 
             </div>
         </div>
     </section>
@@ -734,42 +447,33 @@ $allProducts = $dao->listProduits();
     <section class="product spad category-product" id="COMPOSITIONS">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/compositions/1.jpg">
-                            <div class="product__label">
-                                <span>COMPOSITIONS</span>
+            <?php
+            $allProducts->execute();
+            while($product=$allProducts->fetch(PDO::FETCH_ASSOC)) {
+                    $image = $product['image'];
+                    $name = $product['nom'];
+                    $price = $product['prix'];
+                    $category = $product['categorie'];
+        
+                    if ($category == "COMPOSITIONS" ) {
+                        echo '
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="' . $image . '">
+                                    <div class="product__label">
+                                        <span>' . $category . '</span>
+                                    </div>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">' . $name . '</a></h6>
+                                    <div class="product__item__price">' . $price . ' MAD</div>
+                                    <div class="cart_add">
+                                        <a href="#">Commander</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Plateau de mignardises de pâtisseries beldi</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/compositions/2.jpg">
-                            <div class="product__label">
-                                <span>COMPOSITIONS</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Plateaux de gâteaux beldi</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
-                </div>
+                        </div>';
+                    }}?> 
             </div>
         </div>
     </section>
@@ -1181,6 +885,9 @@ $allProducts = $dao->listProduits();
             $(this).addClass("active");
         });
     });
+    function redirectToDetailProduit(nom) {
+            window.location.href = "view/detailProduit.php?nomOfProduit=" + nom + "";
+        }
 </script>
 </script>
 </body>
