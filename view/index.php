@@ -207,7 +207,7 @@ $allProducts = $dao->listProduits();
                                     <h6><a href="#">' . $name . '</a></h6>
                                     <div class="product__item__price">' . $price . ' MAD</div>
                                     <div class="cart_add">
-                                        <a href="#">Commander</a>
+                                        <a href="detailProduit.php?idOfProduit="'.$idOfProduit.'" >Commander</a>
                                     </div>
                                 </div>
                             </div>
