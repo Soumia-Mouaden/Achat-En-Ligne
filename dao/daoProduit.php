@@ -1,5 +1,5 @@
 <?php
-include "../model/produit.php";
+include __DIR__ . "/../model/produit.php";
 
 class DaoProduit
 {
@@ -19,7 +19,7 @@ class DaoProduit
     public function findProduct($idOfProduit)
     {
         $produit = null;
-        $stm = $this->dbh->prepare("SELECT * FROM Produit where nom=?");
+        $stm = $this->dbh->prepare("SELECT * FROM Produit where id=?");
         $stm->bindValue(1, $idOfProduit);
 
         $stm->execute();
@@ -47,6 +47,14 @@ class DaoProduit
 
         return $produits;
     }
+    public function listProduits(){
+        $stm = $this->dbh->prepare("SELECT * FROM Produit");
+        $stm->execute();
+        $result=$stm;
+        return  $result;
+
+    }
+
 
 }
 

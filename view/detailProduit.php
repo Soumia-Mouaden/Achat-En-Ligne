@@ -1,5 +1,11 @@
 <?php
-include "../controller/produitController.php";
+include "../dao/daoProduit.php";
+
+$daoProduit = new DaoProduit();
+$idOfProduit = isset($_GET['idOfProduit']) ? $_GET['idOfProduit'] : "";
+$produit = $daoProduit->findProduct($idOfProduit);
+$categoryOfProduct = $produit->getCategorie();
+$produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +35,7 @@ include "../controller/produitController.php";
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/Style.css" type="text/css">  
+    <link rel="stylesheet" href="css/style.css" type="text/css">  
 </head>
 
 <body>
@@ -164,7 +170,7 @@ include "../controller/produitController.php";
                                     <input type="text" value="2">
                                 </div>
                             </div>
-                            <a href="#" class="primary-btn">Commander</a>
+                            <button type="button" class="primary-btn" data-toggle="modal" data-target="#myModal">Commander</button>
                         </div>
                     </div>
                 </div>
@@ -265,6 +271,7 @@ include "../controller/produitController.php";
                             $categorieProduitC = $produitC->getCategorie();
                             $nomProduitC = $produitC->getNom();
                             $prixProduitC = $produitC->getPrix();
+                            $idProduitC = $produitC->getId();
                         }
                     ?>   
                     <div class="col-lg-3">
@@ -275,10 +282,10 @@ include "../controller/produitController.php";
                                 </div>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#"><?php echo $nomProduitC; ?></a></h6>
-                                <div class="product__item__price"><?php echo $prixProduitC;?> MAD pour 1Kg</div>
+                                <h6><a href="detailProduit.php?idOfProduit=<?php echo $idProduitC;?>"><?php echo $nomProduitC; ?></a></h6>
+                                <div class="product__item__price p-1 ml-5"><?php echo $prixProduitC;?> MAD pour 1Kg</div>
                                 <div class="cart_add">
-                                    <a href="#">Acheter</a>
+                                    <a href="detailProduit.php?idOfProduit=<?php echo $idProduitC;?>">Acheter</a>
                                 </div>
                             </div>
                         </div>
@@ -366,6 +373,95 @@ include "../controller/produitController.php";
         </div>
     </div>
     <!-- Search End -->
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title p-1" style="color:rgb(160, 110, 3); font-weight: 600; font-size:29px;">Ma commande</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-6" style="padding-left:80px;">
+                    <div class="product__details__img">
+                        <div class="product__details__big__img"> 
+                            <?php
+                                if (isset($produit)) {
+                                $imageProduit = $produit->getImage();
+                                }
+                            ?>
+                            <img class="big_img" src="<?php echo $imageProduit; ?>" alt=""> 
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="product__details__text">
+                        
+                        <div class="product__label">
+                            <?php
+                                if (isset($produit)) {
+                                echo $produit->getCategorie();
+                                }
+                            ?>
+                        </div>
+
+                        <h4 style="color: rgb(92, 64, 4); font-weight: 600; margin-top: 15px; margin-bottom: 12px;">
+                            <?php
+                                if (isset($produit)) {
+                                echo $produit->getNom();
+                                }
+                            ?>
+                        </h4>
+
+                        <h6 style=" padding-bottom: 15px; margin-bottom: 10px; font-size: 15px; font-weight: 500;">
+                            <?php
+                                if (isset($produit)) {
+                                echo $produit->getPrix();
+                                }
+                            ?> MAD pour 1Kg
+                        </h6>
+
+                        <div class="product__details__option mt-5 mb-0">
+                            <p>Quantité: <span>(en Kg)</span></p>
+
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <input type="text" value="2">
+                                </div>
+                            </div>
+                            <button type="button" class="primary-btn" data-toggle="modal" data-target="#myModal">Commander</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn" style="background: #dbd5c4; border: none;" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-secondary" style="background: #dabd70; border: none;" data-dismiss="modal">Valider</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>

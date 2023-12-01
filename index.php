@@ -1,8 +1,8 @@
+<?php include "dao/daoProduit.php";
 
-<?php
-include "model/produit.php";
+$dao = new DaoProduit();
+$allProducts = $dao->listProduits();
 ?>
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -20,17 +20,17 @@ include "model/produit.php";
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/Style.css" type="text/css">
+         <!-- Css Styles -->
+    <link rel="stylesheet" href="view/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="view/css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="view/css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="view/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="view/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="view/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="view/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="view/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="view/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="view/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -44,12 +44,12 @@ include "model/produit.php";
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__cart">
            <div class="offcanvas__cart__item">
-                <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                <a href="#"><img src="view/img/icon/cart.png" alt=""> <span>0</span></a>
                 <div class="cart__price">Panier: <span>$0.00</span></div>
             </div>
         </div>
         <div class="offcanvas__logo">
-            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+            <a href="./index.html"><img src="view/img/logo.png" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__option">
@@ -74,11 +74,11 @@ include "model/produit.php";
                                 </ul>
                             </div>
                             <div class="header__logo">
-                                <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                                <a href="./index.html"><img src="view/img/logo.png" alt=""></a>
                             </div>
                             <div class="header__top__right">
                                 <div class="header__top__right__cart">
-                                    <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                                    <a href="#"><img src="view/img/icon/cart.png" alt=""> <span>0</span></a>
                                     <div class="cart__price">Panier: <span>$0.00</span></div>
                                 </div>
                             </div>
@@ -108,14 +108,15 @@ include "model/produit.php";
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="hero__item set-bg">
-            <div class="video-container">
+       
+        <div class="video-container">
                 <video class="set-bg" autoplay loop muted playsinline>
-                    <source src="img/hero/hero-1.mp4" type="video/mp4">
+                    <source src="view/img/hero/hero-1.mp4" type="video/mp4">
                     <!-- Ajoutez d'autres sources pour prendre en charge différents formats de vidéo -->
                     Votre navigateur ne prend pas en charge la balise vidéo.
                 </video>
-            </div>
             
+            </div>
             <div class="container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; "">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
@@ -144,6 +145,7 @@ include "model/produit.php";
                         <div class="categories__item__icon">
                             <span class="flaticon-029-cupcake-3"></span>
                             <h5>Gateaux beldi</h5>
+
                         </div>
                     </div>
                     <div class="categories__item" data-category="GateauAuMiel">
@@ -180,71 +182,123 @@ include "model/produit.php";
     <section  id="product-section"class="product spad general-product">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateaubeldi.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">CORNE DE GAZELLE CLASSIQUE</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauaumiel.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au meil</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">BRIWATTES AU MIEL</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/fekkas.jpg">
-                            <div class="product__label">
-                                <span>Fekkas</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Fekkas aux amandes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/dattesellou.jpg">
-                            <div class="product__label">
-                                <span>Dattes et sellou</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Dattes fourrées</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <?php
+                // Deserialize $allProducts from the URL parameter
                 
+                
+                // Assuming you have fetched the product data from the database and stored it in an array called $allProducts
+                while($product=$allProducts->fetch(PDO::FETCH_ASSOC)) {
+                    $image = $product['image'];
+                    $name = $product['nom'];
+                    $price = $product['prix'];
+                    $category = $product['categorie'];
+                    $idOfProduit = $product['id'];
+        
+                    if ($category == "GateauBeldi" && $image == "img/shop/gateauBeldi/Corne_de_gazelle_classique.jpg") {
+                        echo '
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="view/' . $image . '">
+                                    <div class="product__label">
+                                        <span>' . $name . '</span>
+                                    </div>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">' . $name . '</a></h6>
+                                    <div class="product__item__price">' . $price . ' MAD pour 1Kg</div>
+                                    <div class="cart_add">
+                                    <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+                    }
+            
+                if ($category == "GateauAuMiel" && $image == "img/shop/gateauAuMiel/1.jpg") {
+                    echo '
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="view/' . $image . '">
+                    <div class="product__label">
+                    <span>' . $name . '</span>
+                    </div>
+                    </div>
+                    <div class="product__item__text">
+                    <h6><a href="#">' . $name . '</a></h6>
+                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
+                        <div class="cart_add">
+                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                        
+
+                       
+                   </div>
+                   </div>
+                   </div>
+                   </div>';
+                }
+                if ($category == "Fekkas" && $image == "img/shop/fekkas/1.jpg") {
+                    echo '
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="view/' . $image . '">
+                    <div class="product__label">
+                    <span>' . $name . '</span>
+                    </div>
+                    </div>
+                    <div class="product__item__text">
+                    <h6><a href="#">' . $name . '</a></h6>
+                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
+                        <div class="cart_add">
+                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                   </div>
+                   </div>
+                   </div>
+                   </div>';
+                }
+                if ($category == "DattesEtSellou" && $image == "img/shop/datteetsellou/1.jpg") {
+                    echo '
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="view/' . $image . '">
+                    <div class="product__label">
+                    <span>' . $name . '</span>
+                    </div>
+                    </div>
+                    <div class="product__item__text">
+                    <h6><a href="#">' . $name . '</a></h6>
+                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
+                        <div class="cart_add">
+                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                   </div>
+                   </div>
+                   </div>
+                   </div>';
+                }
+                if ($category == "COMPOSITIONS" && $image == "img/shop/COMPOSITIONS/1.jpg") {
+                    echo '
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="view/' . $image . '">
+                    <div class="product__label">
+                    <span>' . $name . '</span>
+                    </div>
+                    </div>
+                    <div class="product__item__text">
+                    <h6><a href="#">' . $name . '</a></h6>
+                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
+                        <div class="cart_add">
+                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                   </div>
+                   </div>
+                   </div>
+                   </div>';
+                }
+
+                
+            }
+       
+?>
             </div>
         </div>
     </section>
@@ -253,214 +307,33 @@ include "model/produit.php";
     <section class="product spad category-product" id="GateauBeldi">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Corne_de_gazelle_classique.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
+            <?php
+            $allProducts->execute();
+            while($product=$allProducts->fetch(PDO::FETCH_ASSOC)) {
+                    $image = $product['image'];
+                    $name = $product['nom'];
+                    $price = $product['prix'];
+                    $category = $product['categorie'];
+        
+                    if ($category == "GateauBeldi" ) {
+                        echo '
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="view/' . $image . '">
+                                    <div class="product__label">
+                                        <span>' . $category . '</span>
+                                    </div>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">' . $name . '</a></h6>
+                                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
+                                    <div class="cart_add">
+                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">CORNE DE GAZELLE CLASSIQUE</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Corne_de_Gazelle_aux_graines_de_sésamesjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Corne de Gazelle aux graines de sésames</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Corne_de_gazelle_de_tetouan.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">CORNE DE GAZELLE DE TÉTOUAN</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Corne_de_Gazelle_mfenedjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Corne de_Gazelle m'fened</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Gâteau_aux_dattesjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Gâteau aux dattes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Ghriba_au_beurre_et_aux_amandesjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Ghriba au beurre et aux amandes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/GHRIBA_AU_BEURREjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">GHRIBA AU BEURRE</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Ghriba_aux_amandesjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Ghriba aux amandes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Ghriba_aux_noix.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Ghriba aux noix</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Maamoulejpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Maamoule</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/MINI_CORNES_DE_GAZELLE_CLASSIQUEjpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">MINI CORNES DE GAZELLE CLASSIQUE</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Mini_ghriba_au_beurrejpg.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Mini ghriba au beurre</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauBeldi/Mini_Ghriba_aux_amandes.jpg">
-                            <div class="product__label">
-                                <span>Gateaux beldi</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Mini Ghriba aux amandes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </div>';
+                    }}?>  
             </div>
         </div>
     </section>
@@ -468,118 +341,33 @@ include "model/produit.php";
     <section class="product spad category-product" id="GateauAuMiel">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/1.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
+            <?php
+            $allProducts->execute();
+            while($product=$allProducts->fetch(PDO::FETCH_ASSOC)) {
+                    $image = $product['image'];
+                    $name = $product['nom'];
+                    $price = $product['prix'];
+                    $category = $product['categorie'];
+        
+                    if ($category == "GateauAuMiel" ) {
+                        echo '
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="view/' . $image . '">
+                                    <div class="product__label">
+                                        <span>' . $category . '</span>
+                                    </div>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">' . $name . '</a></h6>
+                                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
+                                    <div class="cart_add">
+                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Cigare au lait et aux amandes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/2.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">M'HANCHA COUPÉ</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/3.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">M’hancha classique</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/4.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Briwattes au miel</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/5.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Mini Briwattes au miel</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/6.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Chebbakia</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/gateauAuMiel/7.jpg">
-                            <div class="product__label">
-                                <span>Gateaux au miel</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Makroute</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </div>';
+                    }}?>  
             </div>
         </div>
     </section>
@@ -588,54 +376,33 @@ include "model/produit.php";
     <section class="product spad category-product" id="Fekkas">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/fekkas/1.jpg">
-                            <div class="product__label">
-                                <span>Fekkas</span>
+            <?php
+            $allProducts->execute();
+            while($product=$allProducts->fetch(PDO::FETCH_ASSOC)) {
+                    $image = $product['image'];
+                    $name = $product['nom'];
+                    $price = $product['prix'];
+                    $category = $product['categorie'];
+                    
+                    if ($category == "Fekkas" ) {
+                        echo '
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="view/' . $image . '">
+                                    <div class="product__label">
+                                        <span>' . $category . '</span>
+                                    </div>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">' . $name . '</a></h6>
+                                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
+                                    <div class="cart_add">
+                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Fekkas aux amandes</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/fekkas/2.jpg">
-                            <div class="product__label">
-                                <span>Fekkas</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Fekkas aux noix</a></h6>
-                            <div class="product__item__price">$30.00</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/fekkas/3.jpg">
-                            <div class="product__label">
-                                <span>Fekkas</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Fekkas à la créme fraiche</a></h6>
-                            <div class="product__item__price">$31.00</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </div>';
+                    }}?> 
             </div>
         </div>
     </section>
@@ -644,40 +411,33 @@ include "model/produit.php";
     <section class="product spad category-product" id="DattesEtSellou">
         <div class="container">
             <div class="row">
-                
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/datteetsellou/1.jpg">
-                            <div class="product__label">
-                                <span>Dattes et sellou</span>
+            <?php
+            $allProducts->execute();
+            while($product=$allProducts->fetch(PDO::FETCH_ASSOC)) {
+                    $image = $product['image'];
+                    $name = $product['nom'];
+                    $price = $product['prix'];
+                    $category = $product['categorie'];
+        
+                    if ($category == "DattesEtSellou" ) {
+                        echo '
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="view/' . $image . '">
+                                    <div class="product__label">
+                                        <span>' . $category . '</span>
+                                    </div>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">' . $name . '</a></h6>
+                                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
+                                    <div class="cart_add">
+                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">sellou traditionnel</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/datteetsellou/2.jpg">
-                            <div class="product__label">
-                                <span>Dattes et sellou</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Dattes fourrées</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </div>';
+                    }}?> 
             </div>
         </div>
     </section>
@@ -686,42 +446,33 @@ include "model/produit.php";
     <section class="product spad category-product" id="COMPOSITIONS">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/compositions/1.jpg">
-                            <div class="product__label">
-                                <span>COMPOSITIONS</span>
+            <?php
+            $allProducts->execute();
+            while($product=$allProducts->fetch(PDO::FETCH_ASSOC)) {
+                    $image = $product['image'];
+                    $name = $product['nom'];
+                    $price = $product['prix'];
+                    $category = $product['categorie'];
+        
+                    if ($category == "COMPOSITIONS" ) {
+                        echo '
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="view/' . $image . '">
+                                    <div class="product__label">
+                                        <span>' . $category . '</span>
+                                    </div>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">' . $name . '</a></h6>
+                                    <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
+                                    <div class="cart_add">
+                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Plateau de mignardises de pâtisseries beldi</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6" >
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/shop/compositions/2.jpg">
-                            <div class="product__label">
-                                <span>COMPOSITIONS</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Plateaux de gâteaux beldi</a></h6>
-                            <div class="product__item__price">100 MAD</div>
-                            <div class="cart_add">
-                                <a href="#">Commander</a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
-                </div>
+                        </div>';
+                    }}?> 
             </div>
         </div>
     </section>
@@ -740,7 +491,7 @@ include "model/produit.php";
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="team__item set-bg" data-setbg="img/team/team-1.jpg">
+                    <div class="team__item set-bg" data-setbg="view/img/team/team-1.jpg">
                         <div class="team__item__text">
                             <h6>Randy Butler</h6>
                             <span>Decorater</span>
@@ -754,7 +505,7 @@ include "model/produit.php";
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="team__item set-bg" data-setbg="img/team/team-2.jpg">
+                    <div class="team__item set-bg" data-setbg="view/img/team/team-2.jpg">
                         <div class="team__item__text">
                             <h6>Randy Butler</h6>
                             <span>Decorater</span>
@@ -768,7 +519,7 @@ include "model/produit.php";
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="team__item set-bg" data-setbg="img/team/team-3.jpg">
+                    <div class="team__item set-bg" data-setbg="view/img/team/team-3.jpg">
                         <div class="team__item__text">
                             <h6>Randy Butler</h6>
                             <span>Decorater</span>
@@ -782,7 +533,7 @@ include "model/produit.php";
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="team__item set-bg" data-setbg="img/team/team-4.jpg">
+                    <div class="team__item set-bg" data-setbg="view/img/team/team-4.jpg">
                         <div class="team__item__text">
                             <h6>Randy Butler</h6>
                             <span>Decorater</span>
@@ -817,7 +568,7 @@ include "model/produit.php";
                         <div class="testimonial__item">
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">
-                                    <img src="img/testimonial/ta-1.jpg" alt="">
+                                    <img src="view/img/testimonial/ta-1.jpg" alt="">
                                 </div>
                                 <div class="testimonial__author__text">
                                     <h5>Kerry D.Silva</h5>
@@ -839,7 +590,7 @@ include "model/produit.php";
                         <div class="testimonial__item">
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">
-                                    <img src="img/testimonial/ta-2.jpg" alt="">
+                                    <img src="view/img/testimonial/ta-2.jpg" alt="">
                                 </div>
                                 <div class="testimonial__author__text">
                                     <h5>Kerry D.Silva</h5>
@@ -861,7 +612,7 @@ include "model/produit.php";
                         <div class="testimonial__item">
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">
-                                    <img src="img/testimonial/ta-1.jpg" alt="">
+                                    <img src="view/img/testimonial/ta-1.jpg" alt="">
                                 </div>
                                 <div class="testimonial__author__text">
                                     <h5>Ophelia Nunez</h5>
@@ -883,7 +634,7 @@ include "model/produit.php";
                         <div class="testimonial__item">
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">
-                                    <img src="img/testimonial/ta-2.jpg" alt="">
+                                    <img src="view/img/testimonial/ta-2.jpg" alt="">
                                 </div>
                                 <div class="testimonial__author__text">
                                     <h5>Kerry D.Silva</h5>
@@ -905,7 +656,7 @@ include "model/produit.php";
                         <div class="testimonial__item">
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">
-                                    <img src="img/testimonial/ta-1.jpg" alt="">
+                                    <img src="view/img/testimonial/ta-1.jpg" alt="">
                                 </div>
                                 <div class="testimonial__author__text">
                                     <h5>Ophelia Nunez</h5>
@@ -927,7 +678,7 @@ include "model/produit.php";
                         <div class="testimonial__item">
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">
-                                    <img src="img/testimonial/ta-2.jpg" alt="">
+                                    <img src="view/img/testimonial/ta-2.jpg" alt="">
                                 </div>
                                 <div class="testimonial__author__text">
                                     <h5>Kerry D.Silva</h5>
@@ -969,32 +720,32 @@ include "model/produit.php";
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-6">
                             <div class="instagram__pic">
-                                <img src="img/instagram/instagram-1.jpg" alt="">
+                                <img src="view/img/instagram/instagram-1.jpg" alt="">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-6">
                             <div class="instagram__pic middle__pic">
-                                <img src="img/instagram/instagram-2.jpg" alt="">
+                                <img src="view/img/instagram/instagram-2.jpg" alt="">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-6">
                             <div class="instagram__pic">
-                                <img src="img/instagram/instagram-3.jpg" alt="">
+                                <img src="view/img/instagram/instagram-3.jpg" alt="">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-6">
                             <div class="instagram__pic">
-                                <img src="img/instagram/instagram-4.jpg" alt="">
+                                <img src="view/img/instagram/instagram-4.jpg" alt="">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-6">
                             <div class="instagram__pic middle__pic">
-                                <img src="img/instagram/instagram-5.jpg" alt="">
+                                <img src="view/img/instagram/instagram-5.jpg" alt="">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-6">
                             <div class="instagram__pic">
-                                <img src="img/instagram/instagram-3.jpg" alt="">
+                                <img src="view/img/instagram/instagram-3.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -1026,7 +777,7 @@ include "model/produit.php";
     <!-- Map End -->
 
     <!-- Footer Section Begin -->
-    <footer class="footer set-bg" data-setbg="img/footer-bg.jpg">
+    <footer class="footer set-bg" data-setbg="view/img/footer-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -1042,7 +793,7 @@ include "model/produit.php";
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                            <a href="#"><img src="view/img/footer-logo.png" alt=""></a>
                         </div>
                         <p>Découvrez l'authenticité de la pâtisserie marocaine à chaque bouchée.</p>
                         <div class="footer__social">
@@ -1101,15 +852,15 @@ include "model/produit.php";
 <!-- Search End -->
 
 <!-- Js Plugins -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/jquery.barfiller.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/jquery.slicknav.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.nicescroll.min.js"></script>
-<script src="js/main.js"></script>
+<script src="view/js/jquery-3.3.1.min.js"></script>
+<script src="view/js/bootstrap.min.js"></script>
+<script src="view/js/jquery.nice-select.min.js"></script>
+<script src="view/js/jquery.barfiller.js"></script>
+<script src="view/js/jquery.magnific-popup.min.js"></script>
+<script src="view/js/jquery.slicknav.js"></script>
+<script src="view/js/owl.carousel.min.js"></script>
+<script src="view/js/jquery.nicescroll.min.js"></script>
+<script src="view/js/main.js"></script>
 <script>
     
     $(document).ready(function() {
@@ -1133,6 +884,7 @@ include "model/produit.php";
             $(this).addClass("active");
         });
     });
+
 </script>
 </script>
 </body>

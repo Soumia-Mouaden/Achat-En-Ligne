@@ -497,7 +497,7 @@ ol {
   Hero
 -----------------------*/
 .hero__item {
-  height: 700px;
+  height: 600px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1006,10 +1006,13 @@ ol {
   background: #dbb95d;
   color: #ffffff;
 }
+
 .product__item:hover .product__item__text .product__item__price {
   opacity: 0;
   visibility: hidden;
+
 }
+
 .product__item:hover .product__item__text .cart_add {
   opacity: 1;
   visibility: visible;
@@ -1650,6 +1653,7 @@ ol {
 .product__details__option .primary-btn {
   margin-right: 20px;
   background-color: #be8530; 
+  border: none;
 }
 
 .product__details__tab {
