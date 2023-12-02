@@ -2,9 +2,8 @@
 class Commande{
     private $numCommande, $dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse;
 
-    public function __construct($numCommande, $dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse)
+    public function __construct( $dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse)
     {
-        $this->numCommande = $numCommande;
         $this->dateCreation = $dateCreation;
         $this->dateLivraison = $dateLivraison;
         $this->etat = $etat;

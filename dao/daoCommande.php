@@ -56,6 +56,19 @@ class DaoCommande
         $result = $stm->fetch(PDO::FETCH_ASSOC);
         return $result['total'];
     }
+
+    public function countCaisse()
+    {
+        $stm = $this->dbh->prepare("SELECT * FROM commande WHERE etat= 'Livrée'");
+        $stm->execute();
+        $result = $stm->fetch(PDO::FETCH_ASSOC);
+        $caisse=0;
+        foreach ($result as $row) {
+            $caisee+= $row->
+        }
+        return $result['total'];
+    }
+
     
 
 
