@@ -49,6 +49,17 @@ class DaoCommande
         return $commande;
     }
 
+    public function countCommandesToday()
+    {
+        $stm = $this->dbh->prepare("SELECT COUNT(*) as total FROM commande WHERE DATE(dateCreation) = DATE(NOW())");
+        $stm->execute();
+        $result = $stm->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    }
+    
+
+
+
 }
 
 ?>

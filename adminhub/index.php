@@ -2,7 +2,9 @@
 include "../dao/daoCommande.php";
 include "../dao/daoUtilisateur.php";
 $daoUser = new DaoUtilisateur();
+$daoCommande = new DaoCommande();
 $nbUser = $daoUser->countUsers();
+$nbCommandeAuj = $daoCommande->countCommandesToday();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -185,7 +187,13 @@ $nbUser = $daoUser->countUsers();
 				<li>
 					<i class='bx bxs-calendar-check'></i>
 					<span class="text">
-						<h3>1020</h3>
+						<h3>
+						<?php
+							if (isset($nbCommandeAuj)) {
+                                echo $nbCommandeAuj;
+                                }
+							?>
+						</h3>
 						<p>Commandes</p>
 					</span>
 				</li>
