@@ -1,6 +1,5 @@
 <?php
 include "../dao/daoProduit.php";
-include "../dao/daoUtilisateur.php";
 
 $daoProduit = new DaoProduit();
 $idOfProduit = isset($_GET['idOfProduit']) ? $_GET['idOfProduit'] : "";
@@ -74,36 +73,19 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                     <div class="col-lg-12">
                         <div class="header__top__inner">
                             <div class="header__top__left">
-                            <?php
-                            session_start();
-                             if (isset($_SESSION["utilisateur"])) {
-                                    $utilisateur = $_SESSION['utilisateur'];
-                                   // Check if the user is logged in
-                                   // If the user is logged in, display the "Se déconnecter" button
-                                    if ($utilisateur != null) {
-                                        echo '
-                                            <ul>
-                                                <li>Bienvenue ' . $utilisateur->getNom() . '</li>
-                                            <li><a href="controller/utilisateurController.php?action=deconnexion">Se déconnecter</a></li>
-                                            </ul>';
-                                    } 
-                                } else {
-                                    // If the user is not logged in, display the "Se connecter" button
-                                    echo '
-                                        <ul>
-                                            <li><a href="view/connexion.php">Se connecter</a> </li>
-                                        </ul>';
-                                }
-                                ?>
+                                <ul>
+                                    
+                                    <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
+                                </ul>
                             </div>
                             <div class="header__logo">
                                 <a href="./index.html"><img src="img/logo.png" alt=""></a>
                             </div>
                             <div class="header__top__right">
-                                <!--<div class="header__top__right__cart">
+                                <div class="header__top__right__cart">
                                     <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
                                     <div class="cart__price">Cart: <span>$0.00</span></div>
-                                </div>-->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -184,13 +166,11 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                             <p>Quantité: <span>(en Kg)</span></p>
 
                             <div class="quantity">
-                                <div class="pro-qty" style="border: 1px solid #e1e1e1;">
-                                    <input type="text" value="2">
+                                <div class="pro-qty">
+                                    <input type="text" value="2" id="qq">
                                 </div>
                             </div>
-                            
                             <button type="button" class="primary-btn" data-toggle="modal" data-target="#myModal">Commander</button>
-                           
                         </div>
                     </div>
                 </div>
@@ -458,7 +438,7 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                                 <p>Quantité: <span>(en Kg)</span></p>
                                 <div class="quantity" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                                     <div class="pro-qty">
-                                        <input type="text" value="1" id="myInput">
+                                        <input type="text" id="myInput">
                                     </div>
                                 </div>
                             </div>
@@ -477,10 +457,8 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
         </div>
                 <!-- Modal footer -->
         <div class="modal-footer container" style="justify-content: space-between;">
-        <button type="button" class="btn" style="background: #dbd5c4; border: none; width:150px;" data-dismiss="modal">Annuler</button>
-        <form method="post" action="../controller/utilisateurController.php?action=commander">
-        <button type="submit" class="btn btn-secondary" style="background: rgb(221, 189, 85); border: none; width:150px;">Valider</button>
-        </form>
+          <button type="button" class="btn" style="background: #dbd5c4; border: none; width:150px;" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-secondary" style="background: rgb(221, 189, 85); border: none; width:150px;" data-dismiss="modal">Valider</button>
         </div>
 
         </div>
@@ -494,11 +472,11 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function () {    
         var proQty = $('.pro-qty');
         var myInput = $('#myInput');
-        var labelTotalPrice = $('.custom-border');
-        var prixProduit = <?php echo $produit->getPrix(); ?>; // Obtenez le prix du produit en PHP
+        var labelTotalPrice = $('.custom-border'); // Déplacez ceci à la portée globale
+        var prixProduit = <?php echo $produit->getPrix(); ?>;
 
         proQty.prepend('<span class="dec qtybtn">-</span>');
         proQty.append('<span class="inc qtybtn">+</span>');
@@ -510,7 +488,6 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
             if ($button.hasClass('inc')) {
                 var newVal = oldValue + 1;
             } else {
-                // Ne permettez pas de descendre en dessous de zéro
                 if (oldValue > 0) {
                     var newVal = oldValue - 1;
                 } else {
@@ -518,24 +495,43 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                 }
             }
 
+            $button.parent().find('input').val(newVal);
             myInput.val(newVal);
-            updateTotalPrice(); // Mettez à jour le prix total à chaque changement de quantité
+            updateTotalPrice();
         });
 
-        // Fonction pour mettre à jour le prix total
         function updateTotalPrice() {
             var quantity = parseFloat(myInput.val());
             var totalPrice = quantity * prixProduit;
-            labelTotalPrice.text(totalPrice.toFixed(2)+' MAD');
+            labelTotalPrice.text(totalPrice.toFixed(2) + ' MAD');
         }
+
+        // Lorsque le bouton "Commander" est cliqué
+        $('.primary-btn').on('click', function () {
+            // Récupérez la valeur de l'input
+            var valeurInput = $('#qq').val();
+
+            // Stockez la valeur dans le stockage local
+            localStorage.setItem('inputValue', valeurInput);
+
+            // Mettez à jour la valeur de l'input dans le modèle
+            myInput.val(valeurInput);
+
+            // Appelez la fonction pour mettre à jour le prix total
+            updateTotalPrice();
+        });
+
+        // Récupérez la valeur depuis le stockage local
+        var inputValue = localStorage.getItem('inputValue') || 0;
+        $('#myInput').val(inputValue);
+
+        // Appelez la fonction pour mettre à jour le prix total au chargement initial
+        updateTotalPrice();
     });
 </script>
 
-<!-- Votre HTML -->
-<input type="text" value="1" id="myInput">
-<label for="myInput" class="custom-border" style="text-align:center;"></label>
 
-
+</script>
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
