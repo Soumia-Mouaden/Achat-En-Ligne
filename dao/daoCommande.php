@@ -17,13 +17,14 @@ class DaoCommande
     }
     public function save(Commande $commande)
     {
-        $stm = $this->dbh->prepare("INSERT INTO commande VALUES (?, ?, ?, ?, ?)");
+        $stm = $this->dbh->prepare("INSERT INTO commande VALUES (?, ?, ?, ?, ?, ?)");
 
         $stm->bindValue(1, $commande->getNumCommande());
         $stm->bindValue(2, $commande->getDateCreation());
         $stm->bindValue(3, $commande->getDateLivraison());
         $stm->bindValue(4, $commande->getEtat());
         $stm->bindValue(5, $commande->getVilleLivraison());
+        $stm->bindValue(6, $commande->getAddresse());
 
         $stm->execute();
     }

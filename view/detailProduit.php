@@ -170,7 +170,7 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                                     <input type="text" value="2" id="qq">
                                 </div>
                             </div>
-                            <button type="button" class="primary-btn" data-toggle="modal" data-target="#myModal">Commander</button>
+                            <button type="button" class="primary-btn" data-toggle="modal" data-target="#myModal" >Commander</button>
                         </div>
                     </div>
                 </div>
@@ -433,24 +433,30 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                             width:350px;
                             }
                         </style>
-                        <div class="product__details__option row">
-                            <div class="col-md-6">
-                                <p>Quantité: <span>(en Kg)</span></p>
-                                <div class="quantity" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-                                    <div class="pro-qty">
-                                        <input type="text" id="myInput">
+                        <form action="../controller/commandeController.php?action=insertionCommande" method="post">
+                            <div class="product__details__option row">
+                                <div class="col-md-6">
+                                    <p>Quantité: <span>(en Kg)</span></p>
+                                    <div class="quantity" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                                        <div class="pro-qty">
+                                            <input type="text" id="myInput" name="quantite">
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <p>Prix Total:</p>
+                                    <label for="myInput" class="custom-border" style="text-align:center;" name="prixTotal"></label>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <p>Saisissez la ville de livraison:</p>
+                                    <textarea for="exampleTextarea" class="custom-border-2" style="border:none;" name="ville"></textarea>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <p>Saisissez votre address:</p>
+                                    <textarea for="exampleTextarea" name="addresse" class="custom-border-2" style="border:none;" data-prix="<?php echo $produit->getPrix(); ?>"></textarea>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <p>Prix Total:</p>
-                                <label for="myInput" class="custom-border" style="text-align:center;"></label>
-                            </div>
-                            <div class="col-md-12 mt-4">
-                                <p>Saisir votre localisaton:</p>
-                                <textarea for="exampleTextarea" class="custom-border-2" style="border:none;" data-prix="<?php echo $produit->getPrix(); ?>"></textarea>
-                           </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
