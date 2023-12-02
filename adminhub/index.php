@@ -1,3 +1,9 @@
+<?php 
+include "../dao/daoCommande.php";
+include "../dao/daoUtilisateur.php";
+$daoUser = new DaoUtilisateur();
+$nbUser = $daoUser->countUsers();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -186,7 +192,13 @@
 				<li>
 					<i class='bx bxs-group'></i>
 					<span class="text">
-						<h3>2834</h3>
+						<h3>
+							<?php
+							if (isset($nbUser)) {
+                                echo $nbUser;
+                                }
+							?>
+						</h3>
 						<p>Clients</p>
 					</span>
 				</li>
