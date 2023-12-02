@@ -1,9 +1,9 @@
 <?php
 class Utilisateur
 {
-    private $nom, $prenom,$tel, $email, $gender, $mdp, $ville, $role;
+    private $id,$nom, $prenom,$tel, $email, $gender, $mdp, $ville, $role;
 
-    public function __construct($nom, $prenom,$tel, $email, $gender, $mdp, $ville, $role)
+    public function __construct($nom, $prenom,$email,$tel, $gender, $mdp, $ville,$role)
     {
         $this->nom = $nom;
         $this->prenom = $prenom;
@@ -12,12 +12,16 @@ class Utilisateur
         $this->gender = $gender;
         $this->mdp = $mdp;
         $this->ville = $ville;
-        $this->role = $role;
+        $this->role = "client";
     }
 
     /**
      * @return mixed
      */
+    public function getId()
+    {
+        return $this->id;
+    }
     public function getNom()
     {
         return $this->nom;
@@ -103,5 +107,17 @@ class Utilisateur
     public function setMdp($mdp)
     {
         $this->mdp = $mdp;
+    }
+    public function getVille()
+    {
+        return $this->ville;
+    }
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+    }
+    public function getRole()
+    {
+        return $this->role;
     }
 }

@@ -1,5 +1,6 @@
 <?php
-include "../model/utilisateur.php";
+include __DIR__ . "/../model/utilisateur.php";
+
 
 class DaoUtilisateur
 {
@@ -17,32 +18,49 @@ class DaoUtilisateur
     }
     public function save(Utilisateur $utilisateur)
     {
-        // $stm = $this->dbh->prepare("INSERT INTO user VALUES (?, ?, ?, ?, ?, ?)");
-
-        // $stm->bindValue(1, $utilisateur->getEmail());
-        // $stm->bindValue(2, $utilisateur->getPassword());
-        // $stm->bindValue(3, $utilisateur->getName());
-        // $stm->bindValue(4, $utilisateur->getSurname());
-        // $stm->bindValue(5, $utilisateur->getTelephone());
-        // $stm->bindValue(6, $utilisateur->getGender());
-
-        // $stm->execute();
+        $stm = $this->dbh->prepare("INSERT INTO utilisateur (nom,prenom,email,tel,genre,mdp,ville,role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stm->bindValue(1, $utilisateur->getNom());
+        $stm->bindValue(2, $utilisateur->getPrenom());
+        $stm->bindValue(3, $utilisateur->getEmail());
+        $stm->bindValue(4, $utilisateur->getGenre());
+        $stm->bindValue(5, $utilisateur->getTel() );
+        $stm->bindValue(6, $utilisateur->getMdp() );
+        $stm->bindValue(7, $utilisateur->getVille() );
+        $stm->bindValue(8, $utilisateur->getRole());
+        echo $stm->queryString;
+        print_r($stm->debugDumpParams());
+        $stm->execute();
     }
 
     public function findUtilisateur($email, $mdp)
     {
-        // $utilisateur = null;
-        // $stm = $this->dbh->prepare("SELECT * FROM user where email=? AND password=?");
-        // $stm->bindValue(1, $email);
-        // $stm->bindValue(2, $password);
-
-        // $stm->execute();
-
-        // $result = $stm->fetch(PDO::FETCH_ASSOC);
-        // if (!empty($result)) {
-        //     $utilisateur = new User($result['name'],$result['surname'],$result['telephone'],'', $result['gender'], $result['email'], $result['password']);
-        // }
-        // return $utilisateur;
+        $stm = $this->dbh->prepare("SELECT * FROM utilisateur WHERE email=? AND mdp=?");
+        $stm->bindValue(1, $email);
+        $stm->bindValue(2, $mdp);
+        $stm->execute();
+        $utilisateur = null;
+        $result = $stm->fetch(PDO::FETCH_ASSOC);
+        if (!empty($result)) {
+            $utilisateur = new Utilisateur($result['nom'],$result['prenom'],$result['email'],$result['tel'], $result['genre'], $result['mdp'], $result['ville'],$result['role']);
+            echo $result['nom'];
+            echo $result['email'];
+            
+        
+        }
+        return $utilisateur;
+    }
+    public function findUtilisateurById($id)
+    {
+        $stm = $this->dbh->prepare("SELECT * FROM utilisateur WHERE id=?");
+        $stm->bindValue(1, $id);
+        $stm->execute();
+        $utilisateur = null;
+        $result = $stm->fetch(PDO::FETCH_ASSOC);
+        if (!empty($result)) {
+            $utilisateur = new Utilisateur($result['nom'],$result['prenom'],$result['email'],$result['tel'],$result['genre'], $result['mdp'], $result['ville'],$result['role']);
+        }
+        
+        return $utilisateur;
     }
 
 }
