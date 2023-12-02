@@ -20,7 +20,7 @@ $allProducts = $dao->listProduits();
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
-         <!-- Css Styles -->
+    <!-- Css Styles -->
     <link rel="stylesheet" href="view/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="view/css/flaticon.css" type="text/css">
     <link rel="stylesheet" href="view/css/barfiller.css" type="text/css">
