@@ -1,5 +1,6 @@
 <?php
 include "../dao/daoProduit.php";
+include "../dao/daoUtilisateur.php";
 
 $daoProduit = new DaoProduit();
 $idOfProduit = isset($_GET['idOfProduit']) ? $_GET['idOfProduit'] : "";
@@ -73,19 +74,36 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                     <div class="col-lg-12">
                         <div class="header__top__inner">
                             <div class="header__top__left">
-                                <ul>
-                                    
-                                    <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
-                                </ul>
+                            <?php
+                            session_start();
+                             if (isset($_SESSION["utilisateur"])) {
+                                    $utilisateur = $_SESSION['utilisateur'];
+                                   // Check if the user is logged in
+                                   // If the user is logged in, display the "Se déconnecter" button
+                                    if ($utilisateur != null) {
+                                        echo '
+                                            <ul>
+                                                <li>Bienvenue ' . $utilisateur->getNom() . '</li>
+                                            <li><a href="controller/utilisateurController.php?action=deconnexion">Se déconnecter</a></li>
+                                            </ul>';
+                                    } 
+                                } else {
+                                    // If the user is not logged in, display the "Se connecter" button
+                                    echo '
+                                        <ul>
+                                            <li><a href="view/connexion.php">Se connecter</a> </li>
+                                        </ul>';
+                                }
+                                ?>
                             </div>
                             <div class="header__logo">
                                 <a href="./index.html"><img src="img/logo.png" alt=""></a>
                             </div>
                             <div class="header__top__right">
-                                <div class="header__top__right__cart">
+                                <!--<div class="header__top__right__cart">
                                     <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
                                     <div class="cart__price">Cart: <span>$0.00</span></div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>
