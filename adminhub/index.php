@@ -5,6 +5,8 @@ $daoUser = new DaoUtilisateur();
 $daoCommande = new DaoCommande();
 $nbUser = $daoUser->countUsers();
 $nbCommandeAuj = $daoCommande->countCommandesToday();
+$daoCommandes = new DaoCommande();
+$caisse= $daoCommandes->countCaisse();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -213,8 +215,14 @@ $nbCommandeAuj = $daoCommande->countCommandesToday();
 				<li>
 					<i class='bx bxs-dollar-circle'></i>
 					<span class="text">
-						<h3>25M MAD</h3>
-						<p>Caisse</p>
+						<h3>
+						<?php
+							if (isset($caisse)) {
+                                echo $caisse;
+                                }
+							?>
+						</h3>
+						<p>Caisse en MAD</p>
 					</span>
 				</li>
 			</ul>

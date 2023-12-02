@@ -1,5 +1,7 @@
 <?php
 include "../model/commande.php";
+include "../model/produit.php";
+include "../model/commande_produit.php";
 
 class DaoCommande
 {
@@ -59,15 +61,21 @@ class DaoCommande
 
     public function countCaisse()
     {
-        $stm = $this->dbh->prepare("SELECT * FROM commande WHERE etat= 'Livrée'");
+        $stm = $this->dbh->prepare("SELECT * 
+        FROM commande
+        JOIN commande_produit ON commande.numCommande = commande_produit.numCommande_Commande
+        JOIN produit ON commande_produit.id_Produit = produit.id
+        WHERE commande.etat = 'Livrée';");
         $stm->execute();
-        $result = $stm->fetch(PDO::FETCH_ASSOC);
-        $caisse=0;
-        foreach ($result as $row) {
-            $caisee+= $row->
+        $results = $stm->fetchAll(PDO::FETCH_ASSOC); // Utiliser fetchAll pour récupérer toutes les lignes
+    
+        $caisse = 0;
+        foreach ($results as $row) {
+            $caisse += ($row['prix'] * $row['quantité']); // Utiliser les clés du tableau associatif
         }
-        return $result['total'];
+        return $caisse;
     }
+    
 
     
 
