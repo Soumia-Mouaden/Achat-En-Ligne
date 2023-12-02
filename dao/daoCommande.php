@@ -42,7 +42,8 @@ class DaoCommande
                 $result['dateCreation'],
                 $result['dateLivraison'],
                 $result['etat'],
-                $result['villeLivraison']
+                $result['villeLivraison'],
+                $result['adresse'],
             );
         }
         return $commande;

@@ -9,10 +9,10 @@ switch ($action) {
         $quantite = $_POST['quantite'];
         $prixTotal = $_POST['prixTotal'];
         $ville = $_POST['ville'];
-        $addresse = $_POST['addresse'];
+        $addresse = $_POST['adresse'];
 
-        if (isset($quantite, $prixTotal, $ville, $addresse)) {
-                $commande = new Commande($dateCreation, $dateLivraison, $etat, $villeLivraison, $addresse);
+        if (isset($quantite, $prixTotal, $ville, $adresse)) {
+                $commande = new Commande($dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse);
                 $dao->save($commande);
                 session_start();
                 $_SESSION['utilisateur']=$utilisateur;
