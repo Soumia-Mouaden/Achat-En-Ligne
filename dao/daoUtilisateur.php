@@ -9,7 +9,7 @@ class DaoUtilisateur
     public function __construct()
     {
         try {
-            $this->dbh = new PDO('mysql:host=localhost;dbname=patisseie', "root", "");
+            $this->dbh = new PDO('mysql:host=localhost;dbname=patisserie', "root", "");
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
