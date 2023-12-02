@@ -147,7 +147,7 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                             ?>
                         </h2>
 
-                        <h6>
+                        <h6 style="border-bottom: 1px solid #724502;">
                             <?php
                                 if (isset($produit)) {
                                 echo $produit->getPrix();
@@ -166,7 +166,7 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                             <p>Quantité: <span>(en Kg)</span></p>
 
                             <div class="quantity">
-                                <div class="pro-qty">
+                                <div class="pro-qty" style="border: 1px solid #e1e1e1;">
                                     <input type="text" value="2">
                                 </div>
                             </div>
@@ -382,15 +382,31 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title p-1" style="color:rgb(160, 110, 3); font-weight: 600; font-size:29px;">Ma commande</h4>
+          <h4 class="modal-title container" style="color:rgb(160, 110, 3); font-weight: 600; font-size:30px; text-align:center;">Ma commande</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-            <div class="row">
-                <div class="col-lg-6" style="padding-left:80px;">
-                    <div class="product__details__img">
+            <div class="row container">
+            <div class="col-lg-12 product__details__text" style="margin-top:15px;">
+                        <h4 style="color: rgb(92, 64, 4); font-weight: 550; margin-bottom: 12px;">
+                            <?php
+                                if (isset($produit)) {
+                                echo $produit->getNom();
+                                }
+                            ?>
+                        </h4>
+
+                        <h6 style=" padding-bottom: 15px; margin-bottom: 10px; font-size: 15px; font-weight: 500; border-bottom: 1px solid #724502; width:260px;">
+                            <?php
+                                if (isset($produit)) {
+                                echo $produit->getPrix();
+                                }
+                            ?> MAD pour 1Kg
+                        </h6>
+                </div>
+                <div class="col-lg-6 mt-3" style="padding-left:10px;">
                         <div class="product__details__big__img"> 
                             <?php
                                 if (isset($produit)) {
@@ -399,79 +415,108 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                             ?>
                             <img class="big_img" src="<?php echo $imageProduit; ?>" alt=""> 
                         </div>
-
-                    </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="product__details__text">
-                        
-                        <div class="product__label">
-                            <?php
-                                if (isset($produit)) {
-                                echo $produit->getCategorie();
-                                }
-                            ?>
-                        </div>
-
-                        <h4 style="color: rgb(92, 64, 4); font-weight: 600; margin-top: 15px; margin-bottom: 12px;">
-                            <?php
-                                if (isset($produit)) {
-                                echo $produit->getNom();
-                                }
-                            ?>
-                        </h4>
-
-                        <h6 style=" padding-bottom: 15px; margin-bottom: 10px; font-size: 15px; font-weight: 500;">
-                            <?php
-                                if (isset($produit)) {
-                                echo $produit->getPrix();
-                                }
-                            ?> MAD pour 1Kg
-                        </h6>
-
-                        <div class="product__details__option mt-5 mb-0">
-                            <p>Quantité: <span>(en Kg)</span></p>
-
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="2">
+                        <style>
+                            /* Ajoutez des styles CSS personnalisés ici */
+                            .custom-border {
+                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Couleur et épaisseur de la bordure */
+                            border-radius: 0px; /* Rayon de la bordure pour rendre le coin arrondi */
+                            padding: 10px; /* Espace à l'intérieur de la bordure */
+                            width:150px;
+                            }
+                            .custom-border-2 {
+                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Couleur et épaisseur de la bordure */
+                            border-radius: 0px; /* Rayon de la bordure pour rendre le coin arrondi */
+                            padding: 10px; /* Espace à l'intérieur de la bordure */
+                            width:350px;
+                            }
+                        </style>
+                        <div class="product__details__option row">
+                            <div class="col-md-6">
+                                <p>Quantité: <span>(en Kg)</span></p>
+                                <div class="quantity" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                                    <div class="pro-qty">
+                                        <input type="text" value="1" id="myInput">
+                                    </div>
                                 </div>
                             </div>
-                            <button type="button" class="primary-btn" data-toggle="modal" data-target="#myModal">Commander</button>
+                            <div class="col-md-6">
+                                <p>Prix Total:</p>
+                                <label for="myInput" class="custom-border" style="text-align:center;"></label>
+                            </div>
+                            <div class="col-md-12 mt-4">
+                                <p>Saisir votre localisaton:</p>
+                                <textarea for="exampleTextarea" class="custom-border-2" style="border:none;" data-prix="<?php echo $produit->getPrix(); ?>"></textarea>
+                           </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-
-
+                <!-- Modal footer -->
+        <div class="modal-footer container" style="justify-content: space-between;">
+          <button type="button" class="btn" style="background: #dbd5c4; border: none; width:150px;" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-secondary" style="background: rgb(221, 189, 85); border: none; width:150px;" data-dismiss="modal">Valider</button>
+        </div>
 
         </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn" style="background: #dbd5c4; border: none;" data-dismiss="modal">Annuler</button>
-          <button type="button" class="btn btn-secondary" style="background: #dabd70; border: none;" data-dismiss="modal">Valider</button>
-        </div>
-        
       </div>
     </div>
   </div>
   
 </div>
 
+<!-- Assurez-vous que jQuery est inclus avant ce script -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var proQty = $('.pro-qty');
+        var myInput = $('#myInput');
+        var labelTotalPrice = $('.custom-border');
+        var prixProduit = <?php echo $produit->getPrix(); ?>; // Obtenez le prix du produit en PHP
+
+        proQty.prepend('<span class="dec qtybtn">-</span>');
+        proQty.append('<span class="inc qtybtn">+</span>');
+
+        proQty.on('click', '.qtybtn', function () {
+            var $button = $(this);
+            var oldValue = parseFloat(myInput.val());
+
+            if ($button.hasClass('inc')) {
+                var newVal = oldValue + 1;
+            } else {
+                // Ne permettez pas de descendre en dessous de zéro
+                if (oldValue > 0) {
+                    var newVal = oldValue - 1;
+                } else {
+                    newVal = 0;
+                }
+            }
+
+            myInput.val(newVal);
+            updateTotalPrice(); // Mettez à jour le prix total à chaque changement de quantité
+        });
+
+        // Fonction pour mettre à jour le prix total
+        function updateTotalPrice() {
+            var quantity = parseFloat(myInput.val());
+            var totalPrice = quantity * prixProduit;
+            labelTotalPrice.text(totalPrice.toFixed(2)+' MAD');
+        }
+    });
+</script>
+
+<!-- Votre HTML -->
+<input type="text" value="1" id="myInput">
+<label for="myInput" class="custom-border" style="text-align:center;"></label>
+
+
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.barfiller.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
+
     <script src="js/main.js"></script>
 </body>
 
