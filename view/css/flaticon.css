@@ -78,3 +78,8 @@
 .flaticon-048-cake-2:before { content: "\f12f"; }
 .flaticon-049-cake-1:before { content: "\f130"; }
 .flaticon-050-cake:before { content: "\f131"; }
+.flaticon-miel:before {
+  content: url('../img/icon/bee.svg');
+  /* Remplacez le chemin par le chemin réel vers votre fichier SVG */
+}
+

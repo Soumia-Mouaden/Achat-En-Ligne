@@ -1,5 +1,5 @@
 <?php include "dao/daoProduit.php";
-
+include "dao/daoUtilisateur.php";
 $dao = new DaoProduit();
 $allProducts = $dao->listProduits();
 ?>
@@ -42,12 +42,12 @@ $allProducts = $dao->listProduits();
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
-        <div class="offcanvas__cart">
+    <!-- <div class="offcanvas__cart">
            <div class="offcanvas__cart__item">
                 <a href="#"><img src="view/img/icon/cart.png" alt=""> <span>0</span></a>
                 <div class="cart__price">Panier: <span>$0.00</span></div>
             </div>
-        </div>
+        </div>-->
         <div class="offcanvas__logo">
             <a href="./index.html"><img src="view/img/logo.png" alt=""></a>
         </div>
@@ -68,19 +68,36 @@ $allProducts = $dao->listProduits();
                     <div class="col-lg-12">
                         <div class="header__top__inner">
                             <div class="header__top__left">
-                                <ul>
-                                    
-                                    <li><a href="#">Se connecter</a> <span class="arrow_carrot-down"></span></li>
-                                </ul>
-                            </div>
+                            <?php
+                            session_start();
+                             if (isset($_SESSION["utilisateur"])) {
+                                    $utilisateur = $_SESSION['utilisateur'];
+                                   // Check if the user is logged in
+                                   // If the user is logged in, display the "Se déconnecter" button
+                                    if ($utilisateur != null) {
+                                        echo '
+                                            <ul>
+                                                <li>Bienvenue ' . $utilisateur->getNom() . '</li>
+                                            <li><a href="controller/utilisateurController.php?action=deconnexion">Se déconnecter</a></li>
+                                            </ul>';
+                                    } 
+                                } else {
+                                    // If the user is not logged in, display the "Se connecter" button
+                                    echo '
+                                        <ul>
+                                            <li><a href="view/connexion.php">Se connecter</a> </li>
+                                        </ul>';
+                                }
+                                ?>
+
                             <div class="header__logo">
                                 <a href="./index.html"><img src="view/img/logo.png" alt=""></a>
                             </div>
                             <div class="header__top__right">
-                                <div class="header__top__right__cart">
+                               <!-- <div class="header__top__right__cart">
                                     <a href="#"><img src="view/img/icon/cart.png" alt=""> <span>0</span></a>
                                     <div class="cart__price">Panier: <span>$0.00</span></div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -88,13 +105,18 @@ $allProducts = $dao->listProduits();
                 <div class="canvas__open"><i class="fa fa-bars"></i></div>
             </div>
         </div>
-        <div class="container">
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero">
+      <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <nav class="header__menu mobile-menu">
+                    <nav class="hero__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./about.html">About</a></li>
+                            <li class="active"><a href="./index.html">Accueil</a></li>
+                            <li><a href="./about.html">à propos</a></li>
                             <li><a href="./shop.html">Shop</a></li>
                             <li><a href="./contact.html">Contact</a></li>
                         </ul>
@@ -102,21 +124,20 @@ $allProducts = $dao->listProduits();
                 </div>
             </div>
         </div>
-    </header>
-    <!-- Header Section End -->
-
-    <!-- Hero Section Begin -->
-    <section class="hero">
-        <div class="hero__item set-bg">
+            <div class="hero__item set-bg">
        
-        <div class="video-container">
-                <video class="set-bg" autoplay loop muted playsinline>
+            <div class="video-container">
+       
+                <video class="back_video" autoplay loop muted playsinline>
                     <source src="view/img/hero/hero-1.mp4" type="video/mp4">
                     <!-- Ajoutez d'autres sources pour prendre en charge différents formats de vidéo -->
                     Votre navigateur ne prend pas en charge la balise vidéo.
                 </video>
             
             </div>
+            
+                
+           
             <div class="container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; "">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
@@ -143,6 +164,7 @@ $allProducts = $dao->listProduits();
                 <div class="categories__slider owl-carousel">
                     <div class="categories__item" data-category="GateauBeldi">
                         <div class="categories__item__icon">
+                            
                             <span class="flaticon-029-cupcake-3"></span>
                             <h5>Gateaux beldi</h5>
 
@@ -567,12 +589,10 @@ $allProducts = $dao->listProduits();
                     <div class="col-lg-6">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
-                                <div class="testimonial__author__pic">
-                                    <img src="view/img/testimonial/ta-1.jpg" alt="">
-                                </div>
+                                
                                 <div class="testimonial__author__text">
-                                    <h5>Kerry D.Silva</h5>
-                                    <span>New york</span>
+                                    <h5>Mohamed</h5>
+                                    <span>Casablance</span>
                                 </div>
                             </div>
                             <div class="rating">
@@ -582,19 +602,16 @@ $allProducts = $dao->listProduits();
                                 <span class="icon_star"></span>
                                 <span class="icon_star-half_alt"></span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
+                            <p>La patisserie marocaine n'est pas seulement réputée pour ses délices, mais aussi pour son service exceptionnel. Une équipe qui prend soin de chaque détail.</p>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
-                                <div class="testimonial__author__pic">
-                                    <img src="view/img/testimonial/ta-2.jpg" alt="">
-                                </div>
+                                
                                 <div class="testimonial__author__text">
-                                    <h5>Kerry D.Silva</h5>
-                                    <span>New york</span>
+                                    <h5>Nawal</h5>
+                                    <span>Tanger</span>
                                 </div>
                             </div>
                             <div class="rating">
@@ -604,19 +621,16 @@ $allProducts = $dao->listProduits();
                                 <span class="icon_star"></span>
                                 <span class="icon_star-half_alt"></span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
+                            <p>La patisserie marocaine à son apogée! Des créations sucrées qui célèbrent l'héritage culinaire du Maroc avec chaque bouchée. Un vrai régal pour les papilles.</p>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
-                                <div class="testimonial__author__pic">
-                                    <img src="view/img/testimonial/ta-1.jpg" alt="">
-                                </div>
+                                
                                 <div class="testimonial__author__text">
-                                    <h5>Ophelia Nunez</h5>
-                                    <span>London</span>
+                                    <h5>Samia</h5>
+                                    <span>Rabat</span>
                                 </div>
                             </div>
                             <div class="rating">
@@ -626,19 +640,16 @@ $allProducts = $dao->listProduits();
                                 <span class="icon_star"></span>
                                 <span class="icon_star-half_alt"></span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
+                            <p>Une explosion de saveurs sucrées qui m'a transporté dans les ruelles parfumées du Maroc. Un arrêt incontournable pour les amateurs de pâtisseries exotiques.</p>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
-                                <div class="testimonial__author__pic">
-                                    <img src="view/img/testimonial/ta-2.jpg" alt="">
-                                </div>
+                                
                                 <div class="testimonial__author__text">
-                                    <h5>Kerry D.Silva</h5>
-                                    <span>New york</span>
+                                    <h5>Malak</h5>
+                                    <span>Guelmim</span>
                                 </div>
                             </div>
                             <div class="rating">
@@ -648,19 +659,16 @@ $allProducts = $dao->listProduits();
                                 <span class="icon_star"></span>
                                 <span class="icon_star-half_alt"></span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
+                            <p>Une escapade gourmande au Maroc sans quitter la ville! Les pâtisseries sont une invitation au voyage, une expérience sucrée qui émerveille à chaque visite.</p>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
-                                <div class="testimonial__author__pic">
-                                    <img src="view/img/testimonial/ta-1.jpg" alt="">
-                                </div>
+                                
                                 <div class="testimonial__author__text">
-                                    <h5>Ophelia Nunez</h5>
-                                    <span>London</span>
+                                    <h5>Yousra</h5>
+                                    <span>Fes</span>
                                 </div>
                             </div>
                             <div class="rating">
@@ -670,19 +678,16 @@ $allProducts = $dao->listProduits();
                                 <span class="icon_star"></span>
                                 <span class="icon_star-half_alt"></span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
+                            <p>Un délice sucré qui reflète l'art et la passion de la pâtisserie marocaine. Chaque gâteau est une œuvre d'art, chaque saveur une histoire à savourer.</p>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
-                                <div class="testimonial__author__pic">
-                                    <img src="view/img/testimonial/ta-2.jpg" alt="">
-                                </div>
+                               
                                 <div class="testimonial__author__text">
-                                    <h5>Kerry D.Silva</h5>
-                                    <span>New york</span>
+                                    <h5>Marwa</h5>
+                                    <span>Kenitra</span>
                                 </div>
                             </div>
                             <div class="rating">
@@ -692,8 +697,7 @@ $allProducts = $dao->listProduits();
                                 <span class="icon_star"></span>
                                 <span class="icon_star-half_alt"></span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.</p>
+                            <p>Un service rapide et professionnel qui complète parfaitement la délicatesse des pâtisseries. Une équipe dévouée qui met la satisfaction du client en priorité.</p>
                         </div>
                     </div>
                 </div>
@@ -861,6 +865,8 @@ $allProducts = $dao->listProduits();
 <script src="view/js/owl.carousel.min.js"></script>
 <script src="view/js/jquery.nicescroll.min.js"></script>
 <script src="view/js/main.js"></script>
+<script src="view/js/object-fit-videos.js"></script>
+<script src="view/js/app.js"></script>
 <script>
     
     $(document).ready(function() {
@@ -884,7 +890,9 @@ $allProducts = $dao->listProduits();
             $(this).addClass("active");
         });
     });
-
+    function redirectToDetailProduit(nom) {
+            window.location.href = "view/detailProduit.php?nomOfProduit=" + nom + "";
+        }
 </script>
 </script>
 </body>
