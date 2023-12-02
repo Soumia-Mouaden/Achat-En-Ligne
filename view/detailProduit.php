@@ -170,7 +170,9 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                                     <input type="text" value="2">
                                 </div>
                             </div>
+                            
                             <button type="button" class="primary-btn" data-toggle="modal" data-target="#myModal">Commander</button>
+                           
                         </div>
                     </div>
                 </div>
@@ -457,8 +459,10 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
         </div>
                 <!-- Modal footer -->
         <div class="modal-footer container" style="justify-content: space-between;">
-          <button type="button" class="btn" style="background: #dbd5c4; border: none; width:150px;" data-dismiss="modal">Annuler</button>
-          <button type="button" class="btn btn-secondary" style="background: rgb(221, 189, 85); border: none; width:150px;" data-dismiss="modal">Valider</button>
+        <button type="button" class="btn" style="background: #dbd5c4; border: none; width:150px;" data-dismiss="modal">Annuler</button>
+        <form method="post" action="../controller/utilisateurController.php?action=commander">
+        <button type="submit" class="btn btn-secondary" style="background: rgb(221, 189, 85); border: none; width:150px;">Valider</button>
+        </form>
         </div>
 
         </div>

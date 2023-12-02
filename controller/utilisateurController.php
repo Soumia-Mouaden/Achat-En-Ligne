@@ -11,6 +11,7 @@
             $utilisateur = $con1->findUtilisateur($email1,$mdp1);
             session_start();
             $_SESSION['utilisateur'] =$utilisateur;
+            $_SESSION['id'] = $utilisateur->getId(); 
             if($utilisateur!=null){
                 header("Location: ../index.php");
                 exit();
@@ -50,5 +51,20 @@
                 header('location: ../view/connexion.php');
             }
             break;
-        }
+        
+            case 'commander':
+                session_start();
+            
+                // Vérifier si l'utilisateur est connecté
+                if (isset($_SESSION['utilisateur'])) {
+                    // Utilisateur connecté, rediriger vers la page d'accueil
+                    header("Location: ../index.php");
+                    exit();
+                } else {
+                    // Utilisateur non connecté, rediriger vers la page de connexion
+                    header("Location: ../view/connexion.php");
+                    exit();
+                }
+                break;}
+            
 ?>
