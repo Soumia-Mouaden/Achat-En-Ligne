@@ -187,7 +187,7 @@
 					<i class='bx bxs-group'></i>
 					<span class="text">
 						<h3>2834</h3>
-						<p>Visiteurs</p>
+						<p>Clients</p>
 					</span>
 				</li>
 				<li>
