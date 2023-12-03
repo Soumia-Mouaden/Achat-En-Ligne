@@ -12,7 +12,7 @@ $allProducts = $dao->listProduits();
     <meta name="keywords" content="Cake, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cake | Template</title>
+    <title>HLOU'IN</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
@@ -115,10 +115,10 @@ $allProducts = $dao->listProduits();
                 <div class="col-lg-12">
                     <nav class="hero__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Accueil</a></li>
-                            <li><a href="./about.html">à propos</a></li>
-                            <li><a href="./shop.html">Shop</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li class="active"><a href="../index.php">Accueil</a></li>
+                            <li><a href="view/about.php">A propos</a></li>
+                            
+                            <li><a href="view/contact.php">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -142,7 +142,7 @@ $allProducts = $dao->listProduits();
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <div class="hero__text">
-                            <h2>Savourer la douceur de la tradition marocaine à chaque bouchée !</h2>
+                            <h2>Savourez la douceur de la tradition marocaine à chaque bouchée !</h2>
                             <a href="#product-section" class="primary-btn">nos produits</a>
                         </div>
                     </div>
@@ -521,8 +521,8 @@ $allProducts = $dao->listProduits();
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="team__item set-bg" data-setbg="view/img/team/team-1.jpg">
                         <div class="team__item__text">
-                            <h6>Randy Butler</h6>
-                            <span>Decorater</span>
+                            <h6>Mohamed Sediki</h6>
+                            <span>Decorateur</span>
                             <div class="team__item__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -535,8 +535,8 @@ $allProducts = $dao->listProduits();
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="team__item set-bg" data-setbg="view/img/team/team-2.jpg">
                         <div class="team__item__text">
-                            <h6>Randy Butler</h6>
-                            <span>Decorater</span>
+                            <h6>Meryem Zahidi</h6>
+                            <span>Decorateur</span>
                             <div class="team__item__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -549,8 +549,8 @@ $allProducts = $dao->listProduits();
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="team__item set-bg" data-setbg="view/img/team/team-3.jpg">
                         <div class="team__item__text">
-                            <h6>Randy Butler</h6>
-                            <span>Decorater</span>
+                            <h6>Omar Hassani</h6>
+                            <span>Decorateur</span>
                             <div class="team__item__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -563,8 +563,8 @@ $allProducts = $dao->listProduits();
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="team__item set-bg" data-setbg="view/img/team/team-4.jpg">
                         <div class="team__item__text">
-                            <h6>Randy Butler</h6>
-                            <span>Decorater</span>
+                            <h6>Haitam Lbyed</h6>
+                            <span>Decorateur</span>
                             <div class="team__item__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -585,8 +585,8 @@ $allProducts = $dao->listProduits();
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-title">
-                        <span>Témoignage</span>
-                        <h2>Notre client a dit</h2>
+                        <span>Témoignages</span>
+                        <h2>Nos clients ont dit</h2>
                     </div>
                 </div>
             </div>
@@ -792,11 +792,11 @@ $allProducts = $dao->listProduits();
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="footer__widget">
-                        <h6>HEURE DE TRAVAIL</h6>
+                        <h6>HEURES DE TRAVAIL</h6>
                         <ul>
-                            <li>LUNDI - VENDREDI: 08:00 am – 08:30 pm</li>
-                            <li>SAMEDI: 10:00 am – 16:30 pm</li>
-                            <li>DIMANCHE: 10:00 am – 16:30 pm</li>
+                            <li>LUNDI - VENDREDI: 08:00  – 20:30 </li>
+                            <li>SAMEDI: 10:00  – 16:30 </li>
+                            <li>DIMANCHE: 10:00  – 16:30 </li>
                         </ul>
                     </div>
                 </div>

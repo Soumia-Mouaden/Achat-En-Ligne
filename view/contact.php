@@ -1,3 +1,10 @@
+<?php
+
+include "../dao/daoUtilisateur.php";
+
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -7,7 +14,7 @@
     <meta name="keywords" content="Cake, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cake | Template</title>
+    <title>Contact</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
@@ -71,26 +78,43 @@
     </div>
     <!-- Offcanvas Menu End -->
 
-    <!-- Header Section Begin -->
-    <header class="header">
+     <!-- Header Section Begin -->
+     <header class="header">
         <div class="header__top">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="header__top__inner">
                             <div class="header__top__left">
-                                <ul>
-                                    
-                                    <li><a href="#">Se connecter</a> <span class="arrow_carrot-down"></span></li>
-                                </ul>
+                            <?php
+                             if (isset($_SESSION['utilisateur'])) {
+                                    $utilisateur = $_SESSION['utilisateur'];
+                                   // Check if the user is logged in
+                                   // If the user is logged in, display the "Se déconnecter" button
+                                    if ($utilisateur != null) {
+                                        echo '
+                                            <ul>
+                                                <li>Bienvenue ' . $utilisateur->getNom() . '</li>
+                                            <li><a href="controller/utilisateurController.php?action=deconnexion">Se déconnecter</a></li>
+                                            </ul>';
+                                    } 
+                                } else {
+                                    // If the user is not logged in, display the "Se connecter" button
+                                    echo '
+                                        <ul>
+                                            <li><a href="view/connexion.php">Se connecter</a> </li>
+                                        </ul>';
+                                }
+                                ?>
+
                             </div>
                             <div class="header__logo">
                                 <a href="./index.html"><img src="img/logo.png" alt=""></a>
                             </div>
                             <div class="header__top__right">
                                 <div class="header__top__right__cart">
-                                    <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                                    <div class="cart__price">Panier: <span>$0.00</span></div>
+                                 <!--   <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                                    <div class="cart__price">Cart: <span>$0.00</span></div>-->
                                 </div>
                             </div>
                         </div>
@@ -104,10 +128,9 @@
                 <div class="col-lg-12">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./about.html">About</a></li>
-                            <li><a href="./shop.html">Shop</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li class="active"><a href="../index.php">Accueil</a></li>
+                            <li><a href="about.php">A propos </a></li>
+                            <li><a href="contact.php">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -181,11 +204,11 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="footer__widget">
-                        <h6>HEURE DE TRAVAIL</h6>
+                    <h6>HEURES DE TRAVAIL</h6>
                         <ul>
-                            <li>LUNDI - VENDREDI: 08:00 am – 08:30 pm</li>
-                            <li>SAMEDI: 10:00 am – 16:30 pm</li>
-                            <li>DIMANCHE: 10:00 am – 16:30 pm</li>
+                            <li>LUNDI - VENDREDI: 08:00  – 20:30 </li>
+                            <li>SAMEDI: 10:00  – 16:30 </li>
+                            <li>DIMANCHE: 10:00  – 16:30 </li>
                         </ul>
                     </div>
                 </div>
