@@ -14,14 +14,16 @@
 
     <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/styleInvoice.css">
     
 </head>
 <body>
     <div class="card">
         <div class="container">
 
-            
+        <div class="page-header">
+            <h2>Merci pour votre Commande</h2>
+        </div>
             
             <div class="container">
                 <div class="row">
@@ -29,13 +31,13 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img class="img" alt="Invoice Template" src="img.png" />
+                                    <img class="img" alt="Invoice Template" src="./img/logo.png" />
                                 </div>
                                 <div class="col-md-8 text-right">
-                                    <h4 style="color: #F81D2D;"><strong>Bakery Bestie</strong></h4>
+                                    <h4 style="color: #F81D2D;"><strong>Patisserie HLOU'IN</strong></h4>
                                     <p>221, Baker Street</p>
-                                    <p>1800-234-124</p>
-                                    <p>example@gmail.com</p>
+                                    <p>0654324532</p>
+                                    <p>giGirls@gmail.com</p>
                                 </div>
                             </div>
                             <br />
@@ -43,8 +45,9 @@
                                 <div class="col-md-12 text-center">
                                     <h2>INVOICE</h2>
                                     <h5>04854654101</h5></br>
-                                   
-                                    <p> 23 Nov 2023</p>
+                                    <?php
+                                       echo '<p>' . date('Y-m-d H:i:s') . '</p>'; 
+                                    ?>
                                 </div>
                             </div>
                             <br />
@@ -60,35 +63,41 @@
                                     <tbody>
                                     
                                     <?php
-
-                                       session_start();
+session_start();
 
 // Récupérer la 'facture' de la session
 $facture = isset($_SESSION['facture']) ? $_SESSION['facture'] : null;
 
 // Vérifier si $facture n'est pas null et est un tableau ou un objet
 if ($facture !== null && (is_array($facture) || is_object($facture))) {
+    $total = 0; // Initialiser la variable total à 0
 
     foreach ($facture as $commandeProduit) {
         echo '<td class="col-md-6">' . $commandeProduit->nom . '</td>';
         echo '<td class="col-md-3">' . $commandeProduit->quantite . '</td>';
-        echo '<td class="col-md-3">' . $commandeProduit->quantite * $commandeProduit->prix . '</td>';
+        $sousTotal = $commandeProduit->quantite * $commandeProduit->prix;
+        echo '<td class="col-md-3">' . $sousTotal . '</td>';
+        
+        // Accumuler le montant total
+        $total += $sousTotal;
     }
 
-    
+    // Afficher le total
+    echo '<tr style="color: #F81D2D;">';
+    echo '<td class="text-right"><h4><strong>Total:</strong></h4></td>';
+    echo '<td class="text-left"><h4><strong>' . $total . '</strong></h4></td>';
+    echo '</tr>';
+
 } else if ($facture == null) {
     echo "Error: \$facture is null.";
 } else {
     echo " or not an array or object";
 }
-                                  echo '<tr style="color: #F81D2D;">';
-                                  echo '<td class="text-right"><h4><strong>Total:</strong></h4></td>';
-                                  echo '<td class="text-left"><h4><strong></strong></h4></td>';
-                                    echo '</tr>';
 
 // Effacer la facture de la session après utilisation (facultatif)
 unset($_SESSION['facture']);
 ?>
+
 
                                    
 
@@ -99,7 +108,7 @@ unset($_SESSION['facture']);
                                 <div class="col-md-12">
                                     
                                     <br />
-                                    <p><b>Bakery Bestie</b></p>
+                                    <p><b>Patisserie HLOU'IN</b></p>
                                 </div>
                             </div>
                         </div>
