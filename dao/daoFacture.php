@@ -2,7 +2,7 @@
 include "../model/commande.php";
 include "../model/facture.php";
 include "../model/commandeProduit.php";
-include "../model/produit.php";
+include __DIR__ . "/../model/produit.php";
 class daoFacture
 {
     private $dbh;
