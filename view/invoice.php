@@ -115,7 +115,7 @@ unset($_SESSION['facture']);
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary" onclick="printInvoice()">Print Invoice</button>
+            
         </div>
     </div>
     <button class="btn btn-primary" onclick="printInvoice()">Print Invoice</button>
