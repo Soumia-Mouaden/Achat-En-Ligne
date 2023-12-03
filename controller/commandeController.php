@@ -28,7 +28,10 @@ switch ($action) {
         if (isset($idOfProduitt, $quantite, $numCommandee)) {
             $commandeProduit = new CommandeProduit($quantite,$idOfProduitt,$numCommandee);
             $daoCP->insererCommandeProduit($commandeProduit);
+            $_SESSION['commandeId']=$numCommandee;
+            header('location: controlleFacture.php');  
         }
+        // else header('location: ../view/detailProduit.php');   
 
         break;
 }
