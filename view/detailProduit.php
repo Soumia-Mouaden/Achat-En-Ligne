@@ -461,6 +461,7 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
         <div class="modal-footer container" style="justify-content: space-between;">
         <button type="button" class="btn" style="background: #dbd5c4; border: none; width:150px;" data-dismiss="modal">Annuler</button>
         <form method="post" action="../controller/utilisateurController.php?action=commander">
+         
         <button type="submit" class="btn btn-secondary" style="background: rgb(221, 189, 85); border: none; width:150px;">Valider</button>
         </form>
         </div>
