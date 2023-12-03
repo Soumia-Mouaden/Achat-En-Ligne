@@ -58,7 +58,7 @@
                 // Vérifier si l'utilisateur est connecté
                 if (isset($_SESSION['utilisateur'])) {
                     // Utilisateur connecté, rediriger vers la page d'accueil
-                    header("Location: ../index.php");
+                    header("Location: ../view/connexion.php");
                     exit();
                 } else {
                     // Utilisateur non connecté, rediriger vers la page de connexion
