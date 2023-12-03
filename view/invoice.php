@@ -21,9 +21,7 @@
     <div class="card">
         <div class="container">
 
-            <div class="page-header">
-                <h1>Invoice Template</h1>
-            </div>
+            
             
             <div class="container">
                 <div class="row">
