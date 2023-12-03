@@ -1,7 +1,8 @@
 <?php
 include "../model/commande.php";
 include "../model/facture.php";
-include "../model/Produit_commande.php";
+include "../model/commandeProduit.php";
+include "../model/produit.php";
 class daoFacture
 {
     private $dbh;
