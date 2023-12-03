@@ -1,12 +1,13 @@
 <?php
+session_start();
 include "../dao/daoCommande.php";
 include "../dao/daoUtilisateur.php";
 $daoUser = new DaoUtilisateur();
 $daoCommande = new DaoCommande();
 $nbUser = $daoUser->countUsers();
 $nbCommandeAuj = $daoCommande->countCommandesToday();
-$daoCommandes = new DaoCommande();
-$caisse = $daoCommandes->countCaisse();
+$caisse = $daoCommande->countCaisse();
+$donneesJSON = ''; // Initialiser la variable
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,32 +38,42 @@ $caisse = $daoCommandes->countCaisse();
 		data.addColumn('number', 'Jour');
 		data.addColumn('number', 'Ventes');
 
-		data.addRows([
-			[1, 37.8],
-			[2, 30.9],
-			[3, 25.4],
-			[4, 11.7],
-			[5, 11.9],
-			[6, 8.8],
-			[7, 7.6],
-			[8, 12.3],
-			[9, 16.9],
-			[10, 12.8],
-			[11, 5.3],
-			[12, 6.6],
-			[13, 4.8],
-			[14, 4.2]
-		]);
+		
+		
+
+		
+
+		<?php
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			// Récupérez la valeur du champ "monInput"
+			$mois = isset($_POST['selected_month']) ? $_POST['selected_month'] : '';
+		
+		}
+		$nombreJours = cal_days_in_month(CAL_GREGORIAN, $mois, date('Y'));
+		$rows = array();
+
+		// Récupérer les données pour chaque jour
+		for ($i = 1; $i <= $nombreJours; $i++) {
+			$totalVente = $daoCommande->countVente($mois, $i);
+			$rows[] = "[$i, $totalVente]";
+		}
+
+		// Convertir le tableau en chaîne JSON pour JavaScript
+		$donneesJSON = implode(",", $rows);
+		?>
+
+		 data.addRows([
+            <?php echo $donneesJSON; ?>
+        ]);
+
 		var options = {
 			chart: {
-				title: 'Total des ventes par mois',
-				subtitle: 'en millions de dirhams (MAD)',
-
+				title: 'Total des ventes par mois en MAD',
 			},
 			titleTextStyle: {
 				color: '#000000',
 				fontSize: 16,
-				bold:true,
+				bold: true,
 				fontName: 'arial',
 
 			},
@@ -72,9 +83,6 @@ $caisse = $daoCommandes->countCaisse();
 				position: "none",
 			},
 			colors: ['#8D610E'], // Changer la couleur ici (par exemple, rouge)
-			
-			
-
 
 		};
 
@@ -84,6 +92,8 @@ $caisse = $daoCommandes->countCaisse();
 		chart.draw(data, google.charts.Line.convertOptions(options));
 
 	}
+
+
 
 	// anneau
 	google.charts.load("current", {
@@ -274,13 +284,17 @@ $caisse = $daoCommandes->countCaisse();
 
 
 			<div style="display: flex;">
-				<div id="chart-container" style="position: relative; float: left; border:1px solid white; background-color: white; width:640px; border-radius:10px white;padding:20px;">
+				<div id="chart-container" style="position: relative; float: left; width:640px; padding:20px;background-color:white;">
 					<div id="columnchart_values" style=" position: relative; z-index: 1; ;">
 					</div>
+					<form method="post" action="index.php">
 					<div id="filter-section" style="position: absolute; top: 25px; left: 450px; z-index: 2;">
 						<label for="start"></label>
-						<input type="month" id="start" name="start" min="2023-09" value="2023-12" />
+						<input type="month"  id="start" name="start" min="2023-09" value="2023-12" />
+						<input type="hidden" name="selected_month" id="selected_month" value="">
+						<button type="submit">Submit</button>
 					</div>
+					</form>
 				</div>
 				<div style="position: relative;width: calc(100% - 600px);height:480px;">
 					<div id="donutchart">
