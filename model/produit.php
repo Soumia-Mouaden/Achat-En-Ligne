@@ -3,8 +3,9 @@ class Produit
 {
     private $id, $nom, $categorie, $image, $prix, $description, $ingredients, $allergie, $conservation;
 
-    public function __construct($nom, $categorie, $image, $prix, $description, $ingredients, $allergie, $conservation)
+    public function __construct($id, $nom, $categorie, $image, $prix, $description, $ingredients, $allergie, $conservation)
     {
+        $this->id = $id;
         $this->nom = $nom;
         $this->categorie = $categorie;
         $this->prix = $prix;
