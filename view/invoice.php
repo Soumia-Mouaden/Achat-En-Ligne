@@ -118,6 +118,7 @@ unset($_SESSION['facture']);
             <button class="btn btn-primary" onclick="printInvoice()">Print Invoice</button>
         </div>
     </div>
+    <button class="btn btn-primary" onclick="printInvoice()">Print Invoice</button>
     <script>
         function printInvoice() {
             window.print();
