@@ -1,11 +1,11 @@
 <?php
 include "../dao/daoCommande.php";
-include "../dao/daoProduit.php";
-include "../dao/daoCommandeProduit.php";
+
+//include "../dao/daoCommandeProduit.php";
 
 $action = $_GET['action'];
 $daoC = new DaoCommande();
-$daoCP = new DaoCommandeProduit();
+
 
 
 switch ($action) {   
@@ -27,9 +27,9 @@ switch ($action) {
 
         if (isset($idOfProduitt, $quantite, $numCommandee)) {
             $commandeProduit = new CommandeProduit($quantite,$idOfProduitt,$numCommandee);
-            $daoCP->insererCommandeProduit($commandeProduit);
-            $_SESSION['facture']=$numCommandee;
-            // header('location: ../view/detailProduit.php');  
+            $daoC->insererCommandeProduit($commandeProduit);
+            $_SESSION['commandeId']=$numCommandee;
+            header('location: controlleFacture.php');  
         }
         // else header('location: ../view/detailProduit.php');   
 

@@ -52,7 +52,18 @@ class DaoCommande
     //     }
     //     return $commande;
     // }
+    
+    public function insererCommandeProduit(CommandeProduit $commandeProduit)
+    {
+        $stm = $this->dbh->prepare("INSERT INTO commande_produit(quantite, id_Produit, numCommande_Commande) VALUES (?, ?, ?)");
 
+        $stm->bindValue(1, $commandeProduit->getQuantite());
+        $stm->bindValue(2, $commandeProduit->getIdProduit());
+        $stm->bindValue(3, $commandeProduit->getNumCommande());
+
+        $stm->execute();
+    }
+    
     public function countCommandesToday()
     {
         $stm = $this->dbh->prepare("SELECT COUNT(*) as total FROM commande WHERE DATE(dateCreation) = DATE(NOW())");
