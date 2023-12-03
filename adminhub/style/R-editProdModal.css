@@ -1,0 +1,73 @@
+ .modal .modal-dialog {
+	max-width: 500px;
+}
+ .modal .modal-header, .modal .modal-body, .modal .modal-footer {
+	padding: 20px 20px;
+}
+ .modal .modal-content {
+	border-radius: 3px;
+	font-size: 16px;
+	font-family: 'Inter', sans-serif;
+	
+}
+ .modal .modal-footer {
+	background: #ecf0f1;
+	border-radius: 0 0 3px 3px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	
+}
+ .modal .modal-title {
+	display: inline-block;
+	color: rgb(232, 170, 95);
+
+}
+.modal .form-control {
+	border-radius: 2px;
+	box-shadow: none;
+	border-color: rgb(206, 178, 144);
+}
+/* .modal div .form-group:first-child{
+	margin-right: 10px;
+} */
+
+/* .modal div .form-group input{
+	font-size: 13px;
+} */
+/* .modal div .form-group textarea{
+	font-size: 13px;
+}
+.modal textarea.form-control {
+	resize: vertical;
+} */
+.modal .btn {
+	border-radius: 2px;
+	min-width: 100px;
+   
+}	
+
+ .cancel-button, .confirm-add-button:checked{
+	background-color: #FFF;
+   }
+    .cancel-button {
+	 background-color: #EEE6D8;
+	 color: #DAAB3A;
+	 width: 100px;
+	 /* color: #5C42FF; */
+   }
+   .cancel-button:hover {
+	 background: #e3e3e3;
+   }
+    .confirm-add-button {
+	 width: 120px;
+	 background: #DAAB3A;
+	 color: #fff;
+	 box-shadow: 0px 5px 9px 0px rgba(127, 106, 255, 0.18);
+   }
+    .confirm-add-button:hover {
+	 box-shadow: 0px 5px 9px 0px rgba(127, 106, 255, 0.40);
+   }
+
+.modal form label {
+	font-weight: normal;
+}	
