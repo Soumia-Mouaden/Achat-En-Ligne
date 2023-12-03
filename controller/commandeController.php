@@ -26,7 +26,6 @@ switch ($action) {
         $quantite = $_POST['quantite'];
 
         if (isset($idOfProduitt, $quantite, $numCommandee)) {
-<<<<<<< HEAD
             $commandeProduit = new CommandeProduit($quantite,$idOfProduitt,$numCommandee);
             $daoCP->insererCommandeProduit($commandeProduit);
             $_SESSION['facture']=$numCommandee;
@@ -35,15 +34,4 @@ switch ($action) {
         // else header('location: ../view/detailProduit.php');   
 
         break;
-=======
-                
-                $commandeProduit = new CommandeProduit($quantite,$idOfProduitt,$numCommandee);
-                $daoCP->insererCommandeProduit($commandeProduit);
-                $_SESSION['commandeId']=$numCommandee;
-                header('location: ../controller/controlleFacture.php');
-            }
-            else header('location: ../view/detailProduit.php');   
-    
-            break;
->>>>>>> 422e47f2c95cbe4a1b83468d9b975dc64c4adcf4
 }
