@@ -464,22 +464,11 @@ $_SESSION['idOfProductt']=$idOfProduit;
             </div>
             </div>
                 <!-- Modal footer -->
-<<<<<<< HEAD
             <div class="modal-footer container" style="justify-content: space-between;">
             <button type="button" class="btn" style="background: #dbd5c4; border: none; width:150px;" data-dismiss="modal">Annuler</button>
             
             <button type="submit" name="but" class="btn btn-secondary" style="background: rgb(221, 189, 85); border: none; width:150px;">Valider</button>
             </div>
-=======
-        <div class="modal-footer container" style="justify-content: space-between;">
-        <button type="button" class="btn" style="background: #dbd5c4; border: none; width:150px;" data-dismiss="modal">Annuler</button>
-        <form method="post" action="../controller/utilisateurController.php?action=commander">
-         
-        <button type="submit" class="btn btn-secondary" style="background: rgb(221, 189, 85); border: none; width:150px;">Valider</button>
-        </form>
-        </div>
-
->>>>>>> 101a1b67fb4ecb60b06c0388dac5a6cbe582a42d
         </div>
         </form>
       </div>
