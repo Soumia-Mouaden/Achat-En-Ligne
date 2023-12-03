@@ -2,7 +2,8 @@
     include "../dao/daoUtilisateur.php";
     $email1 = $_POST['email'];
     $mdp1 = $_POST['mdp'];
-    $action = $_GET['action'];
+    $action = $_GET['action']; 
+    $connexionVV = $_GET['connexionV'];
     
     switch($action){
         case 'connexion':
@@ -13,13 +14,15 @@
             $_SESSION['utilisateur'] =$utilisateur;
             $_SESSION['id'] = $utilisateur->getId(); 
             if($utilisateur!=null){
-                header("Location: ../index.php");
-                exit();
-
-            }
-            
-
-            // Cas ou Mot de passe ou email erronée ou pas un membre
+                if ($connexionVV=='Vcommande'){
+                    header("Location: ../controller/controlleFacture.php");
+                    exit();
+                }
+                else{                
+                    header("Location: ../index.php");
+                    exit();
+                }
+            }  
             else{
                header("Location: ../view/reconnexion.php");
             }
@@ -34,6 +37,8 @@
             //session_reset();
             //session_destroy(); Supprime le tableau superglobal $_SESSION ==>> error dans la index.php (indefined key cin !!)
             header("Location: ../index.php");
+            break;
+            
         case 'create':
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
@@ -48,7 +53,12 @@
                 $dao = new DaoUtilisateur();
                 $client = new Utilisateur($nom,$prenom,$email,$tel,$genre,$mdp,$ville,$role);
                 $dao->save($client);
-                header('location: ../view/connexion.php');
+                if ($connexionVV=='Vcommande'){
+                    header("Location: ../controller/controlleFacture.php");
+                    exit();
+                }
+                else  header('location: ../view/connexion.php');
+
             }
             break;
         

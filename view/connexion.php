@@ -127,7 +127,11 @@
     <body>
         <div id="formulaire">
             <div class="container">
-                <form method="post" action="../controller/utilisateurController.php?action=connexion">
+                <?php 
+                    $connexionV = isset($_GET['factureV']) ? $_GET['factureV'] : "";
+
+                ?>
+                <form method="post" action="../controller/utilisateurController.php?action=connexion&connexionV=<?php echo $connexionV; ?>">
                     <div>
                         <h2>Connexion</h2>
                         <div class="form-group">
@@ -139,7 +143,7 @@
                             <input type="password" class="form-control" id="mdp" name="mdp" placeholder="mot de passe" required>
                         </div>
                         Pas un membre ?
-                        <a href="creation.php">créer un compte</a><br>
+                        <a href="creation.php?factureV=Vcommande">créer un compte</a><br>
                         <button type="submit" class="btn next">Se connecter</button>
                     </div>
                 </form>
