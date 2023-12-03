@@ -47,6 +47,39 @@ class DaoProduit
 
         return $produits;
     }
+    public function InsererProduit(Produit $produit)
+    {
+        $stm = $this->dbh->prepare("INSERT INTO Produit(nom, categorie, image, prix, description, ingredients, allergie, conservation) VALUES (?, ?, ?, ?, ?, ?,?,?)");
+
+        $stm->bindValue(1, $produit->getNom());
+        $stm->bindValue(2, $produit->getCategorie());
+        $stm->bindValue(3, $produit->getImage());
+        $stm->bindValue(4, $produit->getPrix());
+        $stm->bindValue(5, $produit->getDescription());
+        $stm->bindValue(6, $produit->getIngredients());
+    $stm->bindValue(7, $produit->getAllergie());
+    $stm->bindValue(8, $produit->getConservation());
+
+        $stm->execute();
+    }
+
+
+    public function ModifierProduit(Produit $produit,int $id){
+        $stm = $this->dbh->prepare("UPDATE `Produit` SET nom=?, categorie=?, image=?, prix=?, description=?, ingredients=?, allergie=?, conservation=? where id=$id"); 
+        $stm->bindValue(1, $produit->getNom());
+        $stm->bindValue(2, $produit->getCategorie());
+        $stm->bindValue(3, $produit->getImage());
+        $stm->bindValue(4, $produit->getPrix());
+        $stm->bindValue(5, $produit->getDescription());
+        $stm->bindValue(6, $produit->getIngredients());
+    $stm->bindValue(7, $produit->getAllergie());
+    $stm->bindValue(8, $produit->getConservation());
+        $stm->execute();
+     }
+    public function supprimerProduit($id){
+        $stm = $this->dbh->prepare("DELETE FROM `Produit` WHERE id = $id");
+        $stm->execute();
+    }
     public function listProduits(){
         $stm = $this->dbh->prepare("SELECT * FROM Produit");
         $stm->execute();
