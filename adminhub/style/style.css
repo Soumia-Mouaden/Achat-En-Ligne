@@ -688,8 +688,9 @@ tr th:nth-child(5) {
 	border: 1px solid white;
 	border-radius: 10px;
 	height: 30px;
-	font-weight: bold;
+	/* font-weight: bold; */
 	padding: 5px;
+
 }
 
 .legend {
@@ -718,7 +719,7 @@ tr th:nth-child(5) {
 
 
 #donutchart {
-	height: 400px;
+	height: 100%;
 	width: 315px;
 	margin-left: 20px;
 	margin-top: 20px;

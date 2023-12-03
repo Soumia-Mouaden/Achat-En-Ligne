@@ -73,7 +73,7 @@ class DaoCommande
     
         $caisse = 0;
         foreach ($results as $row) {
-            $caisse += ($row['prix'] * $row['quantité']); // Utiliser les clés du tableau associatif
+            $caisse += ($row['prix'] * $row['quantite']); // Utiliser les clés du tableau associatif
         }
         return $caisse;
     }
