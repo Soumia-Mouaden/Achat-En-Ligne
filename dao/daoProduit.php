@@ -26,7 +26,7 @@ class DaoProduit
 
         $result = $stm->fetch(PDO::FETCH_ASSOC);
         if (!empty($result)) {
-            $produit = new Produit($result['id'],$result['nom'],$result['categorie'], $result['image'], $result['prix'], $result['description'],$result['ingredients'],$result['allergie'],$result['conservation']);
+            $produit = new Produit($result['nom'],$result['categorie'], $result['image'], $result['prix'], $result['description'],$result['ingredients'],$result['allergie'],$result['conservation']);
         }
         return $produit;
     }
@@ -41,7 +41,7 @@ class DaoProduit
 
         $produits = [];
         foreach ($result as $row) {
-            $produit = new Produit($row['id'],$row['nom'],$row['categorie'], $row['image'], $row['prix'], $row['description'],$row['ingredients'],$row['allergie'],$row['conservation']);
+            $produit = new Produit($row['nom'],$row['categorie'], $row['image'], $row['prix'], $row['description'],$row['ingredients'],$row['allergie'],$row['conservation']);
             $produits[] = $produit;
         }
 
