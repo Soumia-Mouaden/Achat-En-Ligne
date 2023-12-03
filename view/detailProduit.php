@@ -6,6 +6,8 @@ $idOfProduit = isset($_GET['idOfProduit']) ? $_GET['idOfProduit'] : "";
 $produit = $daoProduit->findProduct($idOfProduit);
 $categoryOfProduct = $produit->getCategorie();
 $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
+session_start();
+$_SESSION['idOfProductt']=$idOfProduit;
 ?>
 
 <!DOCTYPE html>
@@ -388,6 +390,8 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
         
         <!-- Modal body -->
         <div class="modal-body">
+        <form action="../controller/commandeController.php?action=insertionCommande" method="post">
+
             <div class="row container">
             <div class="col-lg-12 product__details__text" style="margin-top:15px;">
                         <h4 style="color: rgb(92, 64, 4); font-weight: 550; margin-bottom: 12px;">
@@ -433,41 +437,43 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                             width:350px;
                             }
                         </style>
-                        <form action="../controller/commandeController.php?action=insertionCommande" method="post">
                             <div class="product__details__option row">
-                                <div class="col-md-6">
-                                    <p>Quantité: <span>(en Kg)</span></p>
-                                    <div class="quantity" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-                                        <div class="pro-qty">
-                                            <input type="text" id="myInput" name="quantite">
+                                    <div class="col-md-6">
+                                        <p>Quantité: <span>(en Kg)</span></p>
+                                        <div class="quantity" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                                            <div class="pro-qty">
+                                                <input type="text" id="myInput" name="quantite">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Prix Total:</p>
-                                    <label for="myInput" class="custom-border" style="text-align:center;" name="prixTotal"></label>
-                                </div>
-                                <div class="col-md-12 mt-4">
-                                    <p>Saisissez la ville de livraison:</p>
-                                    <textarea for="exampleTextarea" class="custom-border-2" style="border:none;" name="ville"></textarea>
-                                </div>
-                                <div class="col-md-12 mt-4">
-                                    <p>Saisissez votre address:</p>
-                                    <textarea for="exampleTextarea" name="addresse" class="custom-border-2" style="border:none;" data-prix="<?php echo $produit->getPrix(); ?>"></textarea>
-                                </div>
+                                    <div class="col-md-6">
+                                        <p>Prix Total:</p>
+                                        <label for="myInput" class="custom-border" style="text-align:center;"></label>
+                                    </div>
+                                    <div class="col-md-12 mt-4">
+                                        <p>Saisissez la ville de livraison:</p>
+                                        <input type="text" name="ville" class="custom-border-2" placeholder="ville" required style="border:none;">
+                                    </div>
+                                    <div class="col-md-12 mt-4">
+                                        <p>Saisissez votre address:</p>
+                                        <input type="text" name="adresse" style="border:none;" class="custom-border-2" placeholder="adresse" required data-prix="<?php echo $produit->getPrix(); ?>">
+                                    </div>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
                 <!-- Modal footer -->
         <div class="modal-footer container" style="justify-content: space-between;">
-          <button type="button" class="btn" style="background: #dbd5c4; border: none; width:150px;" data-dismiss="modal">Annuler</button>
-          <button type="button" class="btn btn-secondary" style="background: rgb(221, 189, 85); border: none; width:150px;" data-dismiss="modal">Valider</button>
+        <button type="button" class="btn" style="background: #dbd5c4; border: none; width:150px;" data-dismiss="modal">Annuler</button>
+        <form method="post" action="../controller/utilisateurController.php?action=commander">
+         
+        <button type="submit" class="btn btn-secondary" style="background: rgb(221, 189, 85); border: none; width:150px;">Valider</button>
+        </form>
         </div>
 
         </div>
+        </form>
       </div>
     </div>
   </div>

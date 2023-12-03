@@ -2,13 +2,13 @@
 class Commande{
     private $numCommande, $dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse;
 
-    public function __construct( $dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse)
+    public function __construct($dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse)
     {
         $this->dateCreation = $dateCreation;
         $this->dateLivraison = $dateLivraison;
         $this->etat = $etat;
         $this->villeLivraison = $villeLivraison;
-        $this->$adresse = $adresse;
+        $this->adresse = $adresse;
     }
 
     // Getters
@@ -68,7 +68,7 @@ class Commande{
         $this->villeLivraison = $villeLivraison;
     }
 
-    public function setAdresse()
+    public function setAdresse($adresse)
     {
         $this->adresse = $adresse;
     }
