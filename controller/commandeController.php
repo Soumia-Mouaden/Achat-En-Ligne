@@ -24,10 +24,16 @@ switch ($action) {
         session_start();
         $idOfProduitt = $_SESSION['idOfProductt'];
         $quantite = $_POST['quantite'];
+        $prixTotal = $_POST['prixTotal'];
+        $ville = $_POST['ville'];
+        $addresse = $_POST['addresse'];
 
-        if (isset($idOfProduitt, $quantite, $numCommandee)) {
-            $commandeProduit = new CommandeProduit($quantite,$idOfProduitt,$numCommandee);
-            $daoCP->insererCommandeProduit($commandeProduit);
+        if (isset($quantite, $prixTotal, $ville, $addresse)) {
+                $commande = new Commande($dateCreation, $dateLivraison, $etat, $villeLivraison, $addresse);
+                $dao->save($commande);
+                session_start();
+                $_SESSION['utilisateur']=$utilisateur;
+                header('location: ../view/accountForm.php');
         }
 
         break;
