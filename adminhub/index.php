@@ -31,16 +31,16 @@ $caisse= $daoCommandes->countCaisse();
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
 			["Mois", "Ventes", { role: "style" }],
-			["Janvier", 8.94, "#b87333"],
-			["Février", 10.49, "silver"],
-			["Mars", 19.30, "gold"],
-			["Avril", 21.45, "color: #e5e4e2"],
-			["Mai", 8.94, "#b87333"],
-			["Juin", 10.49, "silver"],
-			["Juillet", 19.30, "gold"],
-			["Août", 21.45, "color: #e5e4e2"],
-			["Septembre", 8.94, "#b87333"],
-			["Octobre", 10.49, "silver"],
+			["", 8.94, "#b87333"],
+			["Semaine 1", 10.49, "silver"],
+			["", 19.30, "gold"],
+			["", 21.45, "color: #e5e4e2"],
+			["Semaine 2", 8.94, "#b87333"],
+			["", 10.49, "silver"],
+			["", 19.30, "gold"],
+			["Semaine 3", 21.45, "color: #e5e4e2"],
+			["", 8.94, "#b87333"],
+			["", 10.49, "silver"],
 			["Novembre", 19.30, "gold"],
 			["Décembre", 21.45, "color: #e5e4e2"]
 		]);
