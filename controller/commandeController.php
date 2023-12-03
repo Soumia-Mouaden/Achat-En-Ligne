@@ -29,6 +29,7 @@ switch ($action) {
             $commandeProduit = new CommandeProduit($quantite,$idOfProduitt,$numCommandee);
             $daoCP->insererCommandeProduit($commandeProduit);
         }
+        
 
         break;
 }
