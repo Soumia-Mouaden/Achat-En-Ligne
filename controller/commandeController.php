@@ -30,7 +30,7 @@ switch ($action) {
             $daoCP->insererCommandeProduit($commandeProduit);
             header('location: ../view/invoice.php?commandeId=$numCommandee');
         }
-        
+        else header('location: ../view/detailProduit.php');   
 
         break;
 }
