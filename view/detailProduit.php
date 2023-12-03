@@ -166,13 +166,11 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                             <p>Quantité: <span>(en Kg)</span></p>
 
                             <div class="quantity">
-                                <div class="pro-qty" style="border: 1px solid #e1e1e1;">
-                                    <input type="text" value="2">
+                                <div class="pro-qty">
+                                    <input type="text" value="2" id="qq">
                                 </div>
                             </div>
-                            
-                            <button type="button" class="primary-btn" data-toggle="modal" data-target="#myModal">Commander</button>
-                           
+                            <button type="button" class="primary-btn" data-toggle="modal" data-target="#myModal" >Commander</button>
                         </div>
                     </div>
                 </div>
@@ -435,24 +433,30 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                             width:350px;
                             }
                         </style>
-                        <div class="product__details__option row">
-                            <div class="col-md-6">
-                                <p>Quantité: <span>(en Kg)</span></p>
-                                <div class="quantity" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1" id="myInput">
+                        <form action="../controller/commandeController.php?action=insertionCommande" method="post">
+                            <div class="product__details__option row">
+                                <div class="col-md-6">
+                                    <p>Quantité: <span>(en Kg)</span></p>
+                                    <div class="quantity" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                                        <div class="pro-qty">
+                                            <input type="text" id="myInput" name="quantite">
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <p>Prix Total:</p>
+                                    <label for="myInput" class="custom-border" style="text-align:center;" name="prixTotal"></label>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <p>Saisissez la ville de livraison:</p>
+                                    <textarea for="exampleTextarea" class="custom-border-2" style="border:none;" name="ville"></textarea>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <p>Saisissez votre address:</p>
+                                    <textarea for="exampleTextarea" name="addresse" class="custom-border-2" style="border:none;" data-prix="<?php echo $produit->getPrix(); ?>"></textarea>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <p>Prix Total:</p>
-                                <label for="myInput" class="custom-border" style="text-align:center;"></label>
-                            </div>
-                            <div class="col-md-12 mt-4">
-                                <p>Saisir votre localisaton:</p>
-                                <textarea for="exampleTextarea" class="custom-border-2" style="border:none;" data-prix="<?php echo $produit->getPrix(); ?>"></textarea>
-                           </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -477,11 +481,11 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function () {    
         var proQty = $('.pro-qty');
         var myInput = $('#myInput');
-        var labelTotalPrice = $('.custom-border');
-        var prixProduit = <?php echo $produit->getPrix(); ?>; // Obtenez le prix du produit en PHP
+        var labelTotalPrice = $('.custom-border'); // Déplacez ceci à la portée globale
+        var prixProduit = <?php echo $produit->getPrix(); ?>;
 
         proQty.prepend('<span class="dec qtybtn">-</span>');
         proQty.append('<span class="inc qtybtn">+</span>');
@@ -493,7 +497,6 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
             if ($button.hasClass('inc')) {
                 var newVal = oldValue + 1;
             } else {
-                // Ne permettez pas de descendre en dessous de zéro
                 if (oldValue > 0) {
                     var newVal = oldValue - 1;
                 } else {
@@ -501,28 +504,57 @@ $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
                 }
             }
 
+            $button.parent().find('input').val(newVal);
             myInput.val(newVal);
-            updateTotalPrice(); // Mettez à jour le prix total à chaque changement de quantité
+            updateTotalPrice();
         });
 
-        // Fonction pour mettre à jour le prix total
         function updateTotalPrice() {
             var quantity = parseFloat(myInput.val());
             var totalPrice = quantity * prixProduit;
-            labelTotalPrice.text(totalPrice.toFixed(2)+' MAD');
+            labelTotalPrice.text(totalPrice.toFixed(2) + ' MAD');
         }
+
+        // Lorsque le bouton "Commander" est cliqué
+        $('.primary-btn').on('click', function () {
+            // Récupérez la valeur de l'input
+            var valeurInput = $('#qq').val();
+
+            // Stockez la valeur dans le stockage local
+            localStorage.setItem('inputValue', valeurInput);
+
+            // Mettez à jour la valeur de l'input dans le modèle
+            myInput.val(valeurInput);
+
+            // Appelez la fonction pour mettre à jour le prix total
+            updateTotalPrice();
+        });
+
+        // Récupérez la valeur depuis le stockage local
+        var inputValue = localStorage.getItem('inputValue') || 0;
+        $('#myInput').val(inputValue);
+
+        // Appelez la fonction pour mettre à jour le prix total au chargement initial
+        updateTotalPrice();
     });
 </script>
 
-<!-- Votre HTML -->
-<input type="text" value="1" id="myInput">
-<label for="myInput" class="custom-border" style="text-align:center;"></label>
 
-
+</script>
     <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.barfiller.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 
 </html>
+
+
+
+

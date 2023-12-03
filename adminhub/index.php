@@ -1,3 +1,13 @@
+<?php 
+include "../dao/daoCommande.php";
+include "../dao/daoUtilisateur.php";
+$daoUser = new DaoUtilisateur();
+$daoCommande = new DaoCommande();
+$nbUser = $daoUser->countUsers();
+$nbCommandeAuj = $daoCommande->countCommandesToday();
+$daoCommandes = new DaoCommande();
+$caisse= $daoCommandes->countCaisse();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -179,22 +189,40 @@
 				<li>
 					<i class='bx bxs-calendar-check'></i>
 					<span class="text">
-						<h3>1020</h3>
+						<h3>
+						<?php
+							if (isset($nbCommandeAuj)) {
+                                echo $nbCommandeAuj;
+                                }
+							?>
+						</h3>
 						<p>Commandes</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group'></i>
 					<span class="text">
-						<h3>2834</h3>
+						<h3>
+							<?php
+							if (isset($nbUser)) {
+                                echo $nbUser;
+                                }
+							?>
+						</h3>
 						<p>Clients</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-dollar-circle'></i>
 					<span class="text">
-						<h3>25M MAD</h3>
-						<p>Caisse</p>
+						<h3>
+						<?php
+							if (isset($caisse)) {
+                                echo $caisse;
+                                }
+							?>
+						</h3>
+						<p>Caisse en MAD</p>
 					</span>
 				</li>
 			</ul>

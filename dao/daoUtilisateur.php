@@ -63,6 +63,16 @@ class DaoUtilisateur
         return $utilisateur;
     }
 
+    public function countUsers()
+    {
+        $stm = $this->dbh->prepare("SELECT COUNT(*) as total FROM utilisateur");
+        $stm->execute();
+        $result = $stm->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    }
+
+
+
 }
 
 ?>

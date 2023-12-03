@@ -20,7 +20,7 @@ $allProducts = $dao->listProduits();
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
-         <!-- Css Styles -->
+    <!-- Css Styles -->
     <link rel="stylesheet" href="view/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="view/css/flaticon.css" type="text/css">
     <link rel="stylesheet" href="view/css/barfiller.css" type="text/css">
@@ -336,6 +336,7 @@ $allProducts = $dao->listProduits();
                     $name = $product['nom'];
                     $price = $product['prix'];
                     $category = $product['categorie'];
+                    $idOfProduit = $product['id'];
         
                     if ($category == "GateauBeldi" ) {
                         echo '
@@ -350,6 +351,7 @@ $allProducts = $dao->listProduits();
                                     <h6><a href="#">' . $name . '</a></h6>
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
+                                        
                                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
                                     </div>
                                 </div>
@@ -370,6 +372,7 @@ $allProducts = $dao->listProduits();
                     $name = $product['nom'];
                     $price = $product['prix'];
                     $category = $product['categorie'];
+                    $idOfProduit = $product['id'];
         
                     if ($category == "GateauAuMiel" ) {
                         echo '
@@ -405,6 +408,7 @@ $allProducts = $dao->listProduits();
                     $name = $product['nom'];
                     $price = $product['prix'];
                     $category = $product['categorie'];
+                    $idOfProduit = $product['id'];
                     
                     if ($category == "Fekkas" ) {
                         echo '
@@ -440,6 +444,7 @@ $allProducts = $dao->listProduits();
                     $name = $product['nom'];
                     $price = $product['prix'];
                     $category = $product['categorie'];
+                    $idOfProduit = $product['id'];
         
                     if ($category == "DattesEtSellou" ) {
                         echo '
@@ -475,6 +480,7 @@ $allProducts = $dao->listProduits();
                     $name = $product['nom'];
                     $price = $product['prix'];
                     $category = $product['categorie'];
+                    $idOfProduit = $product['id'];
         
                     if ($category == "COMPOSITIONS" ) {
                         echo '
