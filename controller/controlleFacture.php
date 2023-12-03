@@ -35,7 +35,7 @@ $dao = new daoFacture();
        
     } else {
         // Utilisateur non connecté, rediriger vers la page de connexion
-        header("Location: ../view/connexion.php");
+        header("Location: ../view/connexion.php?factureV=Vcommande");
         exit();
     }
     

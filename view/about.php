@@ -45,7 +45,7 @@ session_start();
             background-image: url('img/about.jpg');
             background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la section */
             background-position: center; /* Centre l'image */
-            height: 300px; /* Vous pouvez ajuster cette valeur en pixels ou en pourcentage selon vos besoins */
+            height: 400px; /* Vous pouvez ajuster cette valeur en pixels ou en pourcentage selon vos besoins */
             width: 100%; /* La section occupera toute la largeur de l'écran */
             display: flex;
             justify-content: center;
@@ -151,8 +151,8 @@ session_start();
                 <div class="col-lg-12">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="../index.php">Accueil</a></li>
-                            <li><a href="about.php">A propos </a></li>
+                            <li><a href="../index.php">Accueil</a></li>
+                            <li class="active"><a href="about.php">A propos </a></li>
                             <li><a href="contact.php">Contact</a></li>
                         </ul>
                     </nav>
@@ -169,23 +169,18 @@ session_start();
     <!-- About Section Begin -->
     <section class="about spad">
         <div class="container">
-            <div>
-                <h2 style="font-weight: bold; text-align: center; color: #ffaa00;">À propos de Nous</h2>
-            </div>
-              
+   
             <div class="row" id="section1">
                 <div class="col-lg-5" >
                     <div class="section-title">
-                        <h2>Maison Marocaine Créatrice d'émotions Depuis 2000</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="about__text">
-                        <div class="section-title">
-                            <span>A propos de notre patisserie</span>
-                            <h2>Maison créatrice d'émotions</h2>
+                        <div class="section-title mt-5">
+                            <h2 >Maison créatrice d'émotions</h2>
                         </div>
                         <p>La Patisserie Girls est une patisserie marocaine qui a commencé en tant que petite entreprise familiale à Casablanca. Les propriétaires sont le Dr Iyad Sultan et le Dr Sereen Sharabati, soutenus par une équipe de 25 employés."</p>
                     </div>

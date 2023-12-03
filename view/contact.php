@@ -128,9 +128,9 @@ session_start();
                 <div class="col-lg-12">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="../index.php">Accueil</a></li>
+                            <li><a href="../index.php">Accueil</a></li>
                             <li><a href="about.php">A propos </a></li>
-                            <li><a href="contact.php">Contact</a></li>
+                            <li class="active"><a href="contact.php">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -157,20 +157,20 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="map__iframe">
+                <div class="map__iframe mb-5">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.21798947911!2d-7.653715625792698!3d33.547712144205086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda62d263924be81%3A0x4f1dc99bf3831f9c!2sCentre%20de%20Conf%C3%A9rence%20EHTP!5e0!3m2!1sfr!2sma!4v1701387004917!5m2!1sfr!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
             <div class="contact__address">
                 
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-lg-4">
                     <div class="contact__text">
-                        <h3>Contact With us</h3>
+                        <h3>Contactez nous</h3>
                         <ul>
-                            <li>Representants et les responsables sont disponible:</li>
-                            <li>Lun-Ven: 5:00 to 21:00</li>
-                            <li>Sat-Sun: 6:00 to 21:00</li>
+                            <li>Les representants et les responsables sont disponibles:</li>
+                            <li>Lun-Ven: 8:00 to 20:30</li>
+                            <li>Sam-Dim: 10:00 to 16:30</li>
                         </ul>
                         <img src="img/cake-piece.png" alt="">
                     </div>
@@ -180,14 +180,14 @@ session_start();
                         <form action="#">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <input type="text" placeholder="Name">
+                                    <input type="text" placeholder="Nom et prénom">
                                 </div>
                                 <div class="col-lg-6">
                                     <input type="text" placeholder="Email">
                                 </div>
                                 <div class="col-lg-12">
                                     <textarea placeholder="Message"></textarea>
-                                    <button type="submit" class="site-btn">Send Us</button>
+                                    <button type="submit" class="site-btn">Envoyer</button>
                                 </div>
                             </div>
                         </form>
@@ -228,7 +228,7 @@ session_start();
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="footer__newslatter">
-                        <h6>Subscribe</h6>
+                        <h6>Abonnez vous</h6>
                         <p>Recevez les dernières mises à jour et offres.</p>
                         <form action="#">
                             <input type="text" placeholder="Email">
