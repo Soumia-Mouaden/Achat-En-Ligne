@@ -94,7 +94,7 @@ session_start();
                                     if ($utilisateur != null) {
                                         echo '
                                             <ul>
-                                                <li>Bienvenue ' . $utilisateur->getNom() . '</li>
+                                                <li>Bienvenue ' . $utilisateur->getPrenom() . '</li>
                                             <li><a href="controller/utilisateurController.php?action=deconnexion">Se déconnecter</a></li>
                                             </ul>';
                                     } 
