@@ -1,15 +1,25 @@
 <?php
 include "../model/commande.php";
+<<<<<<< HEAD
 
 include "../model/commandeProduit.php";
 include "../model/produit.php";
+=======
+include "../model/facture.php";
+include "../model/commandeProduit.php";
+include __DIR__ . "/../model/produit.php";
+>>>>>>> 101a1b67fb4ecb60b06c0388dac5a6cbe582a42d
 class daoFacture
 {
     private $dbh;
     public function __construct()
      {
         try{
+<<<<<<< HEAD
             $this->dbh =new PDO ('mysql:host=localhost;dbname=patisserie',"root","");
+=======
+            $this->dbh =new PDO ('mysql:host=localhost;dbname=projet_patisserie',"root","");
+>>>>>>> 101a1b67fb4ecb60b06c0388dac5a6cbe582a42d
 
         }catch (PDOOException $e){
             printf("Erreur !:" .$e->getMessage(). "<br/>");

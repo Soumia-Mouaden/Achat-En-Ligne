@@ -1,3 +1,13 @@
+<?php
+include "../dao/daoCommande.php";
+include "../dao/daoUtilisateur.php";
+$daoUser = new DaoUtilisateur();
+$daoCommande = new DaoCommande();
+$nbUser = $daoUser->countUsers();
+$nbCommandeAuj = $daoCommande->countCommandesToday();
+$daoCommandes = new DaoCommande();
+$caisse = $daoCommandes->countCaisse();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,50 +26,70 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-	google.charts.load("current", {
-		packages: ['corechart']
+	google.charts.load('current', {
+		'packages': ['line']
 	});
 	google.charts.setOnLoadCallback(drawChart);
 
 	function drawChart() {
-		var data = google.visualization.arrayToDataTable([
-			["Mois", "Ventes", {
-				role: "style"
-			}],
-			["Janvier", 8.94, "#b87333"],
-			["Février", 10.49, "silver"],
-			["Mars", 19.30, "gold"],
-			["Avril", 21.45, "color: #e5e4e2"],
-			["Mai", 8.94, "#b87333"],
-			["Juin", 10.49, "silver"],
-			["Juillet", 19.30, "gold"],
-			["Août", 21.45, "color: #e5e4e2"],
-			["Septembre", 8.94, "#b87333"],
-			["Octobre", 10.49, "silver"],
-			["Novembre", 19.30, "gold"],
-			["Décembre", 21.45, "color: #e5e4e2"]
-		]);
 
+		var data = new google.visualization.DataTable();
+		data.addColumn('number', 'Jour');
+		data.addColumn('number', 'Ventes');
+
+		data.addRows([
+			[1, 37.8],
+			[2, 30.9],
+			[3, 25.4],
+			[4, 11.7],
+			[5, 11.9],
+			[6, 8.8],
+			[7, 7.6],
+			[8, 12.3],
+			[9, 16.9],
+			[10, 12.8],
+			[11, 5.3],
+			[12, 6.6],
+			[13, 4.8],
+			[14, 4.2]
+		]);
 		var options = {
-			title: "Total des ventes en millions de dirhams",
+			chart: {
+				title: 'Total des ventes par mois',
+				subtitle: 'en millions de dirhams (MAD)',
+
+			},
 			titleTextStyle: {
+				color: '#000000',
 				fontSize: 16,
-				Position: 'start',
+				bold:true,
+				fontName: 'arial',
+
 			},
-			width: 620,
+			width: 580,
 			height: 400,
-			bar: {
-				groupWidth: "95%"
-			},
 			legend: {
-				position: "none"
+				position: "none",
 			},
+			colors: ['#8D610E'], // Changer la couleur ici (par exemple, rouge)
+			
+			
+
+
 		};
-		var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-		chart.draw(data, options);
+
+
+		var chart = new google.charts.Line(document.getElementById('columnchart_values'));
+
+		chart.draw(data, google.charts.Line.convertOptions(options));
+
 	}
 
 	// anneau
+	google.charts.load("current", {
+		packages: ["corechart"]
+	});
+
 	function drawChartAnneau() {
 		var donnee = google.visualization.arrayToDataTable([
 			['Statut', 'Nombre'],
@@ -71,10 +101,8 @@
 
 		var options = {
 			title: 'Suivi des commandes   ',
-			//   position:top,
 			titleTextStyle: {
 				fontSize: 16,
-
 			},
 			chartArea: {
 				width: '70%',
@@ -94,6 +122,7 @@
 				position: 'none',
 			},
 			pieHole: 0.4,
+			height: 460,
 		};
 
 		var chart2 = new google.visualization.PieChart(document.getElementById('donutchart'));
@@ -202,22 +231,40 @@
 				<li>
 					<i class='bx bxs-calendar-check'></i>
 					<span class="text">
-						<h3>1020</h3>
+						<h3>
+							<?php
+							if (isset($nbCommandeAuj)) {
+								echo $nbCommandeAuj;
+							}
+							?>
+						</h3>
 						<p>Commandes</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group'></i>
 					<span class="text">
-						<h3>2834</h3>
+						<h3>
+							<?php
+							if (isset($nbUser)) {
+								echo $nbUser;
+							}
+							?>
+						</h3>
 						<p>Clients</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-dollar-circle'></i>
 					<span class="text">
-						<h3>25M MAD</h3>
-						<p>Caisse</p>
+						<h3>
+							<?php
+							if (isset($caisse)) {
+								echo $caisse;
+							}
+							?>
+						</h3>
+						<p>Caisse en MAD</p>
 					</span>
 				</li>
 			</ul>
@@ -227,18 +274,18 @@
 
 
 			<div style="display: flex;">
-				<div id="chart-container" style="position: relative; float: left; ">
-					<div id="columnchart_values" style=" position: relative; z-index: 1; width: 600px;">
+				<div id="chart-container" style="position: relative; float: left; border:1px solid white; background-color: white; width:640px; border-radius:10px white;padding:20px;">
+					<div id="columnchart_values" style=" position: relative; z-index: 1; ;">
 					</div>
 					<div id="filter-section" style="position: absolute; top: 25px; left: 450px; z-index: 2;">
 						<label for="start"></label>
 						<input type="month" id="start" name="start" min="2023-09" value="2023-12" />
 					</div>
 				</div>
-				<div style="position: relative;width: calc(100% - 600px);">
+				<div style="position: relative;width: calc(100% - 600px);height:480px;">
 					<div id="donutchart">
 					</div>
-					<div class="legend" style="position: absolute; top: 280px; left: 70px; z-index: 2; ">
+					<div class="legend" style="position: absolute; top: 320px; left: 70px; z-index: 2; ">
 						<div class="legend-item">
 							<div class="legend-circle" style="background-color: #F6B229;"></div>
 							<span>En attente de paiement</span>
@@ -333,7 +380,7 @@
 	<!-- CONTENT -->
 
 
-	<script src="js/script.js"></script>
+	<script src="script.js"></script>
 </body>
 
 </html>
