@@ -1,3 +1,13 @@
+<?php 
+include "../dao/daoCommande.php";
+include "../dao/daoUtilisateur.php";
+$daoUser = new DaoUtilisateur();
+$daoCommande = new DaoCommande();
+$nbUser = $daoUser->countUsers();
+$nbCommandeAuj = $daoCommande->countCommandesToday();
+$daoCommandes = new DaoCommande();
+$caisse= $daoCommandes->countCaisse();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,26 +26,21 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-	google.charts.load("current", {
-		packages: ['corechart']
-	});
+	google.charts.load("current", { packages: ['corechart'] });
 	google.charts.setOnLoadCallback(drawChart);
-
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-			["Mois", "Ventes", {
-				role: "style"
-			}],
-			["Janvier", 8.94, "#b87333"],
-			["Février", 10.49, "silver"],
-			["Mars", 19.30, "gold"],
-			["Avril", 21.45, "color: #e5e4e2"],
-			["Mai", 8.94, "#b87333"],
-			["Juin", 10.49, "silver"],
-			["Juillet", 19.30, "gold"],
-			["Août", 21.45, "color: #e5e4e2"],
-			["Septembre", 8.94, "#b87333"],
-			["Octobre", 10.49, "silver"],
+			["Mois", "Ventes", { role: "style" }],
+			["", 8.94, "#b87333"],
+			["Semaine 1", 10.49, "silver"],
+			["", 19.30, "gold"],
+			["", 21.45, "color: #e5e4e2"],
+			["Semaine 2", 8.94, "#b87333"],
+			["", 10.49, "silver"],
+			["", 19.30, "gold"],
+			["Semaine 3", 21.45, "color: #e5e4e2"],
+			["", 8.94, "#b87333"],
+			["", 10.49, "silver"],
 			["Novembre", 19.30, "gold"],
 			["Décembre", 21.45, "color: #e5e4e2"]
 		]);
@@ -48,12 +53,8 @@
 			},
 			width: 620,
 			height: 400,
-			bar: {
-				groupWidth: "95%"
-			},
-			legend: {
-				position: "none"
-			},
+			bar: { groupWidth: "95%" },
+			legend: { position: "none" },
 		};
 		var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
 		chart.draw(data, options);
@@ -76,23 +77,9 @@
 				fontSize: 16,
 
 			},
-			chartArea: {
-				width: '70%',
-				height: '50%',
-				top: 70
-			},
-			slices: [{
-				color: '#F6B229'
-			}, {
-				color: '#8D610E'
-			}, {
-				color: '#F8E77C'
-			}, {
-				color: '#CBCAC3'
-			}],
-			legend: {
-				position: 'none',
-			},
+			chartArea: { width: '70%', height: '50%', top: 70 },
+			slices: [{color: '#F6B229'}, {color: '#8D610E'}, {color: '#F8E77C'}, {color: '#CBCAC3'}],
+			legend: { position: 'none', },
 			pieHole: 0.4,
 		};
 
@@ -202,22 +189,40 @@
 				<li>
 					<i class='bx bxs-calendar-check'></i>
 					<span class="text">
-						<h3>1020</h3>
+						<h3>
+						<?php
+							if (isset($nbCommandeAuj)) {
+                                echo $nbCommandeAuj;
+                                }
+							?>
+						</h3>
 						<p>Commandes</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group'></i>
 					<span class="text">
-						<h3>2834</h3>
+						<h3>
+							<?php
+							if (isset($nbUser)) {
+                                echo $nbUser;
+                                }
+							?>
+						</h3>
 						<p>Clients</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-dollar-circle'></i>
 					<span class="text">
-						<h3>25M MAD</h3>
-						<p>Caisse</p>
+						<h3>
+						<?php
+							if (isset($caisse)) {
+                                echo $caisse;
+                                }
+							?>
+						</h3>
+						<p>Caisse en MAD</p>
 					</span>
 				</li>
 			</ul>
@@ -226,7 +231,7 @@
 			<!-- diagrams -->
 
 
-			<div style="display: flex;">
+			<div style="display: flex;" >
 				<div id="chart-container" style="position: relative; float: left; ">
 					<div id="columnchart_values" style=" position: relative; z-index: 1; width: 600px;">
 					</div>
@@ -235,7 +240,7 @@
 						<input type="month" id="start" name="start" min="2023-09" value="2023-12" />
 					</div>
 				</div>
-				<div style="position: relative;width: calc(100% - 600px);">
+				<div style="position: relative;width: calc(100% - 600px);"  >
 					<div id="donutchart">
 					</div>
 					<div class="legend" style="position: absolute; top: 280px; left: 70px; z-index: 2; ">
@@ -293,7 +298,7 @@
 								<td>10/10/2023</td>
 								<td><span class="status completed">Completed</span></td>
 							</tr>
-
+							
 						</tbody>
 					</table>
 				</div>
@@ -333,7 +338,7 @@
 	<!-- CONTENT -->
 
 
-	<script src="js/script.js"></script>
+	<script src="script.js"></script>
 </body>
 
 </html>
