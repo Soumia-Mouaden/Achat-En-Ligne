@@ -1,7 +1,7 @@
 <?php
-include "../model/commande.php";
+include "../model/commandeProduit.php";
 
-class DaoCommande
+class DaoCommandeProduit
 {
 
     private $dbh;
@@ -15,21 +15,16 @@ class DaoCommande
             die();
         }
     }
-    public function insererCommande(Commande $commande)
-    {
-        $stm = $this->dbh->prepare("INSERT INTO commande(adresse ,dateCreation, etat, villeLivraison, dateLivraison) VALUES (?, ?, ?, ?, ?)");
 
-        $stm->bindValue(1, $commande->getAdresse());
-        $stm->bindValue(2, $commande->getDateCreation());
-        $stm->bindValue(3, $commande->getEtat());
-        $stm->bindValue(4, $commande->getVilleLivraison());
-        $stm->bindValue(5, $commande->getDateLivraison());
+    public function insererCommandeProduit(CommandeProduit $commandeProduit)
+    {
+        $stm = $this->dbh->prepare("INSERT INTO commande_produit(quantite, id_Produit, numCommande_Commande) VALUES (?, ?, ?)");
+
+        $stm->bindValue(1, $commandeProduit->getQuantite());
+        $stm->bindValue(2, $commandeProduit->getIdProduit());
+        $stm->bindValue(3, $commandeProduit->getNumCommande());
 
         $stm->execute();
-
-        $idCommande = $this->dbh->lastInsertId();
-
-        return $idCommande;
     }
 
     // public function findCommande($email, $mdp)
