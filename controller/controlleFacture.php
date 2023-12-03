@@ -4,25 +4,14 @@ include "../Dao/daoFacture.php";
 
 $dao = new DaoFacture();
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    if (isset($_GET['commandId'])) {
-        $idFacture = $_GET['commandId'];
+    session_start();
+    if (isset($_SESSION['commandeId'])) {
+        $idFacture = $_SESSION['commandId'];
+        echo $idFacture;
         $facture = $dao->Facturation($idFacture);
+        echo $facture->numCommande_Commande;}
         
         
-        if ($facture) {
-            
-            session_start();
-            $_SESSION['facture'] = $facture;
+        
 
-            
-          header("Location: ../view/invoice.php");
-           exit();
-        } else {
-            echo "Facture not found for command ID: $idFacture";
-     }
-    } else {
-       echo "Command ID not set in the form submission.";
-    }
-}
 ?>

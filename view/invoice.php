@@ -74,16 +74,17 @@ if ($facture !== null && (is_array($facture) || is_object($facture))) {
         echo '<td class="col-md-3">' . $commandeProduit->quantité . '</td>';
         echo '<td class="col-md-3">' . $commandeProduit->quantité * $commandeProduit->prix . '</td>';
     }
-    endforeach
+
+    
 } else if ($facture == null) {
     echo "Error: \$facture is null.";
 } else {
     echo " or not an array or object";
 }
-                                  echo '<tr style="color: #F81D2D;">'
+                                  echo '<tr style="color: #F81D2D;">';
                                   echo '<td class="text-right"><h4><strong>Total:</strong></h4></td>';
-                                  echo '<td class="text-left"><h4><strong>' '</strong></h4></td>';
-                                    </tr>
+                                  echo '<td class="text-left"><h4><strong></strong></h4></td>';
+                                    echo '</tr>';
 
 // Effacer la facture de la session après utilisation (facultatif)
 unset($_SESSION['facture']);
