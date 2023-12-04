@@ -64,9 +64,11 @@ class DaoCommande
         $stm->execute();
     }
     
-    public function countCommandesToday()
+    public function countCommandes($jour,$etat)
     {
-        $stm = $this->dbh->prepare("SELECT COUNT(*) as total FROM commande WHERE DATE(dateCreation) = DATE(NOW())");
+        $stm = $this->dbh->prepare("SELECT COUNT(*) as total FROM commande WHERE DATE(dateCreation) = ? AND commande.etat = ?; ");
+        $stm->bindValue(1, $jour);
+        $stm->bindValue(2, $etat);
         $stm->execute();
         $result = $stm->fetch(PDO::FETCH_ASSOC);
         return $result['total'];
@@ -106,5 +108,27 @@ class DaoCommande
             $vente += ($row['prix'] * $row['quantite']); 
         }
         return $vente;
+    }
+    
+    public function countLast3Days()
+    {
+        $liste= []; 
+        $jour  = intval(date('d'));
+        $moisPrecedent = intval(date('m')) - 1;
+        if ($moisPrecedent === 0) {
+            $moisPrecedent = 12; 
+        }
+        $nombreJours = cal_days_in_month(CAL_GREGORIAN, $moisPrecedent, date('Y'));
+        if ($jour ==1){
+
+           $liste = [1, $nombreJours, $nombreJours-1];
+        }
+        elseif ($jour ==2){
+            $liste = [1, 2, $nombreJours];
+        }
+        else{
+            $liste = [$jour, $jour-1, $jour-2];
+        }
+        return $liste;
     }
 }

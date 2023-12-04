@@ -4,7 +4,8 @@ include "../dao/daoUtilisateur.php";
 $daoUser = new DaoUtilisateur();
 $daoCommande = new DaoCommande();
 $nbUser = $daoUser->countUsers();
-$nbCommandeAuj = $daoCommande->countCommandesToday();
+$dateAujourdhui = date('Y-m-d');
+$nbCommandeAuj = $daoCommande->countCommandes($dateAujourdhui, 'Livrée');
 $caisse = $daoCommande->countCaisse();
 $donneesJSON = ''; // Initialiser la variable
 ?>
@@ -59,7 +60,7 @@ $donneesJSON = ''; // Initialiser la variable
 
 		var options = {
 			chart: {
-				title: 'Total des ventes par mois en MAD',
+				title: 'Total des ventes pour le mois courant en MAD',
 			},
 			titleTextStyle: {
 				color: '#000000',
@@ -92,22 +93,55 @@ $donneesJSON = ''; // Initialiser la variable
 	});
 
 	function drawChartAnneau() {
-		var donnee = google.visualization.arrayToDataTable([
-			['Statut', 'Nombre'],
-			['En attente de paiement', 11],
-			['En cours de traitement', 2],
-			['En cours de livraison', 2],
-			['Livrée', 2],
-		]);
+         
+		<?php
+		$liste3Jours= $daoCommande->countLast3Days();
+		$rows = [
+            ['Etat', 'Total'], // Ajoute les en-têtes des colonnes ici
+        ];
+		// en cours de traitement 
+		$traitement =0;
+		for ($i = 0; $i <= 2; $i++){
+			$date = date('Y-m-d', strtotime("2023-12-$liste3Jours[$i]"));
+			 $traitement+= $daoCommande->countCommandes($date,'En cours de traitement');
+		}
+		$rows[]= ['En cours de traitement',$traitement ];
+		
+
+		// en cours de livraison 
+		$livraison =0;
+		for ($i = 0; $i <= 2; $i++){
+			$date = date('Y-m-d', strtotime("2023-12-$liste3Jours[$i]"));
+			$livraison+= $daoCommande->countCommandes($date,'En cours de livraison');
+	   }
+	//    $livraison=29;
+	   $rows[]= ['En cours de livraison',$livraison ];
+	   
+       
+	   // en cours de livraison 
+	    $livree =0;
+		for ($i = 0; $i <= 2; $i++){
+			$date = date('Y-m-d', strtotime("2023-12-$liste3Jours[$i]"));
+			$livree+= $daoCommande->countCommandes($date,'Livrée');
+	   }
+	//    $livree=29;
+	   $rows[]= ['Livrée', $livree ];
+
+
+		// Convertir le tableau en chaîne JSON pour JavaScript
+		$donneesJSON = json_encode($rows);
+		?>
+
+var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
 
 		var options = {
-			title: 'Suivi des commandes   ',
+			title: '  ',
 			titleTextStyle: {
 				fontSize: 16,
 			},
 			chartArea: {
 				width: '70%',
-				height: '50%',
+				height: '60%',
 				top: 70
 			},
 			slices: [{
@@ -115,15 +149,13 @@ $donneesJSON = ''; // Initialiser la variable
 			}, {
 				color: '#8D610E'
 			}, {
-				color: '#F8E77C'
-			}, {
 				color: '#CBCAC3'
 			}],
 			legend: {
 				position: 'none',
 			},
 			pieHole: 0.4,
-			height: 460,
+			height: 440,
 		};
 
 		var chart2 = new google.visualization.PieChart(document.getElementById('donutchart'));
@@ -142,8 +174,8 @@ $donneesJSON = ''; // Initialiser la variable
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
-			<span class="text">HLOU'IN</span>
+			<img src="img/louza.png" alt="logo" id="logoHlou" style="width: 70px;height:auto;">
+			<span class="text" style="color: #8D610E;">HLOU'IN</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
@@ -179,7 +211,7 @@ $donneesJSON = ''; // Initialiser la variable
 				</a>
 			</li>
 			<li>
-				<a href="#" class="logout">
+				<a href="../index.php" class="logout">
 					<i class='bx bxs-log-out-circle'></i>
 					<span class="text">Se déconnecter</span>
 				</a>
@@ -194,15 +226,31 @@ $donneesJSON = ''; // Initialiser la variable
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<form action="#">
+			<!-- <form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Rechercher...">
 					<button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
 				</div>
-			</form>
+			</form> -->
 			<!-- <a href="#" class="profile">
 				<img src="img/people.png">
 			</a> -->
+			<div id="bienvenue">
+                 <p>
+				 <?php
+                 session_start();
+                 if (isset($_SESSION["utilisateur"])) {
+                    $utilisateur = $_SESSION['utilisateur'];
+                    if ($utilisateur != null) {
+                    echo '
+                            <p>Bienvenue ' . $utilisateur->getPrenom() .$utilisateur->getNom() . '</p>';
+
+                                    } 
+
+                                }
+                                ?>
+				 </p>
+			</div>
 		</nav>
 		<!-- NAVBAR -->
 
@@ -211,7 +259,7 @@ $donneesJSON = ''; // Initialiser la variable
 
 			<div class="head-title">
 				<div class="left">
-					<h1>Tableau de bord</h1>
+					<h1 style="color:black">Tableau de bord</h1>
 					<ul class="breadcrumb">
 						<li>
 							<!-- </li>
@@ -274,37 +322,44 @@ $donneesJSON = ''; // Initialiser la variable
 			<!-- diagrams -->
 
 
-			<div style="display: flex; 	height: 460px;;">
-				<div id="chart-container" style="position: relative; float: left; width:100%; padding:20px;background-color:white; border:1px white solid; border-radius:50px;">
-					<div id="columnchart_values" style=" position: relative; z-index: 1;  ">
+			<div style="display: flex;">
+				<div id="chart-container" style="position: relative; float: left; width:620px; padding:20px;background-color:white;margin-right:20px;">
+					<div id="columnchart_values" style=" position: relative; z-index: 1; ;">
 					</div>
+
 					<!-- <div id="filter-section" style="position: absolute; top: 25px; left: 450px; z-index: 2;">
 						<label for="start"></label>
 						<input type="month"  id="start" name="start" min="2023-09" value="2023-12" />
 					</div> -->
 				</div>
-				<!-- <div style="position: relative;width: calc(100% - 600px);height:480px;">
+				<div style="position: relative;width: calc(100% - 680px);height:400px;margin-left:40px;margin-top:20px;">
 					<div id="donutchart">
 					</div>
-					<div class="legend" style="position: absolute; top: 320px; left: 70px; z-index: 2; ">
+					<span style="position: absolute; top: 20px; left: 40px; z-index: 2; font-weight:bold; font-family:Arial, Helvetica, sans-serif ;font-size:16px; width:200px; "> Suivi des commandes des trois derniers jours</span>
+					<div class="legend" style="position: absolute; top: 340px; left: 40px; z-index: 2; ">
 						<div class="legend-item">
 							<div class="legend-circle" style="background-color: #F6B229;"></div>
-							<span>En attente de paiement</span>
+							<span>
+								<!-- <?php echo $traitement;
+								?> -->
+								En cours de traitement
+							</span>
 						</div>
 						<div class="legend-item">
 							<div class="legend-circle" style="background-color: #8D610E;"></div>
-							<span>En cours de traitement</span>
-						</div>
-						<div class="legend-item">
-							<div class="legend-circle" style="background-color: #F8E77C;"></div>
-							<span>En cours de livraison</span>
+							<span>En cours de livraison
+								<!-- <?php echo $livraison;?> -->
+							</span>
 						</div>
 						<div class="legend-item">
 							<div class="legend-circle" style="background-color: #CBCAC3;"></div>
-							<span>Livrée</span>
+							<span>Livrée 
+								<!-- <?php echo $livree;
+								?> -->
+								</span>
 						</div>
 					</div>
-				</div> -->
+				</div>
 			</div>
 
 			<!-- <div class="table-data">
@@ -345,8 +400,6 @@ $donneesJSON = ''; // Initialiser la variable
 						</tbody>
 					</table>
 				</div> -->
-
-
 				<!-- <div class="todo">
 					<div class="head">
 						<h3>Todos</h3>

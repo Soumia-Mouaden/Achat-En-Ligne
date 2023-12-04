@@ -135,7 +135,7 @@
                     <div>
                         <h2>Connexion</h2>
                         <div class="form-group">
-                            <label for="email">Mot de passe :</label>
+                            <label for="email">Email:</label>
                             <input type="email" class="form-control" id="email" name="email" placeholder="entrer email" required>
                         </div>
                         <div class="form-group">
