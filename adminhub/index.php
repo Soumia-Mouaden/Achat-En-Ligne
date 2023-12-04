@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "../dao/daoCommande.php";
 include "../dao/daoUtilisateur.php";
 $daoUser = new DaoUtilisateur();
@@ -227,15 +226,31 @@ var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<form action="#">
+			<!-- <form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Rechercher...">
 					<button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
 				</div>
-			</form>
+			</form> -->
 			<!-- <a href="#" class="profile">
 				<img src="img/people.png">
 			</a> -->
+			<div id="bienvenue">
+                 <p>
+				 <?php
+                 session_start();
+                 if (isset($_SESSION["utilisateur"])) {
+                    $utilisateur = $_SESSION['utilisateur'];
+                    if ($utilisateur != null) {
+                    echo '
+                            <p>Bienvenue ' . $utilisateur->getPrenom() .$utilisateur->getNom() . '</p>';
+
+                                    } 
+
+                                }
+                                ?>
+				 </p>
+			</div>
 		</nav>
 		<!-- NAVBAR -->
 
