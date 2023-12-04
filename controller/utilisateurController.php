@@ -47,7 +47,7 @@
             $mdp = $_POST['mdp'];
             $genre= $_POST['genre'];
             $ville = $_POST['ville'];
-            $role = $_POST['role'];
+            $role = "client";
             
             if (isset($nom, $prenom, $tel, $email, $mdp ,$ville, $genre, $role)) {
                 $dao = new DaoUtilisateur();

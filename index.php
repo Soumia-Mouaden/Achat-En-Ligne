@@ -216,7 +216,7 @@ $allProducts = $dao->listProduits();
                     $category = $product['categorie'];
                     $idOfProduit = $product['id'];
         
-                    if ($category == "GateauBeldi" && $image == "img/shop/gateauBeldi/Corne_de_gazelle_classique.jpg") {
+                    if ($category == "GateauBeldi" && $image == "img/produit/Corne_de_gazelle_classique.jpg") {
                         echo '
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -237,7 +237,7 @@ $allProducts = $dao->listProduits();
                         </div>';
                     }
             
-                if ($category == "GateauAuMiel" && $image == "img/shop/gateauAuMiel/1.jpg") {
+                if ($category == "GateauAuMiel" && $image == "img/produit/1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
@@ -259,7 +259,7 @@ $allProducts = $dao->listProduits();
                    </div>
                    </div>';
                 }
-                if ($category == "Fekkas" && $image == "img/shop/fekkas/1.jpg") {
+                if ($category == "Fekkas" && $image == "img/produit/fekkas1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
@@ -278,7 +278,7 @@ $allProducts = $dao->listProduits();
                    </div>
                    </div>';
                 }
-                if ($category == "DattesEtSellou" && $image == "img/shop/datteetsellou/1.jpg") {
+                if ($category == "DattesEtSellou" && $image == "img/produit/d1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
@@ -297,7 +297,7 @@ $allProducts = $dao->listProduits();
                    </div>
                    </div>';
                 }
-                if ($category == "COMPOSITIONS" && $image == "img/shop/COMPOSITIONS/1.jpg") {
+                if ($category == "COMPOSITIONS" && $image == "img/produit/c1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">

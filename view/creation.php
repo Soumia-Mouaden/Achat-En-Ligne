@@ -179,10 +179,7 @@
                         <label for="mdp">Mot de passe :</label>
                         <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Entrez votre mot de passe">
                     </div>
-                    <div class="form-group">
-                        <label for="role">Role:</label>
-                        <input type="password" class="form-control" id="role" name="role" >
-                    </div>
+                   
 
                     <button type="button" class="btn previous">Précédent</button>
                     <button type="button" class="btn next">Suivant</button>
@@ -196,7 +193,11 @@
                     </div>
                     <div class="form-group">
                         <label for="genre">Genre :</label>
-                        <input type="text" class="form-control" id="genre" name="genre" placeholder="Entrez votre adresse ">
+                        <select name="genre" id="">
+                            <option value="1">Femme</option>
+                            <option value="2">Homme</option>
+
+                        </select>
                     </div>
                     <input type="checkbox" id="rules" name="rules" required><span style="color: red;"> J'accepte les conditions et termes</span><br>
                     <button type="button" class="btn previous">Précédent</button>
