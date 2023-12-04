@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "../dao/daoCommande.php";
 include "../dao/daoUtilisateur.php";
 $daoUser = new DaoUtilisateur();
@@ -38,23 +37,15 @@ $donneesJSON = ''; // Initialiser la variable
 		data.addColumn('number', 'Jour');
 		data.addColumn('number', 'Ventes');
 
-		
-		
-
-		
 
 		<?php
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			// Récupérez la valeur du champ "monInput"
-			$mois = isset($_POST['selected_month']) ? $_POST['selected_month'] : '';
 		
-		}
-		$nombreJours = cal_days_in_month(CAL_GREGORIAN, $mois, date('Y'));
+		$nombreJours = cal_days_in_month(CAL_GREGORIAN, 12, date('Y'));
 		$rows = array();
 
 		// Récupérer les données pour chaque jour
 		for ($i = 1; $i <= $nombreJours; $i++) {
-			$totalVente = $daoCommande->countVente($mois, $i);
+			$totalVente = $daoCommande->countVente(12, $i);
 			$rows[] = "[$i, $totalVente]";
 		}
 
@@ -156,13 +147,13 @@ $donneesJSON = ''; // Initialiser la variable
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="index.php">
 					<i class='bx bxs-dashboard'></i>
 					<span class="text">Tableau de bord</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="liste-produits.php">
 					<i class='bx bxs-box'></i>
 					<span class="text">Produits</span>
 				</a>
@@ -209,9 +200,9 @@ $donneesJSON = ''; // Initialiser la variable
 					<button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
 				</div>
 			</form>
-			<a href="#" class="profile">
+			<!-- <a href="#" class="profile">
 				<img src="img/people.png">
-			</a>
+			</a> -->
 		</nav>
 		<!-- NAVBAR -->
 
@@ -283,20 +274,16 @@ $donneesJSON = ''; // Initialiser la variable
 			<!-- diagrams -->
 
 
-			<div style="display: flex;">
-				<div id="chart-container" style="position: relative; float: left; width:640px; padding:20px;background-color:white;">
-					<div id="columnchart_values" style=" position: relative; z-index: 1; ;">
+			<div style="display: flex; 	height: 460px;;">
+				<div id="chart-container" style="position: relative; float: left; width:100%; padding:20px;background-color:white; border:1px white solid; border-radius:50px;">
+					<div id="columnchart_values" style=" position: relative; z-index: 1;  ">
 					</div>
-					<form method="post" action="index.php">
-					<div id="filter-section" style="position: absolute; top: 25px; left: 450px; z-index: 2;">
+					<!-- <div id="filter-section" style="position: absolute; top: 25px; left: 450px; z-index: 2;">
 						<label for="start"></label>
 						<input type="month"  id="start" name="start" min="2023-09" value="2023-12" />
-						<input type="hidden" name="selected_month" id="selected_month" value="">
-						<button type="submit">Submit</button>
-					</div>
-					</form>
+					</div> -->
 				</div>
-				<div style="position: relative;width: calc(100% - 600px);height:480px;">
+				<!-- <div style="position: relative;width: calc(100% - 600px);height:480px;">
 					<div id="donutchart">
 					</div>
 					<div class="legend" style="position: absolute; top: 320px; left: 70px; z-index: 2; ">
@@ -317,10 +304,10 @@ $donneesJSON = ''; // Initialiser la variable
 							<span>Livrée</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 
-			<div class="table-data">
+			<!-- <div class="table-data">
 				<div class="order">
 					<div class="head">
 						<h3>Commandes récentes</h3>
@@ -357,7 +344,9 @@ $donneesJSON = ''; // Initialiser la variable
 
 						</tbody>
 					</table>
-				</div>
+				</div> -->
+
+
 				<!-- <div class="todo">
 					<div class="head">
 						<h3>Todos</h3>
