@@ -16,6 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/styleInvoice.css">
     
+    
 </head>
 <body>
     <div class="card">
@@ -43,7 +44,7 @@
                             <br />
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <h2>INVOICE</h2>
+                                    <h2>Facture</h2>
                                     <h5>04854654101</h5></br>
                                     <?php
                                        echo '<p>' . date('Y-m-d H:i:s') . '</p>'; 
@@ -115,10 +116,14 @@ unset($_SESSION['facture']);
                     </div>
                 </div>
             </div>
-            
+            <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-primary btn-print" onclick="printInvoice()">Imprimer la facture</button>
         </div>
     </div>
-    <button class="btn btn-primary" onclick="printInvoice()">Print Invoice</button>
+        </div>
+    </div>
+    
     <script>
         function printInvoice() {
             window.print();
