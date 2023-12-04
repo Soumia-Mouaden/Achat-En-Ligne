@@ -147,7 +147,11 @@
                     <div class="step-dot"></div>
                 </div>
             </div>
-            <form method="post" action="../controller/utilisateurController.php?action=create">
+            <?php 
+                    $connexionV = isset($_GET['factureV']) ? $_GET['factureV'] : "";
+
+                ?>
+            <form method="post" action="../controller/utilisateurController.php?action=create&connexionV=<?php echo $connexionV; ?>">
                 <div class="step active">
                     <h2>Étape 1</h2>
                     <div class="form-group">

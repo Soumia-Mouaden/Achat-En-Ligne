@@ -81,15 +81,30 @@ class DaoCommande
         WHERE commande.etat = 'Livrée';");
         $stm->execute();
         $results = $stm->fetchAll(PDO::FETCH_ASSOC); // Utiliser fetchAll pour récupérer toutes les lignes
-    
+
         $caisse = 0;
         foreach ($results as $row) {
-            $caisse += ($row['prix'] * $row['quantite']); // Utiliser les clés du tableau associatif
+            $caisse += ($row['prix'] * $row['quantite']); 
         }
         return $caisse;
     }
 
+    public function countVente($mois,$jour)
+    {
+        $stm = $this->dbh->prepare("SELECT * 
+        FROM commande
+        JOIN commande_produit ON commande.numCommande = commande_produit.numCommande_Commande
+        JOIN produit ON commande_produit.id_Produit = produit.id
+        WHERE MONTH(commande.dateLivraison) = ? AND DAY(commande.dateLivraison) = ? AND commande.etat = 'Livrée';");
+
+        $stm->bindValue(1, $mois);
+        $stm->bindValue(2, $jour);
+        $stm->execute();
+        $results = $stm->fetchAll(PDO::FETCH_ASSOC);
+        $vente = 0;
+        foreach ($results as $row) {
+            $vente += ($row['prix'] * $row['quantite']); 
+        }
+        return $vente;
+    }
 }
-
-?>
-

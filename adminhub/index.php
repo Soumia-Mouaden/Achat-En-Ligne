@@ -5,8 +5,8 @@ $daoUser = new DaoUtilisateur();
 $daoCommande = new DaoCommande();
 $nbUser = $daoUser->countUsers();
 $nbCommandeAuj = $daoCommande->countCommandesToday();
-$daoCommandes = new DaoCommande();
-$caisse = $daoCommandes->countCaisse();
+$caisse = $daoCommande->countCaisse();
+$donneesJSON = ''; // Initialiser la variable
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,32 +37,34 @@ $caisse = $daoCommandes->countCaisse();
 		data.addColumn('number', 'Jour');
 		data.addColumn('number', 'Ventes');
 
-		data.addRows([
-			[1, 37.8],
-			[2, 30.9],
-			[3, 25.4],
-			[4, 11.7],
-			[5, 11.9],
-			[6, 8.8],
-			[7, 7.6],
-			[8, 12.3],
-			[9, 16.9],
-			[10, 12.8],
-			[11, 5.3],
-			[12, 6.6],
-			[13, 4.8],
-			[14, 4.2]
-		]);
+
+		<?php
+		
+		$nombreJours = cal_days_in_month(CAL_GREGORIAN, 12, date('Y'));
+		$rows = array();
+
+		// Récupérer les données pour chaque jour
+		for ($i = 1; $i <= $nombreJours; $i++) {
+			$totalVente = $daoCommande->countVente(12, $i);
+			$rows[] = "[$i, $totalVente]";
+		}
+
+		// Convertir le tableau en chaîne JSON pour JavaScript
+		$donneesJSON = implode(",", $rows);
+		?>
+
+		 data.addRows([
+            <?php echo $donneesJSON; ?>
+        ]);
+
 		var options = {
 			chart: {
-				title: 'Total des ventes par mois',
-				subtitle: 'en millions de dirhams (MAD)',
-
+				title: 'Total des ventes par mois en MAD',
 			},
 			titleTextStyle: {
 				color: '#000000',
 				fontSize: 16,
-				bold:true,
+				bold: true,
 				fontName: 'arial',
 
 			},
@@ -72,9 +74,6 @@ $caisse = $daoCommandes->countCaisse();
 				position: "none",
 			},
 			colors: ['#8D610E'], // Changer la couleur ici (par exemple, rouge)
-			
-			
-
 
 		};
 
@@ -84,6 +83,8 @@ $caisse = $daoCommandes->countCaisse();
 		chart.draw(data, google.charts.Line.convertOptions(options));
 
 	}
+
+
 
 	// anneau
 	google.charts.load("current", {
@@ -146,13 +147,13 @@ $caisse = $daoCommandes->countCaisse();
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="index.php">
 					<i class='bx bxs-dashboard'></i>
 					<span class="text">Tableau de bord</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="liste-produits.php">
 					<i class='bx bxs-box'></i>
 					<span class="text">Produits</span>
 				</a>
@@ -199,9 +200,9 @@ $caisse = $daoCommandes->countCaisse();
 					<button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
 				</div>
 			</form>
-			<a href="#" class="profile">
+			<!-- <a href="#" class="profile">
 				<img src="img/people.png">
-			</a>
+			</a> -->
 		</nav>
 		<!-- NAVBAR -->
 
@@ -273,16 +274,16 @@ $caisse = $daoCommandes->countCaisse();
 			<!-- diagrams -->
 
 
-			<div style="display: flex;">
-				<div id="chart-container" style="position: relative; float: left; border:1px solid white; background-color: white; width:640px; border-radius:10px white;padding:20px;">
-					<div id="columnchart_values" style=" position: relative; z-index: 1; ;">
+			<div style="display: flex; 	height: 460px;;">
+				<div id="chart-container" style="position: relative; float: left; width:100%; padding:20px;background-color:white; border:1px white solid; border-radius:50px;">
+					<div id="columnchart_values" style=" position: relative; z-index: 1;  ">
 					</div>
-					<div id="filter-section" style="position: absolute; top: 25px; left: 450px; z-index: 2;">
+					<!-- <div id="filter-section" style="position: absolute; top: 25px; left: 450px; z-index: 2;">
 						<label for="start"></label>
-						<input type="month" id="start" name="start" min="2023-09" value="2023-12" />
-					</div>
+						<input type="month"  id="start" name="start" min="2023-09" value="2023-12" />
+					</div> -->
 				</div>
-				<div style="position: relative;width: calc(100% - 600px);height:480px;">
+				<!-- <div style="position: relative;width: calc(100% - 600px);height:480px;">
 					<div id="donutchart">
 					</div>
 					<div class="legend" style="position: absolute; top: 320px; left: 70px; z-index: 2; ">
@@ -303,10 +304,10 @@ $caisse = $daoCommandes->countCaisse();
 							<span>Livrée</span>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 
-			<div class="table-data">
+			<!-- <div class="table-data">
 				<div class="order">
 					<div class="head">
 						<h3>Commandes récentes</h3>
@@ -343,7 +344,9 @@ $caisse = $daoCommandes->countCaisse();
 
 						</tbody>
 					</table>
-				</div>
+				</div> -->
+
+
 				<!-- <div class="todo">
 					<div class="head">
 						<h3>Todos</h3>
