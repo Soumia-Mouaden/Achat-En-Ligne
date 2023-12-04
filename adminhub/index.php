@@ -180,13 +180,13 @@ var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="index.php">
 					<i class='bx bxs-dashboard'></i>
 					<span class="text">Tableau de bord</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="liste-produits.php">
 					<i class='bx bxs-box'></i>
 					<span class="text">Produits</span>
 				</a>
@@ -212,7 +212,7 @@ var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
 				</a>
 			</li>
 			<li>
-				<a href="#" class="logout">
+				<a href="../index.php" class="logout">
 					<i class='bx bxs-log-out-circle'></i>
 					<span class="text">Se déconnecter</span>
 				</a>
