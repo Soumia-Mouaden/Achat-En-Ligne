@@ -181,8 +181,8 @@ body {
 /* CONTENT */
 #content {
 	position: relative;
-	width: calc(100%-580px);
-	left: 390px;
+	width: calc(100%-260px);
+	left: 230px;
 	transition: .3s ease;
 }
 
@@ -719,10 +719,9 @@ tr th:nth-child(5) {
 
 
 #donutchart {
-	height: 100%;
 	width: 315px;
-	margin-left: 20px;
-	margin-top: 20px;
+	/* margin-left: 20px;
+	 margin-top: 60px;  */
 	position: relative;
 	z-index: 1;
 	float: right;
