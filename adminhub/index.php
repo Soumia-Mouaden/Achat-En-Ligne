@@ -1,4 +1,5 @@
 <?php
+// session_start();
 include "../dao/daoCommande.php";
 include "../dao/daoUtilisateur.php";
 $daoUser = new DaoUtilisateur();
@@ -235,10 +236,10 @@ var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
 			<!-- <a href="#" class="profile">
 				<img src="img/people.png">
 			</a> -->
-			<div id="bienvenue">
+			<!-- <div id="bienvenue">
                  <p>
 				 <?php
-                 session_start();
+                
                  if (isset($_SESSION["utilisateur"])) {
                     $utilisateur = $_SESSION['utilisateur'];
                     if ($utilisateur != null) {
@@ -250,7 +251,7 @@ var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
                                 }
                                 ?>
 				 </p>
-			</div>
+			</div> -->
 		</nav>
 		<!-- NAVBAR -->
 
