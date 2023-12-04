@@ -13,17 +13,22 @@
             session_start();
             $_SESSION['utilisateur'] =$utilisateur;
             $_SESSION['id'] = $utilisateur->getId(); 
-            if($utilisateur!=null){
-                if ($connexionVV=='Vcommande'){
-                    header("Location: ../controller/controlleFacture.php");
-                    exit();
-                }
-                else{                
-                    header("Location: ../index.php");
-                    exit();
-                }
-            }  
-            else{
+
+            if ($utilisateur!=null && $utilisateur->getRole()=='responsable')
+             {  header("Location: ../adminhub/index.php");
+                exit();}
+            // else if($utilisateur!=null && $utilisateur->getRole()=='client'){
+            //     if ($connexionVV=='Vcommande'){
+            //         header("Location: ../controller/controlleFacture.php");
+            //         exit();
+            //     }
+            //     else{                
+            //         header("Location: ../index.php");
+            //         exit();
+            //     }
+            // }  
+            
+            else {
                header("Location: ../view/reconnexion.php");
             }
            break;

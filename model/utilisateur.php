@@ -12,7 +12,7 @@ class Utilisateur
         $this->gender = $gender;
         $this->mdp = $mdp;
         $this->ville = $ville;
-        $this->role = "client";
+        $this->role = $role;
     }
 
     /**

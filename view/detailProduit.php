@@ -117,7 +117,7 @@ $_SESSION['idOfProductt']=$idOfProduit;
                 <div class="col-lg-12">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="../index.php">Accueil</a></li>
+                            <li ><a href="../index.php">Accueil</a></li>
                             <li><a href="about.php">A propos </a></li>
                             <li><a href="contact.php">Contact</a></li>
                         </ul>
