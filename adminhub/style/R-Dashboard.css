@@ -330,8 +330,8 @@ body {
 	font-size: 36px;
 	font-weight: 600;
 	margin-bottom: 10px;
-	/* color: var(--dark); */
-	color: var(--blue);
+	color: var(--dark);
+	/* color: var(--blue); */
 }
 #content main .head-title .left .breadcrumb {
 	display: flex;

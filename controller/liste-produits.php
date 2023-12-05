@@ -16,22 +16,22 @@ if (!empty($result) > 0) {
 											<label for=\"checkbox1\"></label>
 										</span>
 									</td>
-                                    <td> <img src=\"../view/" . $row["image"] ."\" alt=\"product\"></td>                    
+                                    <td> <img src=\"../view/" . $row["image"] . "\" alt=\"product\"></td>                    
             <td>" . $row["nom"] . "</td>
             <td>" . $row["categorie"] . "</td>
             <td>" . $row["prix"] . "</td>
             <td>
-										<a href=\"#editProdModal". $row["id"] ."\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>
+										<a href=\"#editProdModal" . $row["id"] . "\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>
 										<a href=\"#deleteEmployeeModal" . $row["id"] . "\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a>
 									</td>
            
         </tr>";
-        
-$listeProd.='<div id="editProdModal'. $row["id"] .'" class="modal fade">
+
+        $listeProd .= '<div id="editProdModal' . $row["id"] . '" class="modal fade">
 <div class="modal-dialog">
     <div class="modal-content">
         <form method="post"
-        action="../controller/produitController.php?id='. $row["id"] .'&action=modifier">
+        action="../controller/produitController.php?id=' . $row["id"] . '&action=modifier">
             <div class="modal-header">						
                 <h4 class="modal-title">Modifier Produit</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -40,42 +40,52 @@ $listeProd.='<div id="editProdModal'. $row["id"] .'" class="modal fade">
     <div style="display: flex; ">
             <div class="form-group "style="margin-right: 10px;">
                <label>Image</label>
-               <input type="text" class="form-control " name="new_product_img" value="'.$row["image"].'"required>
+               <input type="file" class="form-control" id="recipient-name"  accept=".jpg,.png,.jpeg" name="new_product_img" placeholder="Choisir image" >
         </div>
         <div class="form-group">
                <label>Nom</label>
-               <input type="text" class="form-control" name="new_product_name"  value="'.$row["nom"].'"required>
+               <input type="text" class="form-control" name="new_product_name"  value="' . $row["nom"] . '"required>
         </div>
      </div>
      <div style="display: flex; ">
             <div class="form-group" style="margin-right: 10px;">
                <label>Catégorie</label>
-               <input type="text" class="form-control " name="new_product_category" value="'.$row["categorie"].'"required>
+               <select name="new_product_category" value="' . $row["categorie"] . '"  class="form-control">
+					<option >GateauBeldi</option>
+						<option >GateauAuMiel</option>
+						<option >Fekkas</option>
+						
+                        <option >DattesEtSellou</option>
+						<option >COMPOSITIONs</option>
+
+
+					</select>
+              
         </div>
         <div class="form-group">
                <label>Prix</label>
-               <input type="text" class="form-control" name="new_product_price"  value="'.$row["prix"].'"required>
+               <input type="text" class="form-control" name="new_product_price"  value="' . $row["prix"] . '"required>
         </div>
      </div>	
      <div style="display: flex; ">
             <div class="form-group" style="margin-right: 10px;">
                <label>Description</label>
-               <textarea class="form-control" name="new_product_description">'.$row["description"].'</textarea>
+               <textarea class="form-control" name="new_product_description">' . $row["description"] . '</textarea>
 
         </div>
         <div class="form-group">
                <label>Ingrédients</label>
-               <textarea class="form-control" name="new_product_Ingredients">'.$row["ingredients"].'</textarea>
+               <textarea class="form-control" name="new_product_Ingredients">' . $row["ingredients"] . '</textarea>
         </div>
      </div>	
      <div style="display: flex; ">
             <div class="form-group"  style="margin-right: 10px;">
                <label>Allergie</label>
-               <textarea class="form-control" name="new_product_allergie" >'.$row["allergie"].'</textarea>
+               <textarea class="form-control" name="new_product_allergie" >' . $row["allergie"] . '</textarea>
         </div>
         <div class="form-group">
                <label>Conservation</label>
-               <textarea class="form-control" name="new_product_conservation" >'.$row["conservation"].'</textarea>
+               <textarea class="form-control" name="new_product_conservation" >' . $row["conservation"] . '</textarea>
         </div>
      </div>	
      			
@@ -88,11 +98,11 @@ $listeProd.='<div id="editProdModal'. $row["id"] .'" class="modal fade">
     </div>
 </div>
 </div>';
-$listeProd.='<div id="deleteEmployeeModal'. $row["id"] .'" class="modal fade">
+        $listeProd .= '<div id="deleteEmployeeModal' . $row["id"] . '" class="modal fade">
 <div class="modal-dialog">
     <div class="modal-content">
         <form method="post"
-        action="../controller/produitController.php?id='. $row["id"] .'&action=supprimer">
+        action="../controller/produitController.php?id=' . $row["id"] . '&action=supprimer">
             <div class="modal-header">						
                 <h4 class="modal-title">Supprimer produit</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

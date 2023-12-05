@@ -6,8 +6,9 @@ switch ($action) {
     case 'ajouter':
         $nom = $_POST['product_name'];
         $categorie = $_POST['product_category'];
-        $image = $_POST['product_img'];
-        // $chemin="img/shop/".$categorie."/".$image;
+        // chemin de l'image
+        $image ="img/produit/". $_POST['product_img'];
+        // $chemin="../img/produit/".$categorie."/".$image;
         $prix = $_POST['product_price'];
         $description = $_POST['product_description'];
         $ingredients = $_POST['product_Ingredients'];
@@ -23,9 +24,14 @@ switch ($action) {
         break;
     case 'modifier':
         $id=$_GET["id"];
+        $imgP=($dao->findProduct($id))->getImage();
+       // $imgP=$_GET["id"];
         $nom = $_POST['new_product_name'];
         $categorie = $_POST['new_product_category'];
-        $image = $_POST['new_product_img'];
+        if(!empty($_POST['new_product_img'])){
+            $image = "img/produit/".$_POST['new_product_img'];
+        }
+        else  $image=$imgP;
         $prix = $_POST['new_product_price'];
         $description = $_POST['new_product_description'];
         $ingredients = $_POST['new_product_Ingredients'];
