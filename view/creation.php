@@ -11,6 +11,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
+      <!-- logo -->
+    <link rel="icon" href="img/logo.png">
       
       <!-- bootstrap css -->
       <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
