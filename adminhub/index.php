@@ -1,12 +1,12 @@
 <?php
-// session_start();
 include "../dao/daoCommande.php";
 include "../dao/daoUtilisateur.php";
+session_start();
 $daoUser = new DaoUtilisateur();
 $daoCommande = new DaoCommande();
 $nbUser = $daoUser->countUsers();
 $dateAujourdhui = date('Y-m-d');
-$nbCommandeAuj = $daoCommande->countCommandes($dateAujourdhui, 'Livrée');
+$nbCommandeAuj = $daoCommande->countCommandes($dateAujourdhui, 'En cours de traitement');
 $caisse = $daoCommande->countCaisse();
 $donneesJSON = ''; // Initialiser la variable
 ?>
@@ -21,6 +21,7 @@ $donneesJSON = ''; // Initialiser la variable
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="style/style.css">
+	<link rel="icon" href="../view/img/logo.png">
 
 	<!-- <title>Dashboard</title> -->
 </head>
@@ -236,22 +237,16 @@ var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
 			<!-- <a href="#" class="profile">
 				<img src="img/people.png">
 			</a> -->
-			<!-- <div id="bienvenue">
-                 <p>
-				 <?php
-                
-                 if (isset($_SESSION["utilisateur"])) {
-                    $utilisateur = $_SESSION['utilisateur'];
-                    if ($utilisateur != null) {
-                    echo '
-                            <p>Bienvenue ' . $utilisateur->getPrenom() .$utilisateur->getNom() . '</p>';
-
-                                    } 
-
-                                }
-                                ?>
-				 </p>
-			</div> -->
+			<div>
+				<?php
+				if (isset($_SESSION["utilisateur"])) {
+					$utilisateur = $_SESSION['utilisateur'];
+					if ($utilisateur != null) {
+						echo  $utilisateur->getNom() ;
+					}
+				}
+				?>
+			</div>
 		</nav>
 		<!-- NAVBAR -->
 

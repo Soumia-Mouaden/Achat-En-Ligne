@@ -65,7 +65,7 @@ class DaoUtilisateur
 
     public function countUsers()
     {
-        $stm = $this->dbh->prepare("SELECT COUNT(*) as total FROM utilisateur");
+        $stm = $this->dbh->prepare("SELECT COUNT(*) as total FROM utilisateur WHERE role = 'client'");
         $stm->execute();
         $result = $stm->fetch(PDO::FETCH_ASSOC);
         return $result['total'];
