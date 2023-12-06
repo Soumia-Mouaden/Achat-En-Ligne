@@ -1,4 +1,5 @@
-<?php include "dao/daoProduit.php";
+<?php
+ include "dao/daoProduit.php";
 include "dao/daoUtilisateur.php";
 $dao = new DaoProduit();
 $allProducts = $dao->listProduits();
