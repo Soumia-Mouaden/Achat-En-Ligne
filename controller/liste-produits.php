@@ -50,16 +50,14 @@ if (!empty($result) > 0) {
      <div style="display: flex; ">
             <div class="form-group" style="margin-right: 10px;">
                <label>Catégorie</label>
-               <select name="new_product_category" value="' . $row["categorie"] . '"  class="form-control">
-					<option >GateauBeldi</option>
-						<option >GateauAuMiel</option>
-						<option >Fekkas</option>
-						
-                        <option >DattesEtSellou</option>
-						<option >COMPOSITIONs</option>
+               <select name="new_product_category" class="form-control">
+    <option ' . ($row["categorie"] == "GateauBeldi" ? 'selected' : '') . '>GateauBeldi</option>
+    <option ' . ($row["categorie"] == "GateauAuMiel" ? 'selected' : '') . '>GateauAuMiel</option>
+    <option ' . ($row["categorie"] == "Fekkas" ? 'selected' : '') . '>Fekkas</option>
+    <option ' . ($row["categorie"] == "DattesEtSellou" ? 'selected' : '') . '>DattesEtSellou</option>
+    <option ' . ($row["categorie"] == "COMPOSITIONs" ? 'selected' : '') . '>COMPOSITIONs</option>
+</select>
 
-
-					</select>
               
         </div>
         <div class="form-group">

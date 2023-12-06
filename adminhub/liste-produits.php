@@ -172,7 +172,7 @@
 									<th>Image</th>
 									<th>Nom</th>
 									<th>Catégorie</th>
-									<th>Prix (dh/kg)</th>
+									<th>Prix (MAD/kg)</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -203,7 +203,10 @@
 				<div class="modal-input space-right" style="display: flex; ">
 					<!-- image -->
 					<!-- <input type="file" class="form-control" id="recipient-name" accept=".jpg,.png,.jpeg" name="img"> -->
+					
+
 					<input type="file" class="form-control" id="recipient-name" accept=".jpg,.png,.jpeg" name="product_img" placeholder="Choisir image" >
+					
 					<!-- <input type="text" class="form-control" id="recipient-name" name="product_img" placeholder="Choisir image"> -->
 					<!-- nom -->
 					<input type="text" class="form-control" name="product_name" placeholder="Nom ">

@@ -51,15 +51,18 @@
 	background-color: #f82c2c;
 	color: #fff;
   }
+#addProductBtn{
+	color: #fff;
+	background-color: #ffc107;
+}
+
 .mainButtons button{
     padding: 10px 20px;
     height: 45px;
-    background-color: #EEE6D8;
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
-    color: #B67332;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -69,10 +72,15 @@
 
   
   
-  .mainButtons button:hover {
-    color: #fff;
-    background-color: #DAAB3A;
+  .mainButtons #deleteProductBtn:hover {
+    color: #f82c2c;
+    background-color: #EEE6D8;
   } 
+  .mainButtons #addProductBtn:hover {
+    color: #ffc107;
+    background-color: #EEE6D8;
+  }
+
 table.table tr th, table.table tr td {
 	border-color: #e9e9e9;
 	padding: 8px 15px;
