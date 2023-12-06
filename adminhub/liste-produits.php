@@ -76,7 +76,9 @@
 				</a>
 			</li>
 			<li>
-				<a href="../index.php" class="logout">
+				<a href="../controller/utilisateurController.php?action=deconnecterRespo" class="logout">
+				
+
 					<i class='bx bxs-log-out-circle'></i>
 					<span class="text">Se déconnecter</span>
 				</a>
