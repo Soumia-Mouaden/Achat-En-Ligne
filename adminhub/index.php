@@ -213,7 +213,7 @@ var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
 				</a>
 			</li>
 			<li>
-				<a href="../index.php" class="logout">
+				<a href="../controller/utilisateurController.php?action=deconnexion" class="logout">
 					<i class='bx bxs-log-out-circle'></i>
 					<span class="text">Se déconnecter</span>
 				</a>

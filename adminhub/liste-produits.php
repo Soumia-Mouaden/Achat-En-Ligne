@@ -1,3 +1,7 @@
+<?php
+include "../dao/daoUtilisateur.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +42,7 @@
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-	<a href="#" class="brand">
+	<a href="#" class="brand" style="text-decoration: none;">
 			<img src="img/louza.png" alt="logo" id="logoHlou" style="width: 70px;height:auto;">
 			<span class="text" style="color: #8D610E;">HLOU'IN</span>
 		</a>
@@ -70,13 +74,13 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="#">
+				<a href="#" style="text-decoration: none;">
 					<i class='bx bxs-cog'></i>
 					<span class="text">Paramètres</span>
 				</a>
 			</li>
 			<li>
-				<a href="../controller/utilisateurController.php?action=deconnexion" class="logout">
+				<a href="../controller/utilisateurController.php?action=deconnexion" class="logout" style="text-decoration: none;">
 				
 
 					<i class='bx bxs-log-out-circle'></i>
