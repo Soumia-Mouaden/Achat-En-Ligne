@@ -237,12 +237,12 @@ var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
 			<!-- <a href="#" class="profile">
 				<img src="img/people.png">
 			</a> -->
-			<div>
+			<div class="profile" style="margin-left:700px;font-size:17px;font-weight:bold;">
 				<?php
 				if (isset($_SESSION["utilisateur"])) {
 					$utilisateur = $_SESSION['utilisateur'];
 					if ($utilisateur != null) {
-						echo  $utilisateur->getNom() ;
+						echo  'Bienvenue '. $utilisateur->getNom() .' '. $utilisateur->getPrenom() . '!' ;
 					}
 				}
 				?>
