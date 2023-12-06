@@ -726,3 +726,7 @@ tr th:nth-child(5) {
 	z-index: 1;
 	float: right;
 }
+#sidebar .side-menu.top li a:hover {
+	color: var(--blue);
+	text-decoration: none;
+}
