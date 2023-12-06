@@ -76,7 +76,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="../controller/utilisateurController.php?action=deconnecterRespo" class="logout">
+				<a href="../controller/utilisateurController.php?action=deconnexion" class="logout">
 				
 
 					<i class='bx bxs-log-out-circle'></i>
@@ -103,19 +103,17 @@
 			<!-- <a href="#" class="profile">
 				<img src="img/people.png">
 			</a> -->
-			<?php
-                
-                 if (isset($_SESSION["utilisateur"])) {
-                    $utilisateur = $_SESSION['utilisateur'];
-                    if ($utilisateur != null) {
-                    echo '
-                            <p>Bienvenue ' . $utilisateur->getPrenom() .$utilisateur->getNom() . '</p>';
-
-                                    } 
-
-                                }
-                                ?>
-		</nav>
+			<div class="profile" style="margin-left:700px;font-size:17px;font-weight:bold;">
+				<?php
+				if (isset($_SESSION["utilisateur"])) {
+					$utilisateur = $_SESSION['utilisateur'];
+					if ($utilisateur != null) {
+						echo  'Bienvenue '. $utilisateur->getNom() .' '. $utilisateur->getPrenom() . '!' ;
+					}
+				}
+				?>
+			</div>
+			</nav>
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->

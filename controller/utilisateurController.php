@@ -76,18 +76,18 @@ switch ($action) {
             exit();
         }
         break;
-    case 'deconnecterRespo':
+    // case 'deconnecterRespo':
 
-        session_start(); // Assurez-vous que la session est démarrée
+    //     session_start(); // Assurez-vous que la session est démarrée
 
-        if (isset($_SESSION['utilisateur'])) {
-            // Détruisez la session
-            session_unset();
-            session_destroy();
-        }
+    //     if (isset($_SESSION['utilisateur'])) {
+    //         // Détruisez la session
+    //         session_unset();
+    //         session_destroy();
+    //     }
 
 
-        // Redirigez l'utilisateur vers la page de connexion ou une autre page de votre choix
-        header('Location: ../index.php');
-        break;
+    //     // Redirigez l'utilisateur vers la page de connexion ou une autre page de votre choix
+    //     header('Location: ../index.php');
+    //     break;
 }
