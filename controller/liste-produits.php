@@ -55,7 +55,7 @@ if (!empty($result) > 0) {
     <option ' . ($row["categorie"] == "GateauAuMiel" ? 'selected' : '') . '>GateauAuMiel</option>
     <option ' . ($row["categorie"] == "Fekkas" ? 'selected' : '') . '>Fekkas</option>
     <option ' . ($row["categorie"] == "DattesEtSellou" ? 'selected' : '') . '>DattesEtSellou</option>
-    <option ' . ($row["categorie"] == "COMPOSITIONs" ? 'selected' : '') . '>COMPOSITIONs</option>
+    <option ' . ($row["categorie"] == "COMPOSITIONS" ? 'selected' : '') . '>COMPOSITIONS</option>
 </select>
 
               
