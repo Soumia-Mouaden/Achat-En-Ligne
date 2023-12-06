@@ -216,12 +216,12 @@
 					<!-- <input type="text" class="form-control" name="product_category" placeholder="Catégorie" required> -->
 					
 					<select name="product_category" placeholder="Catégorie" id="" class="form-control">
-					<option value="1">GateauBeldi</option>
-						<option value="2">GateauAuMiel</option>
-						<option value="3">Fekkas</option>
+					<option >GateauBeldi</option>
+						<option >GateauAuMiel</option>
+						<option >Fekkas</option>
 						
-                        <option value="4">DattesEtSellou</option>
-						<option value="5">COMPOSITIONs</option>
+                        <option >DattesEtSellou</option>
+						<option >COMPOSITIONS</option>
 
 
 					</select>

@@ -151,6 +151,7 @@ body {
 }
 #sidebar .side-menu.top li a:hover {
 	color: var(--blue);
+	text-decoration: none;
 }
 #sidebar .side-menu li a .bx {
 	min-width: calc(60px  - ((4px + 6px) * 2));
