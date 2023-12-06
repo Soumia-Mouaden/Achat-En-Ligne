@@ -182,7 +182,7 @@ session_start();
                         <div class="section-title mt-5">
                             <h2 >Maison créatrice d'émotions</h2>
                         </div>
-                        <p>La Patisserie Girls est une patisserie marocaine qui a commencé en tant que petite entreprise familiale à Casablanca. Les propriétaires sont le Dr Iyad Sultan et le Dr Sereen Sharabati, soutenus par une équipe de 25 employés."</p>
+                        <p>HLOU'INest une patisserie marocaine qui a commencé en tant que petite entreprise familiale à Casablanca. Les propriétaires sont le Dr Iyad Sultan et le Dr Sereen Sharabati, soutenus par une équipe de 25 employés."</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -205,7 +205,7 @@ session_start();
                         <span></span>
                         <h2>Notre parcours</h2>
                         <p>
-                            Depuis que notre début [Nom de la Pâtisserie], nous sommmes engagés d'assurer à nos clients un paradis sucré. Chaque visite est une expérience gustative exceptionnelle, et nous ne pouvons pas assez vanter les délices qui sortent de notre  pâtisserie.
+                            Depuis que notre début HLOU'IN, nous sommmes engagés d'assurer à nos clients un paradis sucré. Chaque visite est une expérience gustative exceptionnelle, et nous ne pouvons pas assez vanter les délices qui sortent de notre  pâtisserie.
 
 Les gâteaux exquis, les macarons fondants et les pâtisseries délicates ne sont que quelques-unes des raisons pour lesquelles nos clients sont devenus fidèles à notre patisserie. La créativité et la passion de notre équipe  se reflètent dans chaque dessert unique.
 

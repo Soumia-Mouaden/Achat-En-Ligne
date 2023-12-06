@@ -17,16 +17,16 @@
             if ($utilisateur!=null && $utilisateur->getRole()=='responsable')
              {  header("Location: ../adminhub/index.php");
                 exit();}
-            // else if($utilisateur!=null && $utilisateur->getRole()=='client'){
-            //     if ($connexionVV=='Vcommande'){
-            //         header("Location: ../controller/controlleFacture.php");
-            //         exit();
-            //     }
-            //     else{                
-            //         header("Location: ../index.php");
-            //         exit();
-            //     }
-            // }  
+            else if($utilisateur!=null && $utilisateur->getRole()=='client'){
+                if ($connexionVV=='Vcommande'){
+                    header("Location: ../controller/controlleFacture.php");
+                    exit();
+                }
+                else{                
+                    header("Location: ../index.php");
+                    exit();
+                }
+            }  
             
             else {
                header("Location: ../view/reconnexion.php");
