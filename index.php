@@ -32,7 +32,7 @@ $allProducts = $dao->listProduits();
     <link rel="stylesheet" href="view/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="view/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="view/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="view/css/SStyle.css" type="text/css">
+    <link rel="stylesheet" href="view/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -44,12 +44,7 @@ $allProducts = $dao->listProduits();
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
-    <!-- <div class="offcanvas__cart">
-           <div class="offcanvas__cart__item">
-                <a href="#"><img src="view/img/icon/cart.png" alt=""> <span>0</span></a>
-                <div class="cart__price">Panier: <span>$0.00</span></div>
-            </div>
-        </div>-->
+
         <div class="offcanvas__logo">
             <a href="./index.html"><img src="view/img/logo.png" alt=""></a>
         </div>
