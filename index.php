@@ -48,12 +48,7 @@ $allAvis = $daov->findAllAvis();
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
-    <!-- <div class="offcanvas__cart">
-           <div class="offcanvas__cart__item">
-                <a href="#"><img src="view/img/icon/cart.png" alt=""> <span>0</span></a>
-                <div class="cart__price">Panier: <span>$0.00</span></div>
-            </div>
-        </div>-->
+
         <div class="offcanvas__logo">
             <a href="./index.html"><img src="view/img/logo.png" alt=""></a>
         </div>
@@ -139,7 +134,6 @@ $allAvis = $daov->findAllAvis();
        
                 <video class="back_video" autoplay loop muted playsinline>
                     <source src="view/img/hero/hero-1.mp4" type="video/mp4">
-                    <!-- Ajoutez d'autres sources pour prendre en charge différents formats de vidéo -->
                     Votre navigateur ne prend pas en charge la balise vidéo.
                 </video>
             
