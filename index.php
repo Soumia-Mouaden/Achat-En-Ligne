@@ -32,7 +32,7 @@ $allProducts = $dao->listProduits();
     <link rel="stylesheet" href="view/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="view/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="view/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="view/css/style.css" type="text/css">
+    <link rel="stylesheet" href="view/css/SStyle.css" type="text/css">
 </head>
 
 <body>
@@ -132,7 +132,6 @@ $allProducts = $dao->listProduits();
        
                 <video class="back_video" autoplay loop muted playsinline>
                     <source src="view/img/hero/hero-1.mp4" type="video/mp4">
-                    <!-- Ajoutez d'autres sources pour prendre en charge différents formats de vidéo -->
                     Votre navigateur ne prend pas en charge la balise vidéo.
                 </video>
             
