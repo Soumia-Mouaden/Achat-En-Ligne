@@ -1,8 +1,12 @@
 <?php
  include "dao/daoProduit.php";
 include "dao/daoUtilisateur.php";
+include "dao/daoAvis.php";
+$daov = new DaoAvis();
 $dao = new DaoProduit();
+$daoU=new DaoUtilisateur();
 $allProducts = $dao->listProduits();
+$allAvis = $daov->findAllAvis();
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -91,15 +95,16 @@ $allProducts = $dao->listProduits();
                                         </ul>';
                                 }
                                 ?>
-
+                             </div>
                             <div class="header__logo">
                                 <a href="./index.html"><img src="view/img/logo.png" alt=""></a>
                             </div>
+
                             <div class="header__top__right">
-                               <!-- <div class="header__top__right__cart">
-                                    <a href="#"><img src="view/img/icon/cart.png" alt=""> <span>0</span></a>
-                                    <div class="cart__price">Panier: <span>$0.00</span></div>
-                                </div>-->
+                               <div class="header__top__right__cart">
+                                    <a href="#"><img src="view/img/icon/cart.png" alt=""> <span class="cart-count">0</span></a>
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -121,6 +126,8 @@ $allProducts = $dao->listProduits();
                             <li><a href="view/about.php">A propos</a></li>
                             
                             <li><a href="view/contact.php">Contact</a></li>
+                            <li><a href="view/commandeClient.php">Mes commandes</a></li>
+
                         </ul>
                     </nav>
                 </div>
@@ -231,7 +238,9 @@ $allProducts = $dao->listProduits();
                                     <h6><a href="#">' . $name . '</a></h6>
                                     <div class="product__item__price">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
-                                    <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                                    <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
+                                    <a href="#" class="addToCart">Ajouter</a>
+
 
                                     </div>
                                 </div>
@@ -252,7 +261,8 @@ $allProducts = $dao->listProduits();
                     <h6><a href="#">' . $name . '</a></h6>
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
-                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" class="addToCart">Ajouter</a>
                         
 
                        
@@ -274,7 +284,8 @@ $allProducts = $dao->listProduits();
                     <h6><a href="#">' . $name . '</a></h6>
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
-                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
+                                    <a href="#" class="addToCart">Ajouter</a>
                    </div>
                    </div>
                    </div>
@@ -293,7 +304,8 @@ $allProducts = $dao->listProduits();
                     <h6><a href="#">' . $name . '</a></h6>
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
-                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
+                                    <a href="#" class="addToCart">Ajouter</a>
                    </div>
                    </div>
                    </div>
@@ -312,7 +324,8 @@ $allProducts = $dao->listProduits();
                     <h6><a href="#">' . $name . '</a></h6>
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
-                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
+                                    <a href="#" class="addToCart">Ajouter</a>
                    </div>
                    </div>
                    </div>
@@ -354,7 +367,8 @@ $allProducts = $dao->listProduits();
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
                                         
-                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
+                                    <a href="#" class="addToCart">Ajouter</a>
                                     </div>
                                 </div>
                             </div>
@@ -389,7 +403,8 @@ $allProducts = $dao->listProduits();
                                     <h6><a href="#">' . $name . '</a></h6>
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
-                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
+                                    <a href="#" class="addToCart">Ajouter</a>
                                     </div>
                                 </div>
                             </div>
@@ -425,7 +440,8 @@ $allProducts = $dao->listProduits();
                                     <h6><a href="#">' . $name . '</a></h6>
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
-                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
+                                    <a href="#" class="addToCart">Ajouter</a>
                                     </div>
                                 </div>
                             </div>
@@ -461,7 +477,8 @@ $allProducts = $dao->listProduits();
                                     <h6><a href="#">' . $name . '</a></h6>
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
-                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
+                                    <a href="#" class="addToCart">Ajouter</a>
                                     </div>
                                 </div>
                             </div>
@@ -497,7 +514,8 @@ $allProducts = $dao->listProduits();
                                     <h6><a href="#">' . $name . '</a></h6>
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
-                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>
+                                        <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
+                                    <a href="#" class="addToCart">Ajouter</a>
                                     </div>
                                 </div>
                             </div>
@@ -593,123 +611,37 @@ $allProducts = $dao->listProduits();
                 </div>
             </div>
             <div class="row">
-                <div class="testimonial__slider owl-carousel">
-                    <div class="col-lg-6">
-                        <div class="testimonial__item">
-                            <div class="testimonial__author">
-                                
-                                <div class="testimonial__author__text">
-                                    <h5>Mohamed</h5>
-                                    <span>Casablance</span>
-                                </div>
+    <div class="testimonial__slider owl-carousel">
+        <?php
+        while ($avis = $allAvis->fetch(PDO::FETCH_ASSOC)) {
+            $commentaire = $avis['contenu'];
+            $prenom = $daoU->findUtilisateurById($avis['id_Utilisateur'])->getPrenom();
+            $ville = $daoU->findUtilisateurById($avis['id_Utilisateur'])->getVille();
+
+            echo '
+                <div class="col-lg-6">
+                    <div class="testimonial__item">
+                        <div class="testimonial__author">
+                            <div class="testimonial__author__text">
+                                <h5>' . $prenom . '</h5>
+                                <span>' . $ville . '</span>
                             </div>
-                            <div class="rating">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <p>La patisserie marocaine n'est pas seulement réputée pour ses délices, mais aussi pour son service exceptionnel. Une équipe qui prend soin de chaque détail.</p>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="testimonial__item">
-                            <div class="testimonial__author">
-                                
-                                <div class="testimonial__author__text">
-                                    <h5>Nawal</h5>
-                                    <span>Tanger</span>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <p>La patisserie marocaine à son apogée! Des créations sucrées qui célèbrent l'héritage culinaire du Maroc avec chaque bouchée. Un vrai régal pour les papilles.</p>
+                        <div class="rating">
+                            <span class="icon_star"></span>
+                            <span class="icon_star"></span>
+                            <span class="icon_star"></span>
+                            <span class="icon_star"></span>
+                            <span class="icon_star-half_alt"></span>
                         </div>
+                        <p>' . $commentaire . '</p>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="testimonial__item">
-                            <div class="testimonial__author">
-                                
-                                <div class="testimonial__author__text">
-                                    <h5>Samia</h5>
-                                    <span>Rabat</span>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <p>Une explosion de saveurs sucrées qui m'a transporté dans les ruelles parfumées du Maroc. Un arrêt incontournable pour les amateurs de pâtisseries exotiques.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="testimonial__item">
-                            <div class="testimonial__author">
-                                
-                                <div class="testimonial__author__text">
-                                    <h5>Malak</h5>
-                                    <span>Guelmim</span>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <p>Une escapade gourmande au Maroc sans quitter la ville! Les pâtisseries sont une invitation au voyage, une expérience sucrée qui émerveille à chaque visite.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="testimonial__item">
-                            <div class="testimonial__author">
-                                
-                                <div class="testimonial__author__text">
-                                    <h5>Yousra</h5>
-                                    <span>Fes</span>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <p>Un délice sucré qui reflète l'art et la passion de la pâtisserie marocaine. Chaque gâteau est une œuvre d'art, chaque saveur une histoire à savourer.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="testimonial__item">
-                            <div class="testimonial__author">
-                               
-                                <div class="testimonial__author__text">
-                                    <h5>Marwa</h5>
-                                    <span>Kenitra</span>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <p>Un service rapide et professionnel qui complète parfaitement la délicatesse des pâtisseries. Une équipe dévouée qui met la satisfaction du client en priorité.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </div>';
+        }
+        ?>
+    </div>
+</div>
+
         </div>
     </section>
     <!-- Testimonial Section End -->
@@ -900,7 +832,47 @@ $allProducts = $dao->listProduits();
     });
     function redirectToDetailProduit(nom) {
             window.location.href = "view/detailProduit.php?nomOfProduit=" + nom + "";
+        };
+        document.addEventListener("DOMContentLoaded", function () {
+        var cartCountElement = document.querySelector('.cart-count');
+        var addToCartButtons = document.querySelectorAll('.addToCart');
+
+        var cartCount = parseInt(getCookie('cartCount')) || 0;
+        cartCountElement.textContent = cartCount;
+
+        addToCartButtons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                cartCount++;
+                cartCountElement.textContent = cartCount;
+                setCookie('cartCount', cartCount, 7);
+            });
+        });
+
+        // Fonction pour définir un cookie
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + value + expires + "; path=/";
         }
+
+        // Fonction pour obtenir la valeur d'un cookie
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+    });
+
 </script>
 </script>
 </body>

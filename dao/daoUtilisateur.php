@@ -62,6 +62,37 @@ class DaoUtilisateur
         
         return $utilisateur;
     }
+    public function findUtilisateurByIdAv($id)
+{
+    try {
+        $stm = $this->dbh->prepare("SELECT * FROM utilisateur WHERE id=?");
+        $stm->bindValue(1, $id);
+        $stm->execute();
+
+        if ($stm->rowCount() > 0) {
+            $result = $stm->fetch(PDO::FETCH_ASSOC);
+            $utilisateur = new Utilisateur(
+                $result['nom'],
+                $result['prenom'],
+                $result['email'],
+                $result['tel'],
+                $result['genre'],
+                $result['mdp'],
+                $result['ville'],
+                $result['role']
+            );
+            return $utilisateur;
+        } else {
+            // Handle the case where no user is found with the given ID
+            return null;
+        }
+    } catch (PDOException $e) {
+        // Handle any exceptions that might occur during the query execution
+        echo "Error: " . $e->getMessage();
+        return null;
+    }
+}
+
 
     public function countUsers()
     {
