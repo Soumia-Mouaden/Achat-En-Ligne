@@ -26,12 +26,12 @@ class DaoProduit
 
         $result = $stm->fetch(PDO::FETCH_ASSOC);
         if (!empty($result)) {
-            $produit = new Produit($result['nom'],$result['categorie'], $result['image'], $result['prix'], $result['description'],$result['ingredients'],$result['allergie'],$result['conservation']);
+            $produit = new Produit($result['nom'], $result['categorie'], $result['image'], $result['prix'], $result['description'], $result['ingredients'], $result['allergie'], $result['conservation']);
         }
         return $produit;
     }
 
-    public function ProductsOfCategory($categoryOfProduct,$idOfProduct)
+    public function ProductsOfCategory($categoryOfProduct, $idOfProduct)
     {
         $stm = $this->dbh->prepare("SELECT * FROM Produit WHERE categorie=? AND id!=?");
         $stm->bindValue(1, $categoryOfProduct);
@@ -41,7 +41,7 @@ class DaoProduit
 
         $produits = [];
         foreach ($result as $row) {
-            $produit = new Produit($row['nom'],$row['categorie'], $row['image'], $row['prix'], $row['description'],$row['ingredients'],$row['allergie'],$row['conservation']);
+            $produit = new Produit($row['nom'], $row['categorie'], $row['image'], $row['prix'], $row['description'], $row['ingredients'], $row['allergie'], $row['conservation']);
             $produits[] = $produit;
         }
 
@@ -57,38 +57,36 @@ class DaoProduit
         $stm->bindValue(4, $produit->getPrix());
         $stm->bindValue(5, $produit->getDescription());
         $stm->bindValue(6, $produit->getIngredients());
-    $stm->bindValue(7, $produit->getAllergie());
-    $stm->bindValue(8, $produit->getConservation());
+        $stm->bindValue(7, $produit->getAllergie());
+        $stm->bindValue(8, $produit->getConservation());
 
         $stm->execute();
     }
 
 
-    public function ModifierProduit(Produit $produit,int $id){
-        $stm = $this->dbh->prepare("UPDATE `Produit` SET nom=?, categorie=?, image=?, prix=?, description=?, ingredients=?, allergie=?, conservation=? where id=$id"); 
+    public function ModifierProduit(Produit $produit, int $id)
+    {
+        $stm = $this->dbh->prepare("UPDATE `Produit` SET nom=?, categorie=?, image=?, prix=?, description=?, ingredients=?, allergie=?, conservation=? where id=$id");
         $stm->bindValue(1, $produit->getNom());
         $stm->bindValue(2, $produit->getCategorie());
         $stm->bindValue(3, $produit->getImage());
         $stm->bindValue(4, $produit->getPrix());
         $stm->bindValue(5, $produit->getDescription());
         $stm->bindValue(6, $produit->getIngredients());
-    $stm->bindValue(7, $produit->getAllergie());
-    $stm->bindValue(8, $produit->getConservation());
+        $stm->bindValue(7, $produit->getAllergie());
+        $stm->bindValue(8, $produit->getConservation());
         $stm->execute();
-     }
-    public function supprimerProduit($id){
+    }
+    public function supprimerProduit($id)
+    {
         $stm = $this->dbh->prepare("DELETE FROM `Produit` WHERE id = $id");
         $stm->execute();
     }
-    public function listProduits(){
+    public function listProduits()
+    {
         $stm = $this->dbh->prepare("SELECT * FROM Produit");
         $stm->execute();
-        $result=$stm;
+        $result = $stm;
         return  $result;
-
     }
-
-
 }
-
-?>
