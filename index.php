@@ -7,6 +7,7 @@ $dao = new DaoProduit();
 $daoU=new DaoUtilisateur();
 $allProducts = $dao->listProduits();
 $allAvis = $daov->findAllAvis();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -37,6 +38,8 @@ $allAvis = $daov->findAllAvis();
     <link rel="stylesheet" href="view/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="view/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="view/css/style.css" type="text/css">
+    <!-- Ajoutez ceci dans la section <head> de votre page -->
+
 </head>
 
 <body>
@@ -70,7 +73,7 @@ $allAvis = $daov->findAllAvis();
                         <div class="header__top__inner">
                             <div class="header__top__left">
                             <?php
-                            session_start();
+                            
                              if (isset($_SESSION["utilisateur"])) {
                                     $utilisateur = $_SESSION['utilisateur'];
                                    // Check if the user is logged in
@@ -97,7 +100,7 @@ $allAvis = $daov->findAllAvis();
 
                             <div class="header__top__right">
                                <div class="header__top__right__cart">
-                                    <a href="#"><img src="view/img/icon/cart.png" alt=""> <span class="cart-count">0</span></a>
+                                    <a href="view/testPanier.php"><img src="view/img/icon/cart.png" alt=""> <span class="cart-count">0</span></a>
                                     
                                 </div>
                             </div>
@@ -233,7 +236,7 @@ $allAvis = $daov->findAllAvis();
                                     <div class="product__item__price">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
                                     <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart">Ajouter</a>
+                                    <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
 
 
                                     </div>
@@ -256,8 +259,7 @@ $allAvis = $daov->findAllAvis();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="addToCart">Ajouter</a>
-                        
+                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
 
                        
                    </div>
@@ -279,7 +281,7 @@ $allAvis = $daov->findAllAvis();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart">Ajouter</a>
+                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
                    </div>
                    </div>
                    </div>
@@ -299,7 +301,7 @@ $allAvis = $daov->findAllAvis();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart">Ajouter</a>
+                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
                    </div>
                    </div>
                    </div>
@@ -319,7 +321,7 @@ $allAvis = $daov->findAllAvis();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart">Ajouter</a>
+                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
                    </div>
                    </div>
                    </div>
@@ -362,7 +364,7 @@ $allAvis = $daov->findAllAvis();
                                     <div class="cart_add">
                                         
                                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart">Ajouter</a>
+                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
                                     </div>
                                 </div>
                             </div>
@@ -398,7 +400,8 @@ $allAvis = $daov->findAllAvis();
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
                                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart">Ajouter</a>
+                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
+
                                     </div>
                                 </div>
                             </div>
@@ -435,7 +438,8 @@ $allAvis = $daov->findAllAvis();
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
                                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart">Ajouter</a>
+                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
+
                                     </div>
                                 </div>
                             </div>
@@ -472,7 +476,7 @@ $allAvis = $daov->findAllAvis();
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
                                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart">Ajouter</a>
+                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
                                     </div>
                                 </div>
                             </div>
@@ -509,8 +513,8 @@ $allAvis = $daov->findAllAvis();
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
                                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="controller/detailProduit.php?idOfProduit=' . $idOfProduit . '" class="addToCart">Ajouter</a>
-                                    </div>
+                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
+                                        </div>
                                 </div>
                             </div>
                         </div>';
@@ -828,47 +832,61 @@ $allAvis = $daov->findAllAvis();
             window.location.href = "view/detailProduit.php?nomOfProduit=" + nom + "";
         };
         document.addEventListener("DOMContentLoaded", function () {
-        var cartCountElement = document.querySelector('.cart-count');
-        var addToCartButtons = document.querySelectorAll('.addToCart');
+    var cartCountElement = document.querySelector('.cart-count');
+    var addToCartButtons = document.querySelectorAll('.addToCart');
 
-        var cartCount = parseInt(getCookie('cartCount')) || 0;
-        cartCountElement.textContent = cartCount;
+    // Retrieve the array of product IDs from the cookie
+    var cartItems = JSON.parse(getCookie('cartItems')) || [];
 
-        addToCartButtons.forEach(function (button) {
-            button.addEventListener('click', function (event) {
-                event.preventDefault();
-                cartCount++;
-                cartCountElement.textContent = cartCount;
-                setCookie('cartCount', cartCount, 7);
-            });
+    var cartCount = cartItems.length;
+    cartCountElement.textContent = cartCount;
+
+    addToCartButtons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            // Retrieve the data-id attribute value from the clicked button
+            var productId = button.getAttribute('data-id');
+
+            // Add the product ID to the array
+            cartItems.push(productId);
+
+            // Update the cart count and set the cookie
+            cartCount = cartItems.length;
+            cartCountElement.textContent = cartCount;
+            setCookie('cartItems', JSON.stringify(cartItems), 7);
+            console.log("cartItems:", cartItems);
         });
-
-        // Fonction pour définir un cookie
-        function setCookie(name, value, days) {
-            var expires = "";
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + value + expires + "; path=/";
-        }
-
-        // Fonction pour obtenir la valeur d'un cookie
-        function getCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
     });
 
+    // Function to set a cookie
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    // Function to get the value of a cookie
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+});
+
 </script>
 </script>
+
+
 </body>
 
 </html>
