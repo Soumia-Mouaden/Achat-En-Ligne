@@ -49,12 +49,9 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 
     <link rel="stylesheet" href="view/css/style.css" type="text/css">
-<<<<<<< HEAD
-    <!-- Ajoutez ceci dans la section <head> de votre page -->
 
-=======
     <link rel="stylesheet" href="view/stylePanierH.css" type="text/css">
->>>>>>> 08b8cf77c5ab060d2d6d1e032b38ccec7d7f223d
+
 </head>
 
 <body>
@@ -115,13 +112,9 @@ session_start();
 
                             <div class="header__top__right">
                                <div class="header__top__right__cart">
-<<<<<<< HEAD
-                                    <a href="view/testPanier.php"><img src="view/img/icon/cart.png" alt=""> <span class="cart-count">0</span></a>
-                                    
-=======
                                     <a href="#" data-toggle="modal" data-target="#myModal"><img src="view/img/icon/cart.png" alt=""> <span class="cart-count">0</span></a>
                                     <p>panier</p>
->>>>>>> 08b8cf77c5ab060d2d6d1e032b38ccec7d7f223d
+
                                 </div>
                             </div>
                         </div>
