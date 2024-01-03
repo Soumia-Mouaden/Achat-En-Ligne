@@ -190,8 +190,14 @@ $_SESSION['idOfProductt']=$idOfProduit;
                                     <input type="text" value="2" id="qq">
                                 </div>
                             </div>
-                            <button type="button" class="primary-btn" data-toggle="modal" data-target="#myModal" >Commander</button>
+                            <button type="button" class="primary-btn" data-toggle="modal" data-target="#myModal">Acheter</button>
+
+                            <!-- Nouveau bouton ajouté ici -->
+                            <div class="nouveau-bouton-container">
+                                <button type="button" class="btn mt-2 p-2" style="background: #dbd5c4; border: none; width:170px;" id="nouveauBouton">Ajouter au panier</button>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -485,9 +491,8 @@ $_SESSION['idOfProductt']=$idOfProduit;
             <div class="modal-footer container" style="justify-content: space-between;">
             <button type="button" class="btn" style="background: #dbd5c4; border: none; width:150px;" data-dismiss="modal">Annuler</button>
             <form method="post" action="../controller/controlleFacture.php">
-         
-        <button type="submit" class="btn btn-secondary" style="background: rgb(221, 189, 85); border: none; width:150px;">Valider</button>
-        </form>
+                <button type="submit" class="btn btn-secondary" style="background: rgb(221, 189, 85); border: none; width:150px;">valider</button>
+            </form>
         </div>
         </form>
       </div>

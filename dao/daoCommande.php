@@ -34,25 +34,14 @@ class DaoCommande
         return $idCommande;
     }
 
-    // public function findCommande($email, $mdp)
-    // {
-    //     $utilisateur = null;
-    //     $stm = $this->dbh->prepare("SELECT * FROM commande");
-    //     $stm->execute();
+    public function afficherComTimeline()
+    {
+        $stm = $this->dbh->prepare("SELECT * FROM  commande WHERE etat != 'Livrée';");
+        $stm->execute();
+        $result = $stm;
+        return  $result;
+    }
 
-    //     $result = $stm->fetch(PDO::FETCH_ASSOC);
-    //     if (!empty($result)) {
-    //         $commande = new Commande(
-    //             $result['numCommande'],
-    //             $result['dateCreation'],
-    //             $result['dateLivraison'],
-    //             $result['etat'],
-    //             $result['villeLivraison']
-    //         );
-    //     }
-    //     return $commande;
-    // }
-    
     public function insererCommandeProduit(CommandeProduit $commandeProduit)
     {
         $stm = $this->dbh->prepare("INSERT INTO commande_produit(quantite, id_Produit, numCommande_Commande) VALUES (?, ?, ?)");
@@ -63,8 +52,8 @@ class DaoCommande
 
         $stm->execute();
     }
-    
-    public function countCommandes($jour,$etat)
+
+    public function countCommandes($jour, $etat)
     {
         $stm = $this->dbh->prepare("SELECT COUNT(*) as total FROM commande WHERE DATE(dateCreation) = ? AND commande.etat = ?; ");
         $stm->bindValue(1, $jour);
@@ -86,12 +75,12 @@ class DaoCommande
 
         $caisse = 0;
         foreach ($results as $row) {
-            $caisse += ($row['prix'] * $row['quantite']); 
+            $caisse += ($row['prix'] * $row['quantite']);
         }
         return $caisse;
     }
 
-    public function countVente($mois,$jour)
+    public function countVente($mois, $jour)
     {
         $stm = $this->dbh->prepare("SELECT * 
         FROM commande
@@ -105,29 +94,27 @@ class DaoCommande
         $results = $stm->fetchAll(PDO::FETCH_ASSOC);
         $vente = 0;
         foreach ($results as $row) {
-            $vente += ($row['prix'] * $row['quantite']); 
+            $vente += ($row['prix'] * $row['quantite']);
         }
         return $vente;
     }
-    
+
     public function countLast3Days()
     {
-        $liste= []; 
+        $liste = [];
         $jour  = intval(date('d'));
         $moisPrecedent = intval(date('m')) - 1;
         if ($moisPrecedent === 0) {
-            $moisPrecedent = 12; 
+            $moisPrecedent = 12;
         }
         $nombreJours = cal_days_in_month(CAL_GREGORIAN, $moisPrecedent, date('Y'));
-        if ($jour ==1){
+        if ($jour == 1) {
 
-           $liste = [1, $nombreJours, $nombreJours-1];
-        }
-        elseif ($jour ==2){
+            $liste = [1, $nombreJours, $nombreJours - 1];
+        } elseif ($jour == 2) {
             $liste = [1, 2, $nombreJours];
-        }
-        else{
-            $liste = [$jour, $jour-1, $jour-2];
+        } else {
+            $liste = [$jour, $jour - 1, $jour - 2];
         }
         return $liste;
     }

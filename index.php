@@ -37,9 +37,24 @@ session_start();
     <link rel="stylesheet" href="view/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="view/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="view/css/slicknav.min.css" type="text/css">
+    
+  
+
+
+    <!-- Pour Panier-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+
     <link rel="stylesheet" href="view/css/style.css" type="text/css">
+<<<<<<< HEAD
     <!-- Ajoutez ceci dans la section <head> de votre page -->
 
+=======
+    <link rel="stylesheet" href="view/stylePanierH.css" type="text/css">
+>>>>>>> 08b8cf77c5ab060d2d6d1e032b38ccec7d7f223d
 </head>
 
 <body>
@@ -100,8 +115,13 @@ session_start();
 
                             <div class="header__top__right">
                                <div class="header__top__right__cart">
+<<<<<<< HEAD
                                     <a href="view/testPanier.php"><img src="view/img/icon/cart.png" alt=""> <span class="cart-count">0</span></a>
                                     
+=======
+                                    <a href="#" data-toggle="modal" data-target="#myModal"><img src="view/img/icon/cart.png" alt=""> <span class="cart-count">0</span></a>
+                                    <p>panier</p>
+>>>>>>> 08b8cf77c5ab060d2d6d1e032b38ccec7d7f223d
                                 </div>
                             </div>
                         </div>
@@ -212,8 +232,6 @@ session_start();
             <div class="row">
             <?php
                 // Deserialize $allProducts from the URL parameter
-                
-                
                 // Assuming you have fetched the product data from the database and stored it in an array called $allProducts
                 while($product=$allProducts->fetch(PDO::FETCH_ASSOC)) {
                     $image = $product['image'];
@@ -222,7 +240,7 @@ session_start();
                     $category = $product['categorie'];
                     $idOfProduit = $product['id'];
         
-                    if ($category == "GateauBeldi" && $image == "img/produit/Corne_de_gazelle_classique.jpg") {
+                    if ($category == "GateauBeldi" && $image == "img/shop/gateauBeldi/Corne_de_gazelle_classique.jpg") {
                         echo '
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -245,7 +263,7 @@ session_start();
                         </div>';
                     }
             
-                if ($category == "GateauAuMiel" && $image == "img/produit/1.jpg") {
+                if ($category == "GateauAuMiel" && $image == "img/shop/gateauAuMiel/1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
@@ -267,7 +285,7 @@ session_start();
                    </div>
                    </div>';
                 }
-                if ($category == "Fekkas" && $image == "img/produit/fekkas1.jpg") {
+                if ($category == "Fekkas" && $image == "img/shop/fekkas/1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
@@ -287,7 +305,7 @@ session_start();
                    </div>
                    </div>';
                 }
-                if ($category == "DattesEtSellou" && $image == "img/produit/d1.jpg") {
+                if ($category == "DattesEtSellou" && $image == "img/shop/datteetsellou/1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
@@ -792,6 +810,170 @@ session_start();
     </div>
 </div>
 <!-- Search End -->
+
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content p-0">
+
+
+      <div class="card cardPanier w-100">
+        <div class="row rowpanier">
+            <div class="col-md-8 cart">
+                <div class="titlePanier">
+                    <div class="row rowpanier">
+                        <div class="col"><h4><b>Mon panier</b></h4></div>
+                    </div>
+                </div>    
+                <div class="row border-top border-bottom rowpanier">
+                    <div class="row main align-items-center rowpanier mainpanier">
+                        <div class="col-2 col-2Panier"><img class="img-fluid" src="view/img/shop/dattesellou.jpg"></div>
+                        <div class="col col-2Panier">
+                            <div class="row text-muted rowpanier">Dattes et sellou</div>
+                            <div class="row rowpanier">Dattes</div>
+                        </div>
+                        <div class="col col-2Panier">
+                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
+                        </div>
+                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom rowpanier">
+                    <div class="row main align-items-center rowpanier mainpanier">
+                        <div class="col-2 col-2Panier"><img class="img-fluid" src="view/img/shop/dattesellou.jpg"></div>
+                        <div class="col col-2Panier">
+                            <div class="row text-muted rowpanier">Dattes et sellou</div>
+                            <div class="row rowpanier">Dattes</div>
+                        </div>
+                        <div class="col col-2Panier">
+                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
+                        </div>
+                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom rowpanier">
+                    <div class="row main align-items-center rowpanier mainpanier">
+                        <div class="col-2 col-2Panier"><img class="img-fluid" src="view/img/shop/dattesellou.jpg"></div>
+                        <div class="col col-2Panier">
+                            <div class="row text-muted rowpanier">Dattes et sellou</div>
+                            <div class="row rowpanier">Dattes</div>
+                        </div>
+                        <div class="col col-2Panier">
+                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
+                        </div>
+                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom rowpanier">
+                    <div class="row main align-items-center rowpanier mainpanier">
+                        <div class="col-2 col-2Panier"><img class="img-fluid" src="view/img/shop/dattesellou.jpg"></div>
+                        <div class="col col-2Panier">
+                            <div class="row text-muted rowpanier">Dattes et sellou</div>
+                            <div class="row rowpanier">Dattes</div>
+                        </div>
+                        <div class="col col-2Panier">
+                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
+                        </div>
+                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom rowpanier">
+                    <div class="row main align-items-center rowpanier mainpanier">
+                        <div class="col-2 col-2Panier"><img class="img-fluid" src="view/img/shop/dattesellou.jpg"></div>
+                        <div class="col col-2Panier">
+                            <div class="row text-muted rowpanier">Dattes et sellou</div>
+                            <div class="row rowpanier">Dattes</div>
+                        </div>
+                        <div class="col col-2Panier">
+                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
+                        </div>
+                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom rowpanier">
+                    <div class="row main align-items-center rowpanier mainpanier">
+                        <div class="col-2 col-2Panier"><img class="img-fluid" src="view/img/shop/dattesellou.jpg"></div>
+                        <div class="col col-2Panier">
+                            <div class="row text-muted rowpanier">Dattes et sellou</div>
+                            <div class="row rowpanier">Dattes</div>
+                        </div>
+                        <div class="col col-2Panier">
+                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
+                        </div>
+                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+                <div class="row rowpanier">
+                    <div class="row main align-items-center rowpanier mainpanier rowpanier">
+                        <div class="col-2 col-2Panier"><img class="img-fluid imgPanier" src="view/img/shop/fekkas.jpg"></div>
+                        <div class="col col-2Panier">
+                            <div class="row text-muted rowpanier">Categorie Fekkas</div>
+                            <div class="row rowpanier">Fekkas</div>
+                        </div>
+                        <div class="col col-2Panier">
+                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
+                        </div>
+                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
+                    </div>
+                </div>
+
+                <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+            </div>
+            <div class="col-md-4 summaryPanier">
+                <div><h4 style=" margin-top: 4vh;"><b>Total</b></h4></div>
+                <hr style="margin-top: 1.25rem;">
+                <div class="row rowpanier">
+                    <div class="col col-2Panier" style="padding-left:0;">ITEMS 3</div>
+                    <div class="col col-2Panier text-right">&euro; 132.00</div>
+                </div>
+                <form style="padding: 2vh 0;">
+                    <p>SHIPPING</p>
+                    <select class="selectPanier"><option class="text-muted">Standard-Delivery- &euro;5.00</option></select>
+                    <p>GIVE CODE</p>
+                    <input id="code" class="inputPanier" placeholder="Enter your code">
+                </form>
+                <div class="row rowpanier" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col col-2Panier">TOTAL PRICE</div>
+                    <div class="col  col-2Panier text-right">&euro; 137.00</div>
+                </div>
+                <button class="btn btnPanier">CHECKOUT</button>
+            </div>
+        </div>
+        
+    </div>
+
+
+    
+  
+</div>  
+        
+    </div>
+  </div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Js Plugins -->
 <script src="view/js/jquery-3.3.1.min.js"></script>

@@ -14,7 +14,7 @@ switch ($action) {
         $adresse = $_POST['adresse'];
         $dateCreation = date("Y-m-d H:i:s");
         $dateLivraison = "";
-        $etat = "en attente";
+        $etat = "En cours de traitement";
 
         if (isset($villeLivraison, $adresse)) {
                 $commande = new Commande($dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse);
