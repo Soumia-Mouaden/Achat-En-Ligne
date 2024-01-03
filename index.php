@@ -811,7 +811,7 @@ $allAvis = $daov->findAllAvis();
         <div class="row rowpanier">
             <div class="col-md-8 cart">
                 <div class="titlePanier">
-                    <div class="row rowpanier">
+                    <div class="row rowpanier mt-5">
                         <div class="col"><h4><b>Mon panier</b></h4></div>
                     </div>
                 </div>    
@@ -907,26 +907,26 @@ $allAvis = $daov->findAllAvis();
                     </div>
                 </div>
 
-                <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+                <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Précédent</span></div>
             </div>
             <div class="col-md-4 summaryPanier">
                 <div><h4 style=" margin-top: 4vh;"><b>Total</b></h4></div>
                 <hr style="margin-top: 1.25rem;">
                 <div class="row rowpanier">
-                    <div class="col col-2Panier" style="padding-left:0;">ITEMS 3</div>
-                    <div class="col col-2Panier text-right">&euro; 132.00</div>
+                    <div class="col col-2Panier" style="padding-left:0;">Nbre de produits</div>
+                    <div class="col col-2Panier text-right">10</div>
                 </div>
                 <form style="padding: 2vh 0;">
-                    <p>SHIPPING</p>
-                    <select class="selectPanier"><option class="text-muted">Standard-Delivery- &euro;5.00</option></select>
-                    <p>GIVE CODE</p>
-                    <input id="code" class="inputPanier" placeholder="Enter your code">
+                    <p>Vile de livraison</p>
+                    <input id="code" class="inputPanier mt-0 " placeholder="Entrer la ville de livraision ">
+                    <p>Addresse</p>
+                    <input id="code" class="inputPanier mt-0" placeholder="Entrer votre addresse">
                 </form>
                 <div class="row rowpanier" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                    <div class="col col-2Panier">TOTAL PRICE</div>
+                    <div class="col col-2Panier">Total de la commande</div>
                     <div class="col  col-2Panier text-right">&euro; 137.00</div>
                 </div>
-                <button class="btn btnPanier">CHECKOUT</button>
+                <button class="btn btnPanier">Valider</button>
             </div>
         </div>
         
