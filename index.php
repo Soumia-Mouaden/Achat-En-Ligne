@@ -97,8 +97,8 @@ $allAvis = $daov->findAllAvis();
 
                             <div class="header__top__right">
                                <div class="header__top__right__cart">
-                                    <a href="#"><img src="view/img/icon/cart.png" alt=""> <span class="cart-count">0</span></a>
-                                    
+                                    <a href="#" data-toggle="modal" data-target="#myModal"><img src="view/img/icon/cart.png" alt=""> <span class="cart-count">0</span></a>
+                                    <p>panier</p>
                                 </div>
                             </div>
                         </div>
@@ -788,6 +788,76 @@ $allAvis = $daov->findAllAvis();
     </div>
 </div>
 <!-- Search End -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Panier</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+                
+
+                
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Js Plugins -->
 <script src="view/js/jquery-3.3.1.min.js"></script>
