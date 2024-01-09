@@ -37,9 +37,21 @@ $allAvis = $daov->findAllAvis();
     <link rel="stylesheet" href="view/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="view/css/slicknav.min.css" type="text/css">
 
+
+
+
     <!-- Pour Panier-->
-    <link rel="stylesheet" href="view/css/styleTotal.css" type="text/css">
-    <link rel="stylesheet" href="view/styleMonPanierH.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+        type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        type="text/css">
+
+    <link rel="stylesheet" href="view/css/style.css" type="text/css">
+    <link rel="stylesheet" href="view/stylePanierH.css" type="text/css">
 </head>
 
 <body id="first">
@@ -884,7 +896,7 @@ $allAvis = $daov->findAllAvis();
                                 </div>
                             </div>
 
-                            <div class="back-to-shop p-1"><a href="#" class="mr-2">&leftarrow;</a><span>Précédent</span></div>
+                            <div class="back-to-shop p-1"><a href="#first" class="mr-2">&leftarrow;</a><span>Précédent</span></div>
 
                         </div>
                         <div class="col-md-4 summaryPanier">
