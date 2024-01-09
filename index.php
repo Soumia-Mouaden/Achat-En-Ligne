@@ -26,6 +26,13 @@ session_start();
     rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
+    <!-- Bootstrap JS with Popper.js -->
+    <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="view/css/bootstrap.min.css" type="text/css">
@@ -114,7 +121,6 @@ session_start();
                                <div class="header__top__right__cart">
                                     <a href="#" data-toggle="modal" data-target="#myModal"><img src="view/img/icon/cart.png" alt=""> <span class="cart-count">0</span></a>
                                     <p>panier</p>
-
                                 </div>
                             </div>
                         </div>
@@ -247,7 +253,7 @@ session_start();
                                     <div class="product__item__price">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
                                     <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
+                                    <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image=" '.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1">Ajouter</a>
 
 
                                     </div>
@@ -270,7 +276,7 @@ session_start();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
+                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image=" '.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1">Ajouter</a>
 
                        
                    </div>
@@ -292,8 +298,8 @@ session_start();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
-                   </div>
+                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image=" '.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1">Ajouter</a>
+                        </div>
                    </div>
                    </div>
                    </div>';
@@ -332,8 +338,8 @@ session_start();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
-                   </div>
+                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image=" '.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1">Ajouter</a>
+                        </div>
                    </div>
                    </div>
                    </div>';
@@ -375,7 +381,7 @@ session_start();
                                     <div class="cart_add">
                                         
                                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
+                                    <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image=" '.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1">Ajouter</a>
                                     </div>
                                 </div>
                             </div>
@@ -411,7 +417,7 @@ session_start();
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
                                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
+                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image=" '.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1">Ajouter</a>
 
                                     </div>
                                 </div>
@@ -449,7 +455,7 @@ session_start();
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
                                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
+                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image=" '.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1">Ajouter</a>
 
                                     </div>
                                 </div>
@@ -487,8 +493,8 @@ session_start();
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
                                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
-                                    </div>
+                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image=" '.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1">Ajouter</a>
+                                        </div>
                                 </div>
                             </div>
                         </div>';
@@ -524,7 +530,7 @@ session_start();
                                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
                                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '">Ajouter</a>
+                                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image=" '.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1">Ajouter</a>
                                         </div>
                                 </div>
                             </div>
@@ -820,98 +826,8 @@ session_start();
                         <div class="col"><h4><b>Mon panier</b></h4></div>
                     </div>
                 </div>    
-                <div class="row border-top border-bottom rowpanier">
-                    <div class="row main align-items-center rowpanier mainpanier">
-                        <div class="col-2 col-2Panier"><img class="img-fluid" src="view/img/shop/dattesellou.jpg"></div>
-                        <div class="col col-2Panier">
-                            <div class="row text-muted rowpanier">Dattes et sellou</div>
-                            <div class="row rowpanier">Dattes</div>
-                        </div>
-                        <div class="col col-2Panier">
-                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
-                        </div>
-                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
-                    </div>
-                </div>
-                <div class="row border-top border-bottom rowpanier">
-                    <div class="row main align-items-center rowpanier mainpanier">
-                        <div class="col-2 col-2Panier"><img class="img-fluid" src="view/img/shop/dattesellou.jpg"></div>
-                        <div class="col col-2Panier">
-                            <div class="row text-muted rowpanier">Dattes et sellou</div>
-                            <div class="row rowpanier">Dattes</div>
-                        </div>
-                        <div class="col col-2Panier">
-                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
-                        </div>
-                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
-                    </div>
-                </div>
-                <div class="row border-top border-bottom rowpanier">
-                    <div class="row main align-items-center rowpanier mainpanier">
-                        <div class="col-2 col-2Panier"><img class="img-fluid" src="view/img/shop/dattesellou.jpg"></div>
-                        <div class="col col-2Panier">
-                            <div class="row text-muted rowpanier">Dattes et sellou</div>
-                            <div class="row rowpanier">Dattes</div>
-                        </div>
-                        <div class="col col-2Panier">
-                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
-                        </div>
-                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
-                    </div>
-                </div>
-                <div class="row border-top border-bottom rowpanier">
-                    <div class="row main align-items-center rowpanier mainpanier">
-                        <div class="col-2 col-2Panier"><img class="img-fluid" src="view/img/shop/dattesellou.jpg"></div>
-                        <div class="col col-2Panier">
-                            <div class="row text-muted rowpanier">Dattes et sellou</div>
-                            <div class="row rowpanier">Dattes</div>
-                        </div>
-                        <div class="col col-2Panier">
-                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
-                        </div>
-                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
-                    </div>
-                </div>
-                <div class="row border-top border-bottom rowpanier">
-                    <div class="row main align-items-center rowpanier mainpanier">
-                        <div class="col-2 col-2Panier"><img class="img-fluid" src="view/img/shop/dattesellou.jpg"></div>
-                        <div class="col col-2Panier">
-                            <div class="row text-muted rowpanier">Dattes et sellou</div>
-                            <div class="row rowpanier">Dattes</div>
-                        </div>
-                        <div class="col col-2Panier">
-                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
-                        </div>
-                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
-                    </div>
-                </div>
-                <div class="row border-top border-bottom rowpanier">
-                    <div class="row main align-items-center rowpanier mainpanier">
-                        <div class="col-2 col-2Panier"><img class="img-fluid" src="view/img/shop/dattesellou.jpg"></div>
-                        <div class="col col-2Panier">
-                            <div class="row text-muted rowpanier">Dattes et sellou</div>
-                            <div class="row rowpanier">Dattes</div>
-                        </div>
-                        <div class="col col-2Panier">
-                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
-                        </div>
-                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
-                    </div>
-                </div>
-                <div class="row rowpanier">
-                    <div class="row main align-items-center rowpanier mainpanier rowpanier">
-                        <div class="col-2 col-2Panier"><img class="img-fluid imgPanier" src="view/img/shop/fekkas.jpg"></div>
-                        <div class="col col-2Panier">
-                            <div class="row text-muted rowpanier">Categorie Fekkas</div>
-                            <div class="row rowpanier">Fekkas</div>
-                        </div>
-                        <div class="col col-2Panier">
-                            <a href="#" class="lien">-</a><a href="#" class="border lien">1</a><a href="#" class="lien">+</a>
-                        </div>
-                        <div class="col col-2Panier">&euro; 44.00 <span class="close">&#10005;</span></div>
-                    </div>
-                </div>
-
+                
+                
                 <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Précédent</span></div>
             </div>
             <div class="col-md-4 summaryPanier">
@@ -946,26 +862,6 @@ session_start();
   </div>
   
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- Js Plugins -->
@@ -1006,11 +902,13 @@ session_start();
     function redirectToDetailProduit(nom) {
             window.location.href = "view/detailProduit.php?nomOfProduit=" + nom + "";
         };
-        document.addEventListener("DOMContentLoaded", function () {
+
+
+    document.addEventListener("DOMContentLoaded", function () {
     var cartCountElement = document.querySelector('.cart-count');
     var addToCartButtons = document.querySelectorAll('.addToCart');
 
-    // Retrieve the array of product IDs from the cookie
+    // Retrieve the array of product items from the cookie
     var cartItems = JSON.parse(getCookie('cartItems')) || [];
 
     var cartCount = cartItems.length;
@@ -1020,18 +918,32 @@ session_start();
         button.addEventListener('click', function (event) {
             event.preventDefault();
 
-            // Retrieve the data-id attribute value from the clicked button
+            // Retrieve the data attributes from the clicked button
             var productId = button.getAttribute('data-id');
+            var productImage = button.getAttribute('data-image');
+            var productName = button.getAttribute('data-name');
+            var productPrice = button.getAttribute('data-price');
+            var productCategory = button.getAttribute('data-category');
+            var productQuantity = button.getAttribute('data-quantité');
 
-            // Add the product ID to the array
-            cartItems.push(productId);
+            // Add the product information to the array
+            cartItems.push({
+                id: productId,
+                image: productImage,
+                name: productName,
+                price: parseFloat(productPrice), // Convert to a floating-point number
+                category: productCategory,
+                quantity: 1 // You can initialize the quantity as needed
+            });
 
             // Update the cart count and set the cookie
             cartCount = cartItems.length;
             cartCountElement.textContent = cartCount;
-            setCookie('cartItems', JSON.stringify(cartItems), 7);
+            setCookie('cartItems', JSON.stringify(cartItems), 6);
             console.log("cartItems:", cartItems);
         });
+        console.log("cartItems:", cartItems);
+
     });
 
     // Function to set a cookie
@@ -1057,6 +969,79 @@ session_start();
         return null;
     }
 });
+
+
+
+
+// display the cart items
+document.addEventListener("DOMContentLoaded", function () {
+    // ...
+    console.log('displayProductsInModal called');
+
+    // Function to display products in the modal
+    function displayProductsInModal() {
+        var modalBody = document.querySelector('.modal .cart');
+        var totalProductsCountElement = document.querySelector('.summaryPanier .col-2Panier.text-right');
+        var totalPriceElement = document.querySelector('.summaryPanier .col.col-2Panier.text-right');
+
+        // Retrieve the array of product items from the cookie
+        var cartItems = JSON.parse(getCookie('cartItems')) || [];
+
+        // Clear the modal body before adding new products
+        modalBody.innerHTML = '';
+
+        var totalProductsCount = 0;
+        var totalPrice = 0;
+
+        // Loop through each product in the cartItems array
+        cartItems.forEach(function (product) {
+            // Create HTML elements for each product
+            var productDiv = document.createElement('div');
+            productDiv.classList.add('row', 'border-top', 'border-bottom', 'rowpanier');
+            productDiv.innerHTML = `
+                <div class="row main align-items-center rowpanier mainpanier">
+                    <div class="col-2 col-2Panier"><img class="img-fluid" src="${product.image}"></div>
+                    <div class="col col-2Panier">
+                        <div class="row text-muted rowpanier">${product.name}</div>
+                        <div class="row rowpanier">${product.category}</div>
+                    </div>
+                    <div class="col col-2Panier">
+                        <a href="#" class="lien">-</a><a href="#" class="border lien">${product.quantity}</a><a href="#" class="lien">+</a>
+                    </div>
+                    <div class="col col-2Panier">&euro; ${product.price.toFixed(2)} <span class="close">&#10005;</span></div>
+                </div>
+            `;
+
+            // Append the productDiv to the modal body
+            modalBody.appendChild(productDiv);
+
+            // Update total products count and price
+            totalProductsCount += product.quantity;
+            totalPrice += product.price * product.quantity;
+        });
+
+        // Update the total products count and price in the summary
+        totalProductsCountElement.textContent = totalProductsCount;
+        totalPriceElement.textContent = '&euro; ' + totalPrice.toFixed(2);
+    }
+
+    // Call the function to display products in the modal
+    displayProductsInModal();
+
+    // ...
+});
+
+function getCookie(name) {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
+        }
+    }
+    return null;
+}
+
 
 </script>
 </script>
