@@ -37,21 +37,8 @@ $allAvis = $daov->findAllAvis();
     <link rel="stylesheet" href="view/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="view/css/slicknav.min.css" type="text/css">
 
-
-
-
-    <!-- Pour Panier-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-        type="text/css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        type="text/css">
-
-    <link rel="stylesheet" href="view/css/style.css" type="text/css">
-    <link rel="stylesheet" href="view/stylePanierH.css" type="text/css">
+    <link rel="stylesheet" href="view/css/styleTotal.css" type="text/css">
+    <link rel="stylesheet" href="view/styleMonPanierH.css" type="text/css">
 </head>
 
 <body id="first">
@@ -838,7 +825,7 @@ $allAvis = $daov->findAllAvis();
                     <div class="row rowpanier">
                         <div class="col-md-8 cart">
                             <div class="titlePanier">
-                                <div class="row rowpanier mt-5">
+                                <div class="row rowpanier mt-3">
                                     <div class="col">
                                         <h4><b>Mon panier</b></h4>
                                     </div>
@@ -858,11 +845,11 @@ $allAvis = $daov->findAllAvis();
                             </style>
                             <div class="row border-top border-bottom rowpanier">
                                 <div class="row main align-items-center rowpanier mainpanier">
-                                    <div class="col-2 col-2Panier"><img class="img-fluid"
+                                    <div class="col-2 col-2Panier aa"><img class="img-fluid"
                                             src="view/img/shop/dattesellou.jpg"></div>
-                                    <div class="col col-2Panier">
-                                        <div class="row text-muted rowpanier">Dattes et sellou</div>
-                                        <div class="row rowpanier">Dattes</div>
+                                    <div class=" col-2Panier">
+                                        <div class="row text-muted rowpanier ">Dattes et sellou</div>
+                                        <div class="row rowpanier mt-1">Dattes</div>
                                     </div>
 
                                     <div class="col">
@@ -871,18 +858,17 @@ $allAvis = $daov->findAllAvis();
                                         <a href="#" class="plus">+</a>
                                     </div>
 
-                                    <div class="col col-2Panier" id="totalPrice">&euro; 44.00 <span
-                                            class="close">&#10005;</span></div>
+                                    <div class="col col-2Panier" id="totalPrice">&euro; 44.00 <span class="close">&#10005;</span></div>
                                 </div>
                             </div>
 
                             <div class="row border-top border-bottom rowpanier">
                                 <div class="row main align-items-center rowpanier mainpanier">
-                                    <div class="col-2 col-2Panier"><img class="img-fluid"
+                                    <div class="col-2 col-2Panier aa"><img class="img-fluid"
                                             src="view/img/shop/dattesellou.jpg"></div>
-                                    <div class="col col-2Panier">
-                                        <div class="row text-muted rowpanier">Dattes et sellou</div>
-                                        <div class="row rowpanier">Dattes</div>
+                                    <div class=" col-2Panier">
+                                        <div class="row text-muted rowpanier ">Dattes et sellou</div>
+                                        <div class="row rowpanier mt-1">Dattes</div>
                                     </div>
 
                                     <div class="col">
@@ -891,8 +877,45 @@ $allAvis = $daov->findAllAvis();
                                         <a href="#" class="plus">+</a>
                                     </div>
 
-                                    <div class="col col-2Panier" id="totalPrice">&euro; 44.00 <span
-                                            class="close">&#10005;</span></div>
+                                    <div class="col col-2Panier" id="totalPrice">&euro; 44.00 <span class="close">&#10005;</span></div>
+                                </div>
+                            </div>
+
+                            <div class="row border-top border-bottom rowpanier">
+                                <div class="row main align-items-center rowpanier mainpanier">
+                                    <div class="col-2 col-2Panier aa"><img class="img-fluid"
+                                            src="view/img/shop/dattesellou.jpg"></div>
+                                    <div class=" col-2Panier">
+                                        <div class="row text-muted rowpanier ">Dattes et sellou</div>
+                                        <div class="row rowpanier mt-1">Dattes</div>
+                                    </div>
+
+                                    <div class="col">
+                                        <a href="#" class="minus">-</a>
+                                        <a href="#" class="border lien quantity">1</a>
+                                        <a href="#" class="plus">+</a>
+                                    </div>
+
+                                    <div class="col col-2Panier" id="totalPrice">&euro; 44.00 <span class="close">&#10005;</span></div>
+                                </div>
+                            </div>
+
+                            <div class="row border-top border-bottom rowpanier">
+                                <div class="row main align-items-center rowpanier mainpanier">
+                                    <div class="col-2 col-2Panier aa"><img class="img-fluid"
+                                            src="view/img/shop/dattesellou.jpg"></div>
+                                    <div class=" col-2Panier">
+                                        <div class="row text-muted rowpanier ">Dattes et sellou</div>
+                                        <div class="row rowpanier mt-1">Dattes</div>
+                                    </div>
+
+                                    <div class="col">
+                                        <a href="#" class="minus">-</a>
+                                        <a href="#" class="border lien quantity">1</a>
+                                        <a href="#" class="plus">+</a>
+                                    </div>
+
+                                    <div class="col col-2Panier" id="totalPrice">&euro; 44.00 <span class="close">&#10005;</span></div>
                                 </div>
                             </div>
 
@@ -918,7 +941,6 @@ $allAvis = $daov->findAllAvis();
                                 <div class="col col-2Panier">Total de la commande</div>
                                 <div class="col  col-2Panier text-right">&euro; 137.00</div>
                             </div>
-
                             <button class="btn btnPanier">Valider</button>
                         </div>
                     </div>
@@ -1020,60 +1042,7 @@ $allAvis = $daov->findAllAvis();
     });
     </script>
 
-    <!-- <script>
-        let quantity = 1;
-        let pricePerUnit = 44.00;
-
-        function updatePrice() {
-            const totalPriceElement = document.getElementById("totalPrice");
-            const newTotalPrice = (quantity * pricePerUnit).toFixed(2);
-            totalPriceElement.innerHTML = `&euro; ${newTotalPrice}`;
-        }
-
-        function adjustQuantity(amount) {
-            quantity += amount;
-            if (quantity < 1) {
-                quantity = 1;
-            }
-            document.getElementById("quantity").innerHTML = quantity;
-            updatePrice();
-        }
-</script>  -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Récupérer tous les éléments avec la classe "rowpanier"
-        var rows = document.querySelectorAll('.rowpanier');
-
-        // Parcourir chaque élément "rowpanier"
-        rows.forEach(function(row) {
-            // Récupérer les éléments +, - et la quantité à l'intérieur de chaque "rowpanier"
-            var minusButton = row.querySelector('.minus');
-            var plusButton = row.querySelector('.plus');
-            var quantityElement = row.querySelector('.quantity');
-
-            // Ajouter un gestionnaire d'événement pour le bouton "-"
-            minusButton.addEventListener('click', function(event) {
-                event.preventDefault();
-                // Décrémenter la quantité
-                var quantity = parseInt(quantityElement.innerText);
-                if (quantity > 1) {
-                    quantity--;
-                    quantityElement.innerText = quantity;
-                }
-            });
-
-            // Ajouter un gestionnaire d'événement pour le bouton "+"
-            plusButton.addEventListener('click', function(event) {
-                event.preventDefault();
-                // Incrémenter la quantité
-                var quantity = parseInt(quantityElement.innerText);
-                quantity++;
-                quantityElement.innerText = quantity;
-            });
-        });
-    });
-    </script>
-
+   
 
 </body>
 
