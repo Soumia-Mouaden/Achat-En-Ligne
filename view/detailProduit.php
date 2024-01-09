@@ -190,6 +190,7 @@ $_SESSION['idOfProductt']=$idOfProduit;
                                     <input type="text" value="2" id="qq">
                                 </div>
                             </div>
+                            
                             <button type="button" class="primary-btn" data-toggle="modal" data-target="#myModal">Acheter</button>
 
                             <!-- Nouveau bouton ajouté ici -->
@@ -464,11 +465,13 @@ $_SESSION['idOfProductt']=$idOfProduit;
                             <div class="product__details__option row">
                                     <div class="col-md-6">
                                         <p>Quantité: <span>(en Kg)</span></p>
+
                                         <div class="quantity" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                                             <div class="pro-qty">
                                                 <input type="text" id="myInput" name="quantite">
                                             </div>
                                         </div>
+
                                     </div>
                                     <div class="col-md-6">
                                         <p>Prix Total:</p>
