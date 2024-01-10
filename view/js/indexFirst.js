@@ -75,7 +75,7 @@ function displayProductsInModal() {
             <a href="#" class="qtybtn plus">+</a>
         </div>
     
-        <div class="col col-2Panier" data-product-id="${product.id}">
+        <div class="col col-2Panier product2" data-product-id="${product.id}">
             <label id="totalPriceProduct">${(product.priceUnitaire * product.quantity).toFixed(2)}</label>
             <span class="close closePanier">&#10005;</span>
         </div>
@@ -184,26 +184,26 @@ document.addEventListener("DOMContentLoaded", function () {
             updatePrixTotalPanier();
     });
 
+    $('.rowpanier').on('click', '.closePanier', function () {
+        var productId = $(this).closest('.product').find('#hiddenProductId').val();
+        removeProductFromCart(productId);
+    });
+    
+
     function removeProductFromCart(productId) {
         var productIndex = cartItems.findIndex(item => item.id === productId);
-
+    
         if (productIndex !== -1) {
             cartItems.splice(productIndex, 1);
-
+    
             setCookie('cartItems', JSON.stringify(cartItems), 6);
-
+    
+            // Mettre à jour l'affichage après la suppression
             displayProductsInModal();
+            
             updatePrixTotalPanier();
         }
-    }
-
-    $('.closePanier').on('click', function () {
-        var $button = $(this);
-        var productContainer = $button.closest('.product');
-        var productId = productContainer.find('input[type="hidden"]').val();
-        var productIndex = cartItems.findIndex(item => item.id === productId);
-        removeProductFromCart(productIdToRemove);
-    });
+    }    
 
     updatePrixTotalPanier();
 });
