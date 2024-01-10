@@ -77,7 +77,7 @@ function displayProductsInModal() {
     
         <div class="col col-2Panier" data-product-id="${product.id}">
             <label id="totalPriceProduct">${(product.priceUnitaire * product.quantity).toFixed(2)}</label>
-            <span class="close">&#10005;</span>
+            <span class="close closePanier">&#10005;</span>
         </div>
 
         <input type="hidden" id="hiddenProductId" value="${product.id}">
@@ -144,6 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setCookie('cartItems', JSON.stringify(cartItems), 6);
         });
+        updatePrixTotalPanier();
     });
 
     displayProductsInModal();
@@ -165,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if ($button.hasClass('plus')) {
                 newVal = oldValue + 1;
-            } else if ($button.hasClass('minus') && oldValue > 0) {
+            } else if ($button.hasClass('minus') && oldValue > 1) {
                 newVal = oldValue - 1;
             } else {
                 newVal = 0;
@@ -182,5 +183,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
             updatePrixTotalPanier();
     });
+
+    function removeProductFromCart(productId) {
+        var productIndex = cartItems.findIndex(item => item.id === productId);
+
+        if (productIndex !== -1) {
+            cartItems.splice(productIndex, 1);
+
+            setCookie('cartItems', JSON.stringify(cartItems), 6);
+
+            displayProductsInModal();
+            updatePrixTotalPanier();
+        }
+    }
+
+    $('.closePanier').on('click', function () {
+        var $button = $(this);
+        var productContainer = $button.closest('.product');
+        var productId = productContainer.find('input[type="hidden"]').val();
+        var productIndex = cartItems.findIndex(item => item.id === productId);
+        removeProductFromCart(productIdToRemove);
+    });
+
     updatePrixTotalPanier();
 });
