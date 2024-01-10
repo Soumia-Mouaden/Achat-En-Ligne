@@ -76,7 +76,7 @@ function displayProductsInModal() {
         </div>
     
         <div class="col col-2Panier" data-product-id="${product.id}">
-            <label id="totalPriceProduct">${(product.price * product.quantity).toFixed(2)}</label>
+            <label id="totalPriceProduct">${(product.priceUnitaire * product.quantity).toFixed(2)}</label>
             <span class="close">&#10005;</span>
         </div>
 
@@ -96,7 +96,7 @@ function updatePrixTotalPanier() {
 
     cartItems.forEach(function (product) {
         console.log(product);
-        totalPanierComplet += parseFloat(product.totalPrice
+        totalPanierComplet += parseFloat(product.price
             );
     });
     console.log(totalPanierComplet);
@@ -147,8 +147,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     displayProductsInModal();
-    updatePrixTotalPanier();
-
 
     $('.proQty').on('click', '.qtybtn', function () {
         var $button = $(this);
@@ -184,5 +182,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
             updatePrixTotalPanier();
     });
-
+    updatePrixTotalPanier();
 });
