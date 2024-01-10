@@ -145,7 +145,7 @@ session_start();
                                 <div class="header__top__right__cart">
                                     <a href="#" data-toggle="modal" data-target="#myModal"><img
                                             src="view/img/icon/cart.png" alt=""> <span class="cart-count">0</span></a>
-                                    <p>panier</p>
+                                    <p>Mon panier</p>
                                 </div>
                             </div>
                         </div>
