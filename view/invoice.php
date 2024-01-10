@@ -18,8 +18,6 @@
     <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/styleInvoice.css">
-    
-    
 </head>
 <body>
     <div class="card">
@@ -77,10 +75,12 @@ if ($facture !== null && (is_array($facture) || is_object($facture))) {
     $total = 0; // Initialiser la variable total à 0
 
     foreach ($facture as $commandeProduit) {
+        echo '<tr>';
         echo '<td class="col-md-6">' . $commandeProduit->nom . '</td>';
         echo '<td class="col-md-3">' . $commandeProduit->quantite . '</td>';
         $sousTotal = $commandeProduit->quantite * $commandeProduit->prix;
         echo '<td class="col-md-3">' . $sousTotal . '</td>';
+        echo '</tr>';
         
         // Accumuler le montant total
         $total += $sousTotal;

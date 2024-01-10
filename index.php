@@ -45,9 +45,6 @@ session_start();
     <link rel="stylesheet" href="view/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="view/css/slicknav.min.css" type="text/css">
 
-
-
-
     <!-- Pour Panier-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         type="text/css">
@@ -888,17 +885,20 @@ session_start();
                                 <div class="col col-2Panier mr-5" style="padding-left:0;">Nombre de produits</div>
                                 <div class="col col-2Panier text-right" id="nombreProduits">0</div>
                             </div>
-                            <form style="padding: 2vh 0;">
+                            <form style="padding: 2vh 0;" action="controller/commandeController.php?action=confirmationPanier" method="post" onsubmit="prepareFormData()">
                                 <p>Vile de livraison</p>
-                                <input id="code" class="inputPanier mt-0 " placeholder="Entrer la ville de livraision ">
+                                <input id="code" class="inputPanier mt-0 " placeholder="Entrer la ville de livraision " name="ville" >
                                 <p>Addresse</p>
-                                <input id="code" class="inputPanier mt-0" placeholder="Entrer votre addresse">
-                            </form>
-                            <div class="row rowpanier" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                                <input id="code" class="inputPanier mt-0" placeholder="Entrer votre addresse" name="adresse">
+                             <div class="row rowpanier" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                                 <div class="col col-2Panier">Total de la commande</div>
                                 <div class="col  col-2Panier text-right" id="totalPanierComplet">0</div>
                             </div>
-                            <button class="btn btnPanier">Valider</button>
+                            <input type="hidden" name="donneesSupplementaires" id="donneesSupplementaires">
+
+                            <button type="submit" class="btn btnPanier" id="validerPanierBtn">Valider</button>
+                            </form>
+                            
                         </div>
                     </div>
 
@@ -929,7 +929,19 @@ session_start();
     <script src="view/js/app.js"></script>
     <script src="view/js/indexFirst.js"></script>
 
- 
+
+    <script>
+    function prepareFormData() {
+        // Retrieve cookie value
+        var cartItems = document.cookie.replace(/(?:(?:^|.*;\s*)cartItems\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+        // Set the value of the hidden input field
+        document.getElementById("donneesSupplementaires").value = cartItems;
+
+        // Supprimer la variable cartItems des cookies
+        document.cookie = "cartItems=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
+</script>
 </body>
 
 </html>
