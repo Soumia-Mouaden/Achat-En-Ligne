@@ -94,12 +94,12 @@ function updatePrixTotalPanier() {
     var cartItems = JSON.parse(getCookie('cartItems')) || [];
     var totalPanierComplet = 0;
 
-    console.log("debut");
     cartItems.forEach(function (product) {
-        totalPanierComplet += parseFloat(product.price);
-        console.log();
+        console.log(product);
+        totalPanierComplet += parseFloat(product.totalPrice
+            );
     });
-    console.log("fin");
+    console.log(totalPanierComplet);
 
     $('#totalPanierComplet').text(totalPanierComplet.toFixed(2));
 }
@@ -125,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var productPrice = button.getAttribute('data-price');
             var productCategory = button.getAttribute('data-category');
             var productQuantity = button.getAttribute('data-quantité');
+            var productPriceUnitaire = button.getAttribute('data-priceUnitaire');
 
             cartItems.push({
                 id: productId,
@@ -133,7 +134,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 price: parseFloat(
                     productPrice),
                 category: productCategory,
-                quantity: productQuantity
+                quantity: productQuantity,
+                priceUnitaire: parseFloat(
+                    productPriceUnitaire)
             });
 
             cartCount = cartItems.length;
@@ -173,9 +176,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             product.quantity = newVal;
 
-            product.totalPrice = (newVal * product.price).toFixed(2);
+            product.price = (newVal * product.priceUnitaire).toFixed(2);
 
-            totalPriceProduct.text(product.totalPrice);            
+            totalPriceProduct.text(product.price);            
 
             setCookie('cartItems', JSON.stringify(cartItems), 6);
 
