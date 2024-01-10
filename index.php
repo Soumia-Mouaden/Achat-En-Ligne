@@ -145,7 +145,7 @@ session_start();
                                 <div class="header__top__right__cart">
                                     <a href="#" data-toggle="modal" data-target="#myModal"><img
                                             src="view/img/icon/cart.png" alt=""> <span class="cart-count">0</span></a>
-                                    <p>panier</p>
+                                    <p>Mon panier</p>
                                 </div>
                             </div>
                         </div>
@@ -842,7 +842,29 @@ session_start();
     </div>
     <!-- Search End -->
 
+<style>
+    .mainmain {
+    padding: 0 2rem;
+    padding: 0 2rem;
+    overflow-y: auto; 
+    max-height: 500px; 
+}
+/* Barre de défilement */
+.mainmain::-webkit-scrollbar {
+    width: 8px; /* Largeur de la barre de défilement */
+}
 
+/* Bouton de défilement */
+.mainmain::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Couleur du bouton de défilement */
+    border-radius: 4px; /* Bordure arrondie du bouton de défilement */
+}
+
+/* Fond de la barre de défilement */
+.mainmain::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Couleur du fond de la barre de défilement */
+}
+</style>
 
     <!-- The Modal -->
     <div class="modal fade" id="myModal">
@@ -850,10 +872,10 @@ session_start();
             <div class="modal-content p-0">
                 <div class="card cardPanier w-100">
                     <div class="row rowpanier">
-                        <div class="col-md-8 cart">
+                        <div class="col-md-8 cart pr-2 pb-5">
 
                             <div class="titlePanier">
-                                <div class="row rowpanier mt-5">
+                                <div class="row rowpanier mt-3">
                                     <div class="col">
                                         <h4><b>Mon panier</b></h4>
                                     </div>
@@ -873,10 +895,8 @@ session_start();
                             }
                             </style>
 
-                            <div class="row border-top border-bottom rowpanier">
+                            <div class="row border-top border-bottom rowpanier mainmain">
                             </div>
-
-                            <div class="back-to-shop p-1 mb-3"><a href="#first" class="mr-2">&leftarrow;</a><span>Précédent</span></div>
 
                         </div>
                         <div class="col-md-4 summaryPanier">

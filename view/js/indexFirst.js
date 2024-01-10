@@ -75,9 +75,9 @@ function displayProductsInModal() {
             <a href="#" class="qtybtn plus">+</a>
         </div>
     
-        <div class="col col-2Panier" data-product-id="${product.id}">
-            <label id="totalPriceProduct">${(product.price * product.quantity).toFixed(2)}</label>
-            <span class="close">&#10005;</span>
+        <div class="col col-2Panier product2" data-product-id="${product.id}">
+            <label id="totalPriceProduct">${(product.priceUnitaire * product.quantity).toFixed(2)}</label>
+            <span class="close closePanier">&#10005;</span>
         </div>
 
         <input type="hidden" id="hiddenProductId" value="${product.id}">
@@ -96,7 +96,7 @@ function updatePrixTotalPanier() {
 
     cartItems.forEach(function (product) {
         console.log(product);
-        totalPanierComplet += parseFloat(product.totalPrice
+        totalPanierComplet += parseFloat(product.price
             );
     });
     console.log(totalPanierComplet);
@@ -144,11 +144,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setCookie('cartItems', JSON.stringify(cartItems), 6);
         });
+        updatePrixTotalPanier();
     });
 
     displayProductsInModal();
-    updatePrixTotalPanier();
-
 
     $('.proQty').on('click', '.qtybtn', function () {
         var $button = $(this);
@@ -167,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if ($button.hasClass('plus')) {
                 newVal = oldValue + 1;
-            } else if ($button.hasClass('minus') && oldValue > 0) {
+            } else if ($button.hasClass('minus') && oldValue > 1) {
                 newVal = oldValue - 1;
             } else {
                 newVal = 0;
@@ -185,4 +184,26 @@ document.addEventListener("DOMContentLoaded", function () {
             updatePrixTotalPanier();
     });
 
+    $('.rowpanier').on('click', '.closePanier', function () {
+        var productId = $(this).closest('.product').find('#hiddenProductId').val();
+        removeProductFromCart(productId);
+    });
+    
+
+    function removeProductFromCart(productId) {
+        var productIndex = cartItems.findIndex(item => item.id === productId);
+    
+        if (productIndex !== -1) {
+            cartItems.splice(productIndex, 1);
+    
+            setCookie('cartItems', JSON.stringify(cartItems), 6);
+    
+            // Mettre à jour l'affichage après la suppression
+            displayProductsInModal();
+            
+            updatePrixTotalPanier();
+        }
+    }    
+
+    updatePrixTotalPanier();
 });
