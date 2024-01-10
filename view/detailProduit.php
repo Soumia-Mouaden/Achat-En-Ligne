@@ -534,7 +534,7 @@ $_SESSION['idOfProductt']=$idOfProduit;
             $button.parent().find('input').val(newVal);
             myInput.val(newVal);
             updateTotalPrice();
-        });
+    });
 
         function updateTotalPrice() {
             var quantity = parseFloat(myInput.val());
@@ -567,6 +567,7 @@ $_SESSION['idOfProductt']=$idOfProduit;
 </script>
 
 
+</script>
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
