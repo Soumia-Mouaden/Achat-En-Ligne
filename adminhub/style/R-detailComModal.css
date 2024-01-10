@@ -1,0 +1,110 @@
+.modal .modal-dialog {
+	max-width: 500px;
+}
+ .modal .modal-header {
+	padding: 20px 20px;
+}
+ .modal .modal-content {
+	border-radius: 3px;
+	font-size: 16px;
+	font-family: 'Inter', sans-serif;
+	
+}
+ 
+.modal .modal-title {
+	display: inline-block;
+	color: rgb(232, 170, 95);
+
+}
+
+.main {
+    padding: 0 2rem;
+    padding: 0 2rem;
+    /* zidi hadi */
+    overflow-y: auto; /* Ajout de la barre de défilement verticale en cas de besoin */
+    max-height: 450px; /* Hauteur maximale avant que la barre de défilement apparaisse (ajustez selon vos besoins) */
+    
+
+}
+
+.main::-webkit-scrollbar {
+    width: 5px; /* Largeur de la barre de défilement */
+}
+
+.main::-webkit-scrollbar-thumb {
+    background-color: grey; /* Couleur de la poignée de la barre de défilement */
+    border-radius: 4px; /* Coins arrondis de la poignée de la barre de défilement */
+}
+
+.main::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Couleur de fond de la piste de la barre de défilement */
+}
+
+
+.main img {
+    border-radius: 7px
+    
+}
+
+.main p {
+    margin-bottom: 0;
+    font-size: 0.75rem
+    
+}
+
+#sub-title p {
+    margin: 1vh 0 2vh 0;
+    font-size: 1rem
+}
+
+.row-main {
+    padding: 1.5vh 0;
+    align-items: center
+}
+
+
+hr {
+    margin: 1rem -1vh;
+    border-top: 1px solid rgb(214, 214, 214)
+}
+
+.total {
+    font-size: 1rem
+}
+
+@media(height: 1366px) {
+    .main p {
+        margin-bottom: 0px;
+        font-size: 1.2rem
+    }
+
+    .total {
+        font-size: 1.5rem
+    }
+}
+
+/*.btn {
+    background-color: rgb(3, 122, 219);
+    border-color: rgb(3, 122, 219);
+    color: white;
+    margin: 7vh 0;
+    border-radius: 7px;
+    width: 60%;
+    font-size: 0.8rem;
+    padding: 0.8rem;
+    justify-content: center
+}
+
+.btn:focus {
+    box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    -webkit-user-select: none;
+    transition: none
+}
+
+.btn:hover {
+    color: white
+}*/

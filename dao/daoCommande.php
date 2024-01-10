@@ -118,4 +118,44 @@ class DaoCommande
         }
         return $liste;
     }
+
+
+    public function listeCommandes()
+    {
+        $stm = $this->dbh->prepare("SELECT * FROM Commande");
+        $stm->execute();
+        $result = $stm;
+        return  $result;
+    }
+
+    public function liste_Prod_Commande($numCommande)
+{
+    $stm = $this->dbh->prepare("SELECT * 
+                                FROM commande 
+                                JOIN commande_produit ON commande.numCommande = commande_produit.numCommande_Commande
+                                JOIN produit ON commande_produit.id_Produit = produit.id 
+                                WHERE commande.numCommande = :numCommande");
+    
+    $stm->bindParam(':numCommande', $numCommande, PDO::PARAM_INT);
+    $stm->execute();    
+    return $stm;
+}
+
+public function Prix_Commande($numCommande)
+    {
+        $stm = $this->dbh->prepare("SELECT * 
+                                FROM commande 
+                                JOIN commande_produit ON commande.numCommande = commande_produit.numCommande_Commande
+                                JOIN produit ON commande_produit.id_Produit = produit.id 
+                                WHERE commande.numCommande = :numCommande");
+    
+    $stm->bindParam(':numCommande', $numCommande, PDO::PARAM_INT);
+    $stm->execute(); 
+        $results = $stm->fetchAll(PDO::FETCH_ASSOC);
+        $Prix_Commande = 0;
+        foreach ($results as $row) {
+            $Prix_Commande += ($row['prix'] * $row['quantite']);
+        }
+        return  $Prix_Commande;
+    }
 }
