@@ -95,11 +95,9 @@ function updatePrixTotalPanier() {
     var totalPanierComplet = 0;
 
     cartItems.forEach(function (product) {
-        console.log(product);
         totalPanierComplet += parseFloat(product.price
             );
     });
-    console.log(totalPanierComplet);
 
     $('#totalPanierComplet').text(totalPanierComplet.toFixed(2));
 }
@@ -195,14 +193,19 @@ document.addEventListener("DOMContentLoaded", function () {
     
         if (productIndex !== -1) {
             cartItems.splice(productIndex, 1);
-    
+
             setCookie('cartItems', JSON.stringify(cartItems), 6);
-    
-            // Mettre à jour l'affichage après la suppression
+
             displayProductsInModal();
             
             updatePrixTotalPanier();
+            
         }
+        var totalProducts = document.getElementById('nombreProduits');
+
+        var cartDiv = document.querySelector('.header__top__right__cart');
+        var cartCountSpan = cartDiv.querySelector('.cart-count');
+        cartCountSpan.textContent = parseInt(totalProducts.textContent);
     }    
 
     updatePrixTotalPanier();
