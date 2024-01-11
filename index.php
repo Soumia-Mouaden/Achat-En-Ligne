@@ -19,20 +19,17 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HLOU'IN</title>
+
     <!-- logo -->
     <link rel="icon" href="view/img/logo.png">
+
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <!-- Bootstrap JS with Popper.js -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="view/css/bootstrap.min.css" type="text/css">
@@ -45,41 +42,25 @@ session_start();
     <link rel="stylesheet" href="view/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="view/css/slicknav.min.css" type="text/css">
 
-    <!-- Pour Panier-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-        type="text/css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        type="text/css">
-
     <link rel="stylesheet" href="view/css/styleTotale.css" type="text/css">
-
     <link rel="stylesheet" href="view/stylePanier.css" type="text/css">
-    <style>
-/* Ajoutez des styles CSS personnalisés ici */
-.custom-border {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* Couleur et épaisseur de la bordure */
-    border-radius: 0px;
-    /* Rayon de la bordure pour rendre le coin arrondi */
-    padding: 10px;
-    /* Espace à l'intérieur de la bordure */
-    width: 150px;
-}
 
-.custom-border-2 {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* Couleur et épaisseur de la bordure */
-    border-radius: 0px;
-    /* Rayon de la bordure pour rendre le coin arrondi */
-    padding: 10px;
-    /* Espace à l'intérieur de la bordure */
-    width: 350px;
-}
-</style>
+    <style>
+        .custom-border {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 0px;
+            padding: 10px;
+            width: 150px;
+        }
+
+        .custom-border-2 {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 0px;
+            padding: 10px;
+            width: 350px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -839,29 +820,26 @@ session_start();
     </div>
     <!-- Search End -->
 
-<style>
-    .mainmain {
-    padding: 0 2rem;
-    padding: 0 2rem;
-    overflow-y: auto; 
-    max-height: 500px; 
-}
-/* Barre de défilement */
-.mainmain::-webkit-scrollbar {
-    width: 8px; /* Largeur de la barre de défilement */
-}
+    <style>
+        .mainmain {
+        padding: 0 2rem;
+        padding: 0 2rem;
+        overflow-y: auto; 
+        max-height: 500px; 
+        }
+        .mainmain::-webkit-scrollbar {
+            width: 8px; /* Largeur de la barre de défilement */
+        }
 
-/* Bouton de défilement */
-.mainmain::-webkit-scrollbar-thumb {
-    background-color: #ccc; /* Couleur du bouton de défilement */
-    border-radius: 4px; /* Bordure arrondie du bouton de défilement */
-}
+        .mainmain::-webkit-scrollbar-thumb {
+            background-color: #ccc; /* Couleur du bouton de défilement */
+            border-radius: 4px; /* Bordure arrondie du bouton de défilement */
+        }
 
-/* Fond de la barre de défilement */
-.mainmain::-webkit-scrollbar-track {
-    background-color: #f1f1f1; /* Couleur du fond de la barre de défilement */
-}
-</style>
+        .mainmain::-webkit-scrollbar-track {
+            background-color: #f1f1f1; /* Couleur du fond de la barre de défilement */
+        }
+    </style>
 
     <!-- The Modal -->
     <div class="modal fade" id="myModal">
@@ -934,7 +912,6 @@ session_start();
 
     </div>
 
-
     <!-- Js Plugins -->
     <script src="view/js/jquery-3.3.1.min.js"></script>
     <script src="view/js/bootstrap.min.js"></script>
@@ -947,21 +924,25 @@ session_start();
     <script src="view/js/main.js"></script>
     <script src="view/js/object-fit-videos.js"></script>
     <script src="view/js/app.js"></script>
-    <script src="view/js/indexFirst.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" type="text/css"></script>
+    <script rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/css"></script>
+
+    <script src="view/js/index.js"></script>
 
     <script>
-    function prepareFormData() {
-        // Retrieve cookie value
-        var cartItems = document.cookie.replace(/(?:(?:^|.*;\s*)cartItems\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        function prepareFormData() {
+            var cartItems = document.cookie.replace(/(?:(?:^|.*;\s*)cartItems\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
-        // Set the value of the hidden input field
-        document.getElementById("donneesSupplementaires").value = cartItems;
+            document.getElementById("donneesSupplementaires").value = cartItems;
 
-        // Supprimer la variable cartItems des cookies
-        document.cookie = "cartItems=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    }
-</script>
+            document.cookie = "cartItems=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+    </script>
+
 </body>
-
 </html>
