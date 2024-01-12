@@ -15,7 +15,7 @@ switch ($action) {
         $adresse = $_POST['adresse'];
         $dateCreation = date("Y-m-d H:i:s");
         $dateLivraison = "";
-        $etat = "En cours de traitement";
+        $etat = "en attente";
         if (isset($_SESSION['id'])) {
         $id= $_SESSION['id'];
         echo $id;
@@ -46,7 +46,7 @@ switch ($action) {
         $adresse = $_POST['adresse'];
         $dateCreation = date("Y-m-d H:i:s");
         $dateLivraison = "";
-        $etat = "En cours de traitement";
+        $etat = "en attente";
         if (isset($_SESSION['id'])) {
             $idUtilisateur = $_SESSION['id'];
         }

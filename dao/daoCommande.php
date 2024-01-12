@@ -32,9 +32,9 @@ class DaoCommande
         return $idCommande;
     }
 
-    public function afficherComTimeline()
+    public function afficherComTimeline($idUser)
     {
-        $stm = $this->dbh->prepare("SELECT * FROM  commande WHERE etat != 'Livrée';");
+        $stm = $this->dbh->prepare("SELECT * FROM  commande WHERE etat != 'Livrée' AND id_user= $idUser");
         $stm->execute();
         $result = $stm;
         return  $result;
@@ -159,10 +159,10 @@ class DaoCommande
 
 
     
-    public function getAll($orderBy = null)
+    public function getAll($orderBy = null, $idUser)
     {
         if ($orderBy === 'Total') {
-            $query = "SELECT *, (SELECT SUM(prix * quantite) FROM commande_produit JOIN produit ON commande_produit.id_Produit = produit.id WHERE numCommande_Commande = commande.numCommande) AS Prix_Commande FROM commande ORDER BY Prix_Commande DESC";
+            $query = "SELECT *, (SELECT SUM(prix * quantite) FROM commande_produit JOIN produit ON commande_produit.id_Produit = produit.id WHERE numCommande_Commande = commande.numCommande) AS Prix_Commande FROM commande WHERE id_user = $idUser ORDER BY Prix_Commande DESC";
         } else {
             $query = "SELECT * FROM commande ";
             if ($orderBy === 'dateLivraison') {
