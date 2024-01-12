@@ -1,21 +1,27 @@
-$(document).ready(function () {
+$(document).ready(function() {
+    // Masquer toutes les sections de produits sauf la générale au démarrage
     $(".category-product").hide();
 
-    $(".categories__item").on("click", function () {
+    // Gérer le clic sur une catégorie
+    $(".categories__item").on("click", function() {
+        // Masquer toutes les sections de produits
         $(".category-product").hide();
         $(".general-product").hide();
 
+        // Récupérer l'ID de la catégorie sélectionnée
         var categoryId = $(this).data("category");
 
+        // Afficher la section de produits spécifique à la catégorie sélectionnée
         $("#" + categoryId).show();
 
+        // Mettre à jour les styles pour indiquer la catégorie active si nécessaire
         $(".categories__item").removeClass("active");
         $(this).addClass("active");
     });
 });
 function redirectToDetailProduit(nom) {
-    window.location.href = "view/detailProduit.php?nomOfProduit=" + nom + "";
-};
+        window.location.href = "view/detailProduit.php?nomOfProduit=" + nom + "";
+    };
 
 function setCookie(name, value, days) {
     var expires = "";
@@ -38,15 +44,19 @@ function getCookie(name) {
     return null;
 }
 
+function prepareFormData() {
+    var cartItems = document.cookie.replace(/(?:(?:^|.*;\s*)cartItems\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
+    document.getElementById("donneesSupplementaires").value = cartItems;
+
+    document.cookie = "cartItems=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
 
 function displayProductsInModal() {
     var modalBody = document.querySelector('.row.border-top.border-bottom.rowpanier');
     var totalProductsCountElement = document.getElementById('nombreProduits');
 
     var cartItems = JSON.parse(getCookie('cartItems')) || [];
-    // console.log("display models");
-    // console.log(cartItems);
 
     var cartCount = cartItems.length;
 
@@ -178,6 +188,8 @@ $(document).ready(function () {
 
         displayProductsInModal();
         updatePrixTotalPanier();
+        setupQuantityChangeEvents();
+        setupRemoveProductEvents();
     }
 
     function setupQuantityChangeEvents() {
@@ -217,6 +229,7 @@ $(document).ready(function () {
             setCookie('cartItems', JSON.stringify(cartItems), 6);
 
             updatePrixTotalPanier();
+            setupAddToCartEvents();
         });
     }
 
@@ -225,6 +238,7 @@ $(document).ready(function () {
         $('.rowpanier').on('click', '.closePanier', function () {
             var productId = $(this).closest('.product').find('#hiddenProductId').val();
             removeProductFromCart(productId);
+            setupAddToCartEvents();
         });
     }
 });
