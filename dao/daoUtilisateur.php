@@ -41,7 +41,7 @@ class DaoUtilisateur
         $utilisateur = null;
         $result = $stm->fetch(PDO::FETCH_ASSOC);
         if (!empty($result)) {
-            $utilisateur = new Utilisateur($result['nom'],$result['prenom'],$result['email'],$result['tel'], $result['genre'], $result['mdp'], $result['ville'],$result['role']);
+            $utilisateur = new Utilisateur($result['id'],$result['nom'],$result['prenom'],$result['email'],$result['tel'], $result['genre'], $result['mdp'], $result['ville'],$result['role']);
             echo $result['nom'];
             echo $result['email'];
             

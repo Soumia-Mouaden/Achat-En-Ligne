@@ -9,7 +9,7 @@ class Commande{
         $this->etat = $etat;
         $this->villeLivraison = $villeLivraison;
         $this->adresse = $adresse;
-        $this->idUser = $idUser;
+        $this->id_user = $idUser;
     }
 
     // Getters
@@ -75,6 +75,6 @@ class Commande{
     }
     public function getIdUser()
     {
-        return $this->idUser;
+        return $this->id_user;
     }
 }
