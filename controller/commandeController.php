@@ -45,7 +45,6 @@ switch ($action) {
         $etat = "En cours de traitement";
         $idUtilisateur = $_SESSION['id'];
         
-        
         if (isset($villeLivraison, $adresse)) {
                 $commande = new Commande($dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse, $idUtilisateur);
                 $numCommandee = $daoC->insererCommande($commande);

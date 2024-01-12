@@ -13,7 +13,7 @@ switch ($action) {
         session_start();
         $_SESSION['utilisateur'] = $utilisateur;
         $_SESSION['id'] = $utilisateur->getId();
-        
+       
 
         if ($utilisateur != null && $utilisateur->getRole() == 'responsable') {
             header("Location: ../adminhub/index.php");
