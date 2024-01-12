@@ -1,9 +1,16 @@
 <?php
 include "../dao/daoUtilisateur.php";
 include "../dao/daoCommande.php";
-$dao = new DaoCommande();
-$allCommande = $dao->afficherComTimeline();
+session_start();
+if (isset($_SESSION['utilisateur'])) {
+    $utilisateur = $_SESSION['utilisateur'];
+    $dao = new DaoCommande();
+    $allCommande = $dao->afficherComTimeline($utilisateur->getId());
+}
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +29,7 @@ $allCommande = $dao->afficherComTimeline();
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="css/flaticon.css" type="text/css">
     <link rel="stylesheet" href="css/barfiller.css" type="text/css">
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
@@ -44,7 +52,7 @@ $allCommande = $dao->afficherComTimeline();
                         <div class="header__top__inner">
                             <div class="header__top__left">
                                 <?php
-                                session_start();
+                                // session_start();
                                 if (isset($_SESSION['utilisateur'])) {
                                     $utilisateur = $_SESSION['utilisateur'];
                                     // Check if the user is logged in
@@ -53,7 +61,7 @@ $allCommande = $dao->afficherComTimeline();
                                         echo '
                                             <ul>
                                                 <li>Bienvenue ' . $utilisateur->getPrenom() . '</li>
-                                            <li><a href="controller/utilisateurController.php?action=deconnexion">Se déconnecter</a></li>
+                                            <li><a href="../controller/utilisateurController.php?action=deconnexion">Se déconnecter</a></li>
                                             </ul>';
                                     }
                                 } else {
@@ -87,7 +95,10 @@ $allCommande = $dao->afficherComTimeline();
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li><a href="../index.php">Accueil</a></li>
-                            <li class="active"><a href="commandesClient.php">Mes Commandes</a></li>
+                            <li class="active mes-commandes-submenu">
+                                <a href="commandesClient.php">Mes Commandes</a>
+                            </li>
+
                             <li><a href="about.php">A propos </a></li>
                             <li><a href="contact.php">Contact</a></li>
                         </ul>
@@ -100,6 +111,20 @@ $allCommande = $dao->afficherComTimeline();
         <div id="encours" class="container">
             <div class="row">
                 <div class="col-lg-12">
+                    <!-- <div id="choixBoutons" class="row">
+                        <div class="col-lg-6">
+                            <button class="button-19" role="button">Mes commandes en cours</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button class="button-19" role="button">Historique des commandes</button>
+                        </div>
+                    </div> -->
+                    <div class="col-lg-12 d-flex justify-content-center" style="margin-bottom: 40px !important;" id="enCours">
+                        <button type="button" class="button-19" role="button">
+                            <a href="#history" style="color: inherit; text-decoration: none;">Historique des commandes</a>
+                        </button>
+                    </div>
+
                     <div id="commandeEnCours" class="content">
                         <?php
                         $commande = $allCommande->fetch(PDO::FETCH_ASSOC);
@@ -113,13 +138,12 @@ $allCommande = $dao->afficherComTimeline();
                                 echo '
                             
                        <div class="timeline-container" >
-                           <figure style="margin:20px;">
+                           <figure  style="margin:20px; width: 15%;">
                                <img src="img/produit/1.jpg" alt="image1" class="imgProd">
-                               <figcaption> ' . $commande['numCommande']. ' </figcaption>
+                               <figcaption> Référence : ' . $commande['numCommande'] . ' </figcaption>
                            </figure>
                            <div class="swiper-container">
                                <p class="swiper-control">
-                                   <button type="button" class="btn btn-default btn-sm prev-slide" style="background-color: rgb(207, 102, 102);">Annuler</button>
                                    <button type="button" class="btn btn-default btn-sm prev-slide">Voir détails</button>
                                </p>
                                <div class="swiper-wrapper timeline">
@@ -144,7 +168,8 @@ $allCommande = $dao->afficherComTimeline();
                        </div>
                        <p> </p>
                    
-                       '; $etat = $commande['etat'];
+                       ';
+                                $etat = $commande['etat'];
                             } while ($commande = $allCommande->fetch(PDO::FETCH_ASSOC));
                         }
 
@@ -153,44 +178,67 @@ $allCommande = $dao->afficherComTimeline();
                 </div>
             </div>
         </div>
-        <!-- <div id="historique">
+        <div class="col-lg-12 d-flex justify-content-center" style="margin-bottom: 40px !important;" id="history">
+            <button type="button" class="button-19" role="button">
+                <a href="#enCours" style="color: inherit; text-decoration: none;">Mes commandes en cours</a>
+            </button>
+        </div>
+        <div id="historique">
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Historique des commandes</h1>
-
-                    <table class="styled-table">
-                        <thead>
-                            <tr>
-                                <th>Référence</th>
-                                <th>Produit</th>
-                                <th>Date de création</th>
-                                <th>Quantité</th>
-                                <th>Total</th>
-                                <th>Date de livraison</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>123637</td>
-                                <td><img src="img/produit/2.jpg" alt="" class="imgTab"></td>
-                                <td>1/1/2023</td>
-                                <td>2</td>
-                                <td>250 MAD</td>
-                                <td>12/1/2023</td>
-                                <td><button class="btn btn-default btn-sm prev-slide">Voir détails</button></td>
-                            </tr>
-                            <tr>
-                                <td>736483</td>
-                                <td><img src="imguno.jpg" alt="" class="imgTab"></td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
+                    <div id="filter-container">
+                        <form method="post" action="">
+                            <button class="button-19" role="button" name="filterByTotal">Filtrer par total</button>
+                            <label for="filter"></label>
+                            <select id="filter" class="filter-dropdown" name="filtreChoix">
+                                <option value="" disabled selected>Filtrer par</option>
+                                <option value="dateCreation">Date de création</option>
+                                <option value="dateLivraison">Date de livraison</option>
+                                <option value="Total">Total</option>
+                            </select>
+                        </form>
+                    </div>
                 </div>
+
+
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Référence</th>
+                            <th>Date de création</th>
+                            <th>Total</th>
+                            <th>Date de livraison</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $commandeClient = [];
+
+                        if (isset($_POST['filtreChoix'])) {
+                            $commandeClient = $dao->getAll($_POST['filtreChoix'], $utilisateur->getId());
+                        } else {
+                            $commandeClient = $dao->getAll(null, $utilisateur->getId());
+                        }
+
+                        foreach ($commandeClient as $commande) :
+                            echo '<tr>
+        <td>' . $commande['numCommande'] . '</td>
+        <td>' . $commande['dateCreation'] . '</td>
+        <td>' . $dao->Prix_Commande($commande['numCommande']) . '</td>
+        <td>' . $commande['dateLivraison'] . '</td>
+        <td><button type="button" class="btn btn-default btn-sm prev-slide">Voir plus</button></td>
+    </tr>';
+                        endforeach;
+                        ?>
+                    </tbody>
+                </table>
             </div>
-        </div> -->
+        </div>
+        </div>
     </section>
 </body>
+
 
 </html>

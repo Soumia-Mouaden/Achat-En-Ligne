@@ -1,22 +1,3 @@
-$(document).ready(function () {
-    $(".category-product").hide();
-
-    $(".categories__item").on("click", function () {
-        $(".category-product").hide();
-        $(".general-product").hide();
-
-        var categoryId = $(this).data("category");
-
-        $("#" + categoryId).show();
-
-        $(".categories__item").removeClass("active");
-        $(this).addClass("active");
-    });
-});
-function redirectToDetailProduit(nom) {
-    window.location.href = "view/detailProduit.php?nomOfProduit=" + nom + "";
-};
-
 function setCookie(name, value, days) {
     var expires = "";
     if (days) {
@@ -38,15 +19,19 @@ function getCookie(name) {
     return null;
 }
 
+function prepareFormData() {
+    var cartItems = document.cookie.replace(/(?:(?:^|.*;\s*)cartItems\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
+    document.getElementById("donneesSupplementaires").value = cartItems;
+
+    document.cookie = "cartItems=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
 
 function displayProductsInModal() {
     var modalBody = document.querySelector('.row.border-top.border-bottom.rowpanier');
     var totalProductsCountElement = document.getElementById('nombreProduits');
 
     var cartItems = JSON.parse(getCookie('cartItems')) || [];
-    // console.log("display models");
-    // console.log(cartItems);
 
     var cartCount = cartItems.length;
 
@@ -56,9 +41,10 @@ function displayProductsInModal() {
         var productDiv = document.createElement('div');
         productDiv.classList.add('row', 'main', 'align-items-center', 'rowpanier', 'mainpanier', 'product');
 
+        
         productDiv.innerHTML = `
         <div class="col-2 col-2Panier aa" data-product-id="${product.id}">
-            <img class="img-fluid" src="view/${product.image}">
+            <img class="img-fluid" src="${product.image}">
         </div>
     
         <div class="col-4 col-2Panier" data-product-id="${product.id}">
@@ -79,7 +65,6 @@ function displayProductsInModal() {
 
         <input type="hidden" id="hiddenProductId" value="${product.id}">
     `;
-
 
         modalBody.appendChild(productDiv);
     });
@@ -158,7 +143,8 @@ $(document).ready(function () {
         var productName = button.getAttribute('data-name');
         var productPrice = button.getAttribute('data-price');
         var productCategory = button.getAttribute('data-category');
-        var productQuantity = button.getAttribute('data-quantité');
+        // var productQuantity = button.getAttribute('data-quantité');
+        var productQuantity = $('#qq').val();
         var productPriceUnitaire = button.getAttribute('data-priceUnitaire');
 
         cartItems.push({
@@ -178,6 +164,8 @@ $(document).ready(function () {
 
         displayProductsInModal();
         updatePrixTotalPanier();
+        setupQuantityChangeEvents();
+        setupRemoveProductEvents();
     }
 
     function setupQuantityChangeEvents() {
@@ -217,6 +205,7 @@ $(document).ready(function () {
             setCookie('cartItems', JSON.stringify(cartItems), 6);
 
             updatePrixTotalPanier();
+            setupAddToCartEvents();
         });
     }
 
@@ -225,6 +214,7 @@ $(document).ready(function () {
         $('.rowpanier').on('click', '.closePanier', function () {
             var productId = $(this).closest('.product').find('#hiddenProductId').val();
             removeProductFromCart(productId);
+            setupAddToCartEvents();
         });
     }
 });

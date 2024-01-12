@@ -30,6 +30,10 @@ class DaoUtilisateur
         echo $stm->queryString;
         print_r($stm->debugDumpParams());
         $stm->execute();
+        $utilisateurId = $this->dbh->lastInsertId();
+
+var_dump($utilisateurId);
+        $utilisateur->setId($utilisateurId);
     }
 
     public function findUtilisateur($email, $mdp)
@@ -57,7 +61,7 @@ class DaoUtilisateur
         $utilisateur = null;
         $result = $stm->fetch(PDO::FETCH_ASSOC);
         if (!empty($result)) {
-            $utilisateur = new Utilisateur($result['nom'],$result['prenom'],$result['email'],$result['tel'],$result['genre'], $result['mdp'], $result['ville'],$result['role']);
+            $utilisateur = new Utilisateur($result['id'],$result['nom'],$result['prenom'],$result['email'],$result['tel'],$result['genre'], $result['mdp'], $result['ville'],$result['role']);
         }
         
         return $utilisateur;
@@ -71,7 +75,7 @@ class DaoUtilisateur
 
         if ($stm->rowCount() > 0) {
             $result = $stm->fetch(PDO::FETCH_ASSOC);
-            $utilisateur = new Utilisateur(
+            $utilisateur = new Utilisateur($result['id'],
                 $result['nom'],
                 $result['prenom'],
                 $result['email'],

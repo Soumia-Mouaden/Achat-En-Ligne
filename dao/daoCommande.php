@@ -5,7 +5,6 @@ include "../model/commandeProduit.php";
 
 class DaoCommande
 {
-
     private $dbh;
 
     public function __construct()
@@ -19,24 +18,23 @@ class DaoCommande
     }
     public function insererCommande(Commande $commande)
     {
-        $stm = $this->dbh->prepare("INSERT INTO commande(adresse ,dateCreation, etat, villeLivraison, dateLivraison) VALUES (?, ?, ?, ?, ?)");
+        $stm = $this->dbh->prepare("INSERT INTO commande(adresse ,dateCreation, etat, villeLivraison, dateLivraison,id_user) VALUES (?, ?, ?, ?, ?, ?)");
 
         $stm->bindValue(1, $commande->getAdresse());
         $stm->bindValue(2, $commande->getDateCreation());
         $stm->bindValue(3, $commande->getEtat());
         $stm->bindValue(4, $commande->getVilleLivraison());
         $stm->bindValue(5, $commande->getDateLivraison());
+        $stm->bindValue(6, $commande->getIdUser());
 
         $stm->execute();
-
         $idCommande = $this->dbh->lastInsertId();
-
         return $idCommande;
     }
 
-    public function afficherComTimeline()
+    public function afficherComTimeline($idUser)
     {
-        $stm = $this->dbh->prepare("SELECT * FROM  commande WHERE etat != 'Livrée';");
+        $stm = $this->dbh->prepare("SELECT * FROM  commande WHERE etat != 'Livrée' AND id_user= $idUser");
         $stm->execute();
         $result = $stm;
         return  $result;
@@ -129,28 +127,28 @@ class DaoCommande
     }
 
     public function liste_Prod_Commande($numCommande)
-{
-    $stm = $this->dbh->prepare("SELECT * 
-                                FROM commande 
-                                JOIN commande_produit ON commande.numCommande = commande_produit.numCommande_Commande
-                                JOIN produit ON commande_produit.id_Produit = produit.id 
-                                WHERE commande.numCommande = :numCommande");
-    
-    $stm->bindParam(':numCommande', $numCommande, PDO::PARAM_INT);
-    $stm->execute();    
-    return $stm;
-}
-
-public function Prix_Commande($numCommande)
     {
         $stm = $this->dbh->prepare("SELECT * 
                                 FROM commande 
                                 JOIN commande_produit ON commande.numCommande = commande_produit.numCommande_Commande
                                 JOIN produit ON commande_produit.id_Produit = produit.id 
                                 WHERE commande.numCommande = :numCommande");
-    
-    $stm->bindParam(':numCommande', $numCommande, PDO::PARAM_INT);
-    $stm->execute(); 
+
+        $stm->bindParam(':numCommande', $numCommande, PDO::PARAM_INT);
+        $stm->execute();
+        return $stm;
+    }
+
+    public function Prix_Commande($numCommande)
+    {
+        $stm = $this->dbh->prepare("SELECT * 
+                                FROM commande 
+                                JOIN commande_produit ON commande.numCommande = commande_produit.numCommande_Commande
+                                JOIN produit ON commande_produit.id_Produit = produit.id 
+                                WHERE commande.numCommande = :numCommande");
+
+        $stm->bindParam(':numCommande', $numCommande, PDO::PARAM_INT);
+        $stm->execute();
         $results = $stm->fetchAll(PDO::FETCH_ASSOC);
         $Prix_Commande = 0;
         foreach ($results as $row) {
@@ -158,4 +156,27 @@ public function Prix_Commande($numCommande)
         }
         return  $Prix_Commande;
     }
+
+
+    
+    public function getAll($orderBy = null, $idUser)
+    {
+        if ($orderBy === 'Total') {
+            $query = "SELECT *, (SELECT SUM(prix * quantite) FROM commande_produit JOIN produit ON commande_produit.id_Produit = produit.id WHERE numCommande_Commande = commande.numCommande) AS Prix_Commande FROM commande WHERE id_user = $idUser ORDER BY Prix_Commande DESC";
+        } else {
+            $query = "SELECT * FROM commande ";
+            if ($orderBy === 'dateLivraison') {
+                $query .= " ORDER BY dateLivraison DESC";
+            } elseif ($orderBy === 'dateCreation') {
+                $query .= " ORDER BY dateCreation DESC";
+            }
+        }
+    
+        $stm = $this->dbh->prepare($query);
+        $stm->execute();
+        $results = $stm->fetchAll(PDO::FETCH_ASSOC);
+    
+        return $results;
+    }
+    
 }

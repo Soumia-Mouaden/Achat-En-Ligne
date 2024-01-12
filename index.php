@@ -146,7 +146,7 @@ session_start();
                             <li><a href="view/about.php">A propos</a></li>
 
                             <li><a href="view/contact.php">Contact</a></li>
-                            <li><a href="view/commandeClient.php">Mes commandes</a></li>
+                            <li><a href="view/commandesClient.php">Mes commandes</a></li>
 
                         </ul>
                     </nav>
@@ -243,7 +243,7 @@ session_start();
                     $category = $product['categorie'];
                     $idOfProduit = $product['id'];
         
-                    if ($category == "GateauBeldi" && $image == "img/shop/gateauBeldi/Corne_de_gazelle_classique.jpg") {
+                    if ($category == "GateauBeldi" && $image == "img/produit/Corne_de_gazelle_classique.jpg") {
                         echo '
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -257,7 +257,7 @@ session_start();
                                     <div class="product__item__price">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
                                     <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image="'.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1" data-priceUnitaire="'.$price.'">Ajouter</a>
+                                    <a href="#" class="addToCart">Ajouter</a>
 
 
                                     </div>
@@ -266,7 +266,7 @@ session_start();
                         </div>';
                     }
             
-                if ($category == "GateauAuMiel" && $image == "img/shop/gateauAuMiel/1.jpg") {
+                if ($category == "GateauAuMiel" && $image == "img/produit/1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
@@ -280,7 +280,8 @@ session_start();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image="'.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1" data-priceUnitaire="'.$price.'">Ajouter</a>
+                        <a href="#" class="addToCart">Ajouter</a>
+                        
 
                        
                    </div>
@@ -288,7 +289,7 @@ session_start();
                    </div>
                    </div>';
                 }
-                if ($category == "Fekkas" && $image == "img/shop/fekkas/1.jpg") {
+                if ($category == "Fekkas" && $image == "img/produit/fekkas1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
@@ -302,13 +303,13 @@ session_start();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image="'.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1" data-priceUnitaire="'.$price.'">Ajouter</a>
-                        </div>
+                                    <a href="#" class="addToCart">Ajouter</a>
+                   </div>
                    </div>
                    </div>
                    </div>';
                 }
-                if ($category == "DattesEtSellou" && $image == "img/shop/datteetsellou/1.jpg") {
+                if ($category == "DattesEtSellou" && $image == "img/produit/d1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
@@ -322,8 +323,8 @@ session_start();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image="'.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1" data-priceUnitaire="'.$price.'">Ajouter</a>
-                        </div>
+                                    <a href="#" class="addToCart">Ajouter</a>
+                   </div>
                    </div>
                    </div>
                    </div>';
@@ -342,13 +343,12 @@ session_start();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image="'.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1" data-priceUnitaire="'.$price.'">Ajouter</a>
-                        </div>
+                                    <a href="#" class="addToCart">Ajouter</a>
+                   </div>
                    </div>
                    </div>
                    </div>';
                 }
-
                 
             }
        
@@ -657,7 +657,7 @@ session_start();
                     </div>
                 </div>';
         }
-        ?>
+              ?>
                 </div>
             </div>
 
@@ -932,17 +932,7 @@ session_start();
     <script rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" type="text/css"></script>
     <script rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/css"></script>
 
-    <script src="view/js/index.js"></script>
-
-    <script>
-        function prepareFormData() {
-            var cartItems = document.cookie.replace(/(?:(?:^|.*;\s*)cartItems\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-
-            document.getElementById("donneesSupplementaires").value = cartItems;
-
-            document.cookie = "cartItems=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        }
-    </script>
+    <script src="view/js/indexFinal.js"></script>
 
 </body>
 </html>

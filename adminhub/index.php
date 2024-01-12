@@ -101,6 +101,14 @@ $donneesJSON = ''; // Initialiser la variable
 		$rows = [
             ['Etat', 'Total'], // Ajoute les en-têtes des colonnes ici
         ];
+		// en attente de traitement 
+		$attente =0;
+		for ($i = 0; $i <= 2; $i++){
+			$date = date('Y-m-d', strtotime("2023-12-$liste3Jours[$i]"));
+			 $attente+= $daoCommande->countCommandes($date,'En attente');
+		}
+		$rows[]= ['En attente',$attente ];
+
 		// en cours de traitement 
 		$traitement =0;
 		for ($i = 0; $i <= 2; $i++){
@@ -147,8 +155,10 @@ var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
 				top: 70
 			},
 			slices: [{
-				color: '#F6B229'
-			}, {
+				color: '#EA531A'
+			},{
+				color: '#F6B220'
+			} ,{
 				color: '#8D610E'
 			}, {
 				color: '#CBCAC3'
@@ -157,7 +167,7 @@ var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
 				position: 'none',
 			},
 			pieHole: 0.4,
-			height: 440,
+			height: 500,
 		};
 
 		var chart2 = new google.visualization.PieChart(document.getElementById('donutchart'));
@@ -193,7 +203,7 @@ var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="liste-commandes.php">
 					<i class='bx bxs-cart-alt'></i>
 					<span class="text">Commandes</span>
 				</a>
@@ -328,12 +338,18 @@ var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
 						<input type="month"  id="start" name="start" min="2023-09" value="2023-12" />
 					</div> -->
 				</div>
-				<div style="position: relative;width: calc(100% - 680px);height:400px;margin-left:40px;margin-top:20px;">
+				<div style="position: relative;width: calc(100% - 680px);height:500px;margin-left:40px;margin-top:20px;">
 					<div id="donutchart">
 					</div>
 					<span style="position: absolute; top: 20px; left: 40px; z-index: 2; font-weight:bold; font-family:Arial, Helvetica, sans-serif ;font-size:16px; width:200px; "> Suivi des commandes des trois derniers jours</span>
 					<div class="legend" style="position: absolute; top: 340px; left: 40px; z-index: 2; ">
-						<div class="legend-item">
+					<div class="legend-item">
+							<div class="legend-circle" style="background-color: #EA531A;"></div>
+							<span>
+								En attente de traitement
+							</span>
+						</div>	
+					<div class="legend-item">
 							<div class="legend-circle" style="background-color: #F6B229;"></div>
 							<span>
 								<!-- <?php echo $traitement;
@@ -358,73 +374,7 @@ var donnee = google.visualization.arrayToDataTable(<?php echo $donneesJSON; ?>);
 				</div>
 			</div>
 
-			<!-- <div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Commandes récentes</h3>
-						<i class='bx bx-search'></i>
-						<i class='bx bx-filter'></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>Référence</th>
-								<th>Produit</th>
-								<th>Date de création</th>
-								<th>Quantité</th>
-								<th>Total</th>
-								<th>Date de livraison</th>
-								<th>Etat</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									12367
-								</td>
-								<td>
-									<img src="img/people.png">
-									<p>John ggg </p>
-								</td>
-								<td>01-10-2021</td>
-								<td>1</td>
-								<td>100</td>
-								<td>10/10/2023</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-
-						</tbody>
-					</table>
-				</div> -->
-				<!-- <div class="todo">
-					<div class="head">
-						<h3>Todos</h3>
-						<i class='bx bx-plus'></i>
-						<i class='bx bx-filter'></i>
-					</div>
-					<ul class="todo-list">
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded'></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded'></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded'></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded'></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded'></i>
-						</li>
-					</ul>
-				</div> -->
+			
 			</div>
 		</main>
 		<!-- MAIN -->
