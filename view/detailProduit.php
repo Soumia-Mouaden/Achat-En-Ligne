@@ -1,13 +1,18 @@
 <?php
 include "../dao/daoProduit.php";
 include "../dao/daoUtilisateur.php";
+include "../dao/daoAvis.php";
 $daoProduit = new DaoProduit();
+$daoAvis = new DaoAvis();
+
 $idOfProduit = isset($_GET['idOfProduit']) ? $_GET['idOfProduit'] : "";
 $produit = $daoProduit->findProduct($idOfProduit);
 $categoryOfProduct = $produit->getCategorie();
 $produits = $daoProduit->ProductsOfCategory($categoryOfProduct,$idOfProduit);
 session_start();
 $_SESSION['idOfProductt']=$idOfProduit;
+$daoAvis = new DaoAvis();
+
 ?>
 
 <!DOCTYPE html>
@@ -80,6 +85,7 @@ $_SESSION['idOfProductt']=$idOfProduit;
                             <?php
                              if (isset($_SESSION['utilisateur'])) {
                                     $utilisateur = $_SESSION['utilisateur'];
+                                    $id=$_SESSION['id'];
                                    // Check if the user is logged in
                                    // If the user is logged in, display the "Se déconnecter" button
                                     if ($utilisateur != null) {
@@ -248,29 +254,51 @@ $_SESSION['idOfProductt']=$idOfProduit;
                             </div>
                         </div>
 
-                        <div class="tab-pane" id="tabs-3" role="tabpanel">  
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-lg-8">
-                                    <div class="mt-4 mb-5">
-                                        <div class="media border p-3" style="height: 100px;">
-                                          <img src="img/profil.jpg" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:40px;">
-                                          <div class="media-body">
-                                            <small>John Doe <small><i>Décembre 19, 2023</i></small></small>
-                                            <h6 class="mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h6>      
-                                          </div>
-                                        </div>
-                                      </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">  
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-8">
+                                        <!-- Afficher les avis existants ici -->
 
-                                    <form action="/action_page.php">
-                                        <div class="form-group mt-3">
-                                          <label for="comment">Donner votre avis :</label>
-                                          <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
-                                        </div>
-                                        <button type="submit" class="border-0 p-1" style="background-color: rgb(209, 193, 141);">Envoyer</button>
-                                      </form>
+                                        <!-- Formulaire pour ajouter un nouvel avis -->
+                                        <?php
+                                        // Vérifier si l'utilisateur est connecté
+                                        if (isset($_SESSION['utilisateur'])) {
+                                            echo '
+                                                <form action="" method="post">
+                                                    <div class="form-group mt-3">
+                                                        <label for="comment">Donner votre avis :</label>
+                                                        <textarea class="form-control" rows="5" id="comment" name="contenu" required></textarea>
+                                                    </div>
+                                                    <input type="hidden" name="idProduit" value="' . $idOfProduit . '">
+                                                    <button type="submit" class="border-0 p-1" style="background-color: rgb(209, 193, 141);">Envoyer</button>
+                                                </form>
+                                            ';
+                                            // Vérifier si le formulaire est soumis
+                                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                                 // Récupérer les données du formulaire
+                                                $contenu = $_POST["contenu"];
+                                                $idProduit = $_POST["idProduit"];
+                                                $nomUtilisateur = $_SESSION['utilisateur']->getNom();
+                                                // Créer une instance de DaoAvis
+                                                $daoAvis = new DaoAvis();
+                                                // Créer une instance de la classe Avis
+                                                $avis = new Avis($contenu, date("Y-m-d H:i:s"), $id, $idProduit);
+                                                // Appeler la méthode insertAvis
+                                                $daoAvis->insererAvis($avis);
+                                            
+                                            }} 
+
+                                          
+                                        } else {
+                                            echo '<p>Connectez-vous pour laisser un avis.</p>';
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+
                     </div>
                 </div>
             </div>
