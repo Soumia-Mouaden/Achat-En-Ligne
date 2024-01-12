@@ -5,7 +5,6 @@ include "../model/commandeProduit.php";
 
 class DaoCommande
 {
-
     private $dbh;
 
     public function __construct()
@@ -19,13 +18,14 @@ class DaoCommande
     }
     public function insererCommande(Commande $commande)
     {
-        $stm = $this->dbh->prepare("INSERT INTO commande(adresse ,dateCreation, etat, villeLivraison, dateLivraison) VALUES (?, ?, ?, ?, ?)");
+        $stm = $this->dbh->prepare("INSERT INTO commande(adresse ,dateCreation, etat, villeLivraison, dateLivraison,id_user) VALUES (?, ?, ?, ?, ?, ?)");
 
         $stm->bindValue(1, $commande->getAdresse());
         $stm->bindValue(2, $commande->getDateCreation());
         $stm->bindValue(3, $commande->getEtat());
         $stm->bindValue(4, $commande->getVilleLivraison());
         $stm->bindValue(5, $commande->getDateLivraison());
+        $stm->bindValue(6, $commande->getIdUser());
 
         $stm->execute();
 
