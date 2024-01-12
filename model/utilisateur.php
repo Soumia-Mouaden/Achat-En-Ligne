@@ -3,9 +3,9 @@ class Utilisateur
 {
     private $id,$nom, $prenom,$tel, $email, $gender, $mdp, $ville, $role;
 
-    public function __construct($id,$nom, $prenom,$email,$tel, $gender, $mdp, $ville,$role)
+    public function __construct($nom, $prenom,$email,$tel, $gender, $mdp, $ville,$role,$id=null)
     {
-        $this->id = $id;
+        
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->tel = $tel;
@@ -14,6 +14,8 @@ class Utilisateur
         $this->mdp = $mdp;
         $this->ville = $ville;
         $this->role = $role;
+        $this->id = $id;
+
     }
 
     /**

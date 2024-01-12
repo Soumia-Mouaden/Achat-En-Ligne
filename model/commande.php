@@ -1,6 +1,6 @@
 <?php
 class Commande{
-    private $numCommande, $dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse;
+    private $numCommande, $dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse,$idUser;
 
     public function __construct($dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse, $idUser)
     {
