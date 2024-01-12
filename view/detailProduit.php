@@ -39,7 +39,9 @@ $_SESSION['idOfProductt']=$idOfProduit;
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/styleTotale.css" type="text/css">  
+    <link rel="stylesheet" href="css/styleTotale.css" type="text/css"> 
+    <link rel="stylesheet" href="stylePanier.css" type="text/css">
+ 
 </head>
 
 <body>
@@ -102,6 +104,15 @@ $_SESSION['idOfProductt']=$idOfProduit;
                             <div class="header__logo">
                                 <a href="./index.html"><img src="img/logo.png" alt=""></a>
                             </div>
+
+                            <div class="header__top__right">
+                                <div class="header__top__right__cart">
+                                    <a href="#" data-toggle="modal" data-target="#myModalForPanier"><img
+                                            src="img/icon/cart.png" alt=""> <span class="cart-count">0</span></a>
+                                    <p>Mon panier</p>
+                                </div>
+                            </div>
+
                             <div class="header__top__right">
                                 <div class="header__top__right__cart">
                                  <!--   <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
@@ -195,8 +206,18 @@ $_SESSION['idOfProductt']=$idOfProduit;
 
                             <!-- Nouveau bouton ajouté ici -->
                             <div class="nouveau-bouton-container">
-                                <button type="button" class="btn mt-2 p-2" style="background: #dbd5c4; border: none; width:170px;" id="nouveauBouton">Ajouter au panier</button>
+                                <?php 
+                                    $idOfProduit=$produit->getId();
+                                    $image=$produit->getImage();
+                                    $name=$produit->getNom();
+                                    $price=$produit->getPrix();
+                                    $category=$produit->getCategorie();
+                                ?>
+
+                                <button type="button" class="btn mt-2 p-2 addToCart" style="background: #dbd5c4; border: none; width:170px;" id="nouveauBouton" data-id="<?php echo $idOfProduit; ?>" data-image="<?php echo $image; ?>"  data-name="<?php echo $name; ?>" data-price="<?php echo $price; ?>" data-category="<?php echo $category; ?>" data-quantité="1" data-priceUnitaire="<?php echo $price; ?>">Ajouter au panier</button>
+                           
                             </div>
+
                         </div>
 
                     </div>
@@ -314,6 +335,7 @@ $_SESSION['idOfProductt']=$idOfProduit;
                                 <div class="cart_add">
                                     <a href="detailProduit.php?idOfProduit=<?php echo $idProduitC;?>">Acheter</a>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -504,6 +526,68 @@ $_SESSION['idOfProductt']=$idOfProduit;
   
 </div>
 
+    <!-- The Modal -->
+    <div class="modal fade" id="myModalForPanier">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content p-0">
+                <div class="card cardPanier w-100">
+                    <div class="row rowpanier">
+                        <div class="col-md-8 cart pr-2 pb-5">
+
+                            <div class="titlePanier">
+                                <div class="row rowpanier mt-3">
+                                    <div class="col">
+                                        <h4><b>Mon panier</b></h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <style>
+                            .col {
+                                display: flex;
+                                align-items: center;
+                            }
+
+                            .border {
+                                border: 1px solid #000;
+                                padding: 5px 10px;
+                                margin: 0 5px;
+                            }
+                            </style>
+
+                            <div class="row border-top border-bottom rowpanier mainmain">
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 summaryPanier">
+                            <div>
+                                <h4 style=" margin-top: 4vh;"><b>Total</b></h4>
+                            </div>
+                            <hr style="margin-top: 1.25rem;">
+                            <div class="row rowpanier">
+                                <div class="col col-2Panier mr-5" style="padding-left:0;">Nombre de produits</div>
+                                <div class="col col-2Panier text-right" id="nombreProduits">0</div>
+                            </div>
+                            <form style="padding: 2vh 0;" action="../controller/commandeController.php?action=confirmationPanier" method="post" onsubmit="prepareFormData()">
+                                <p>Vile de livraison</p>
+                                <input id="code" class="inputPanier mt-0 " placeholder="Entrer la ville de livraision " name="ville" >
+                                <p>Addresse</p>
+                                <input id="code" class="inputPanier mt-0" placeholder="Entrer votre addresse" name="adresse">
+                             <div class="row rowpanier" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                                <div class="col col-2Panier">Total de la commande</div>
+                                <div class="col  col-2Panier text-right" id="totalPanierComplet">0</div>
+                            </div>
+                            <input type="hidden" name="donneesSupplementaires" id="donneesSupplementaires">
+
+                            <button type="submit" class="btn btnPanier" id="validerPanierBtn">Valider</button>
+                            </form>          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <!-- Assurez-vous que jQuery est inclus avant ce script -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
@@ -578,6 +662,16 @@ $_SESSION['idOfProductt']=$idOfProduit;
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/main.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" type="text/css"></script>
+    <script rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/css"></script>
+
+    <script src="js/panier.js"></script>
+
 </body>
 
 </html>
