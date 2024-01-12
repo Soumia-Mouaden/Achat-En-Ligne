@@ -4,6 +4,7 @@ include "../dao/daoCommande.php";
 $dao = new DaoCommande();
 $allCommande = $dao->afficherComTimeline();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,12 +88,8 @@ $allCommande = $dao->afficherComTimeline();
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li><a href="../index.php">Accueil</a></li>
-                            <li class="active">
-                                <a href="#">Mes Commandes</a>
-                                <ul class="menu">
-                                    <li><a href="#">Lorem Ipsum</a></li>
-                                    <li><a href="#">Lorem Ipsum</a></li>
-                                </ul>
+                            <li class="active mes-commandes-submenu">
+                                <a href="commandesClient.php">Mes Commandes</a>
                             </li>
 
                             <li><a href="about.php">A propos </a></li>
@@ -215,7 +212,7 @@ $allCommande = $dao->afficherComTimeline();
         <td>' . $commande['dateCreation'] . '</td>
         <td>' . $dao->Prix_Commande($commande['numCommande']) . '</td>
         <td>' . $commande['dateLivraison'] . '</td>
-        <td><button type="button" class="btn btn-default btn-sm prev-slide">Voir détails</button></td>
+        <td><button type="button" class="btn btn-default btn-sm prev-slide">Voir plus</button></td>
     </tr>';
                         endforeach;
                         ?>
@@ -226,5 +223,6 @@ $allCommande = $dao->afficherComTimeline();
         </div>
     </section>
 </body>
+
 
 </html>
