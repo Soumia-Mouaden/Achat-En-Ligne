@@ -10,7 +10,7 @@
     <meta name="keywords" content="Cake, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>produit detail</title>
+    <title>Produit detail</title>
     <!-- logo -->
     <link rel="icon" href="img/logo.png">
 

@@ -129,28 +129,28 @@ class DaoCommande
     }
 
     public function liste_Prod_Commande($numCommande)
-{
-    $stm = $this->dbh->prepare("SELECT * 
-                                FROM commande 
-                                JOIN commande_produit ON commande.numCommande = commande_produit.numCommande_Commande
-                                JOIN produit ON commande_produit.id_Produit = produit.id 
-                                WHERE commande.numCommande = :numCommande");
-    
-    $stm->bindParam(':numCommande', $numCommande, PDO::PARAM_INT);
-    $stm->execute();    
-    return $stm;
-}
-
-public function Prix_Commande($numCommande)
     {
         $stm = $this->dbh->prepare("SELECT * 
                                 FROM commande 
                                 JOIN commande_produit ON commande.numCommande = commande_produit.numCommande_Commande
                                 JOIN produit ON commande_produit.id_Produit = produit.id 
                                 WHERE commande.numCommande = :numCommande");
-    
-    $stm->bindParam(':numCommande', $numCommande, PDO::PARAM_INT);
-    $stm->execute(); 
+
+        $stm->bindParam(':numCommande', $numCommande, PDO::PARAM_INT);
+        $stm->execute();
+        return $stm;
+    }
+
+    public function Prix_Commande($numCommande)
+    {
+        $stm = $this->dbh->prepare("SELECT * 
+                                FROM commande 
+                                JOIN commande_produit ON commande.numCommande = commande_produit.numCommande_Commande
+                                JOIN produit ON commande_produit.id_Produit = produit.id 
+                                WHERE commande.numCommande = :numCommande");
+
+        $stm->bindParam(':numCommande', $numCommande, PDO::PARAM_INT);
+        $stm->execute();
         $results = $stm->fetchAll(PDO::FETCH_ASSOC);
         $Prix_Commande = 0;
         foreach ($results as $row) {
@@ -158,4 +158,27 @@ public function Prix_Commande($numCommande)
         }
         return  $Prix_Commande;
     }
+
+
+    
+    public function getAll($orderBy = null)
+    {
+        if ($orderBy === 'Total') {
+            $query = "SELECT *, (SELECT SUM(prix * quantite) FROM commande_produit JOIN produit ON commande_produit.id_Produit = produit.id WHERE numCommande_Commande = commande.numCommande) AS Prix_Commande FROM commande ORDER BY Prix_Commande DESC";
+        } else {
+            $query = "SELECT * FROM commande ";
+            if ($orderBy === 'dateLivraison') {
+                $query .= " ORDER BY dateLivraison DESC";
+            } elseif ($orderBy === 'dateCreation') {
+                $query .= " ORDER BY dateCreation DESC";
+            }
+        }
+    
+        $stm = $this->dbh->prepare($query);
+        $stm->execute();
+        $results = $stm->fetchAll(PDO::FETCH_ASSOC);
+    
+        return $results;
+    }
+    
 }
