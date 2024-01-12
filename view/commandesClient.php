@@ -1,8 +1,14 @@
 <?php
 include "../dao/daoUtilisateur.php";
 include "../dao/daoCommande.php";
-$dao = new DaoCommande();
-$allCommande = $dao->afficherComTimeline();
+session_start();
+if (isset($_SESSION['utilisateur'])) {
+    $utilisateur = $_SESSION['utilisateur'];
+    $dao = new DaoCommande();
+    $allCommande = $dao->afficherComTimeline($utilisateur->getId());
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +29,7 @@ $allCommande = $dao->afficherComTimeline();
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="css/flaticon.css" type="text/css">
     <link rel="stylesheet" href="css/barfiller.css" type="text/css">
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
@@ -45,7 +52,7 @@ $allCommande = $dao->afficherComTimeline();
                         <div class="header__top__inner">
                             <div class="header__top__left">
                                 <?php
-                                session_start();
+                                // session_start();
                                 if (isset($_SESSION['utilisateur'])) {
                                     $utilisateur = $_SESSION['utilisateur'];
                                     // Check if the user is logged in
@@ -104,15 +111,19 @@ $allCommande = $dao->afficherComTimeline();
         <div id="encours" class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div id="choixBoutons" class="row">
+                    <!-- <div id="choixBoutons" class="row">
                         <div class="col-lg-6">
                             <button class="button-19" role="button">Mes commandes en cours</button>
                         </div>
                         <div class="col-lg-6">
                             <button class="button-19" role="button">Historique des commandes</button>
                         </div>
+                    </div> -->
+                    <div class="col-lg-12 d-flex justify-content-center" style="margin-bottom: 40px !important;" id="enCours">
+                        <button type="button" class="button-19" role="button">
+                            <a href="#history" style="color: inherit; text-decoration: none;">Historique des commandes</a>
+                        </button>
                     </div>
-
 
                     <div id="commandeEnCours" class="content">
                         <?php
@@ -167,6 +178,11 @@ $allCommande = $dao->afficherComTimeline();
                 </div>
             </div>
         </div>
+        <div class="col-lg-12 d-flex justify-content-center" style="margin-bottom: 40px !important;" id="history">
+            <button type="button" class="button-19" role="button">
+                <a href="#enCours" style="color: inherit; text-decoration: none;">Mes commandes en cours</a>
+            </button>
+        </div>
         <div id="historique">
             <div class="row">
                 <div class="col-lg-12">
@@ -201,9 +217,9 @@ $allCommande = $dao->afficherComTimeline();
                         $commandeClient = [];
 
                         if (isset($_POST['filtreChoix'])) {
-                            $commandeClient = $dao->getAll($_POST['filtreChoix']);
+                            $commandeClient = $dao->getAll($_POST['filtreChoix'], $utilisateur->getId());
                         } else {
-                            $commandeClient = $dao->getAll();
+                            $commandeClient = $dao->getAll(null, $utilisateur->getId());
                         }
 
                         foreach ($commandeClient as $commande) :

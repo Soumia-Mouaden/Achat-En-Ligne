@@ -146,7 +146,7 @@ session_start();
                             <li><a href="view/about.php">A propos</a></li>
 
                             <li><a href="view/contact.php">Contact</a></li>
-                            <li><a href="view/commandeClient.php">Mes commandes</a></li>
+                            <li><a href="view/commandesClient.php">Mes commandes</a></li>
 
                         </ul>
                     </nav>
