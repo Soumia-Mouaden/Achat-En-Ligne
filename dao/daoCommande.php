@@ -28,9 +28,7 @@ class DaoCommande
         $stm->bindValue(6, $commande->getIdUser());
 
         $stm->execute();
-
         $idCommande = $this->dbh->lastInsertId();
-
         return $idCommande;
     }
 

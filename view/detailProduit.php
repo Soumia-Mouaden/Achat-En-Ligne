@@ -39,7 +39,7 @@ $_SESSION['idOfProductt']=$idOfProduit;
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">  
+    <link rel="stylesheet" href="css/styleTotale.css" type="text/css">  
 </head>
 
 <body>
