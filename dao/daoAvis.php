@@ -1,6 +1,5 @@
 <?php
-include "model/avis.php";
-
+include __DIR__ . "/../model/avis.php";
 class DaoAvis
 {
 
@@ -17,17 +16,17 @@ class DaoAvis
     }
     public function insererAvis(Avis $avis)
     {
-        $stm = $this->dbh->prepare("INSERT INTO avis (contenu, dateCreation,id_Utilisateurid_Produit) VALUES (?, ?, ?, ?, ?)");
-
-        
+        // Assurez-vous que votre requête correspond au nombre de colonnes dans la table
+        $stm = $this->dbh->prepare("INSERT INTO avis (contenu, dateCreation, id_Utilisateur, id_Produit) VALUES (?, ?, ?, ?)");
+    
         $stm->bindValue(1, $avis->getContenu());
         $stm->bindValue(2, $avis->getDateCreation());
         $stm->bindValue(3, $avis->getId_Utilisateur());
         $stm->bindValue(4, $avis->getId_Produit());
-        
-
+    
         $stm->execute();
     }
+    
 
     public function findAvis($id)
     {
