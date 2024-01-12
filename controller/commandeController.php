@@ -16,8 +16,12 @@ switch ($action) {
         $dateCreation = date("Y-m-d H:i:s");
         $dateLivraison = "";
         $etat = "En cours de traitement";
+        if (isset($_SESSION['id'])) {
         $id= $_SESSION['id'];
+        echo $id;
 
+     }
+       
         if (isset($villeLivraison, $adresse)) {
                 $commande = new Commande($dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse,$id);
                 $numCommandee = $daoC->insererCommande($commande);
@@ -43,8 +47,11 @@ switch ($action) {
         $dateCreation = date("Y-m-d H:i:s");
         $dateLivraison = "";
         $etat = "En cours de traitement";
-        $idUtilisateur = $_SESSION['id'];
-        echo $idUtilisateur;
+        if (isset($_SESSION['id'])) {
+            $idUtilisateur = $_SESSION['id'];
+        }
+      
+        
         if (isset($villeLivraison, $adresse)) {
                 $commande = new Commande($dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse, $idUtilisateur);
                 $numCommandee = $daoC->insererCommande($commande);
@@ -66,5 +73,5 @@ switch ($action) {
         $_SESSION['commandeId']=$numCommandee;
         header('location: controlleFacture.php');  
     }
-        break;
+    break;
 }

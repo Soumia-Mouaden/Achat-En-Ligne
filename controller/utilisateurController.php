@@ -24,7 +24,7 @@ switch ($action) {
                 header("Location: ../controller/controlleFacture.php");
                 exit();
             } else {
-                header("Location: ../index.php");
+                 header("Location: ../index.php"); 
                 exit();
             }
         } else {
