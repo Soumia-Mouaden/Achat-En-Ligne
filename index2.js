@@ -19,13 +19,6 @@ function redirectToDetailProduit(nom) {
 };
 
 
-
-
-
-
-
-
-
 function setCookie(name, value, days) {
     var expires = "";
     if (days) {
@@ -166,7 +159,6 @@ $('.proQty').on('click', '.qtybtn', function () {
     }
 
 });
-
 });
 
 

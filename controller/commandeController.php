@@ -10,18 +10,20 @@ $daoC = new DaoCommande();
 
 switch ($action) {   
     case 'insertionCommande':
+        session_start();
         $villeLivraison = $_POST['ville'];
         $adresse = $_POST['adresse'];
         $dateCreation = date("Y-m-d H:i:s");
         $dateLivraison = "";
         $etat = "En cours de traitement";
+        $id= $_SESSION['id'];
 
         if (isset($villeLivraison, $adresse)) {
-                $commande = new Commande($dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse);
+                $commande = new Commande($dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse,$id);
                 $numCommandee = $daoC->insererCommande($commande);
         }
 
-        session_start();
+        
         $idOfProduitt = $_SESSION['idOfProductt'];
         $quantite = $_POST['quantite'];
 
@@ -35,14 +37,16 @@ switch ($action) {
 
         break;
     case 'confirmationPanier' :
+        session_start();
         $villeLivraison = $_POST['ville'];
         $adresse = $_POST['adresse'];
         $dateCreation = date("Y-m-d H:i:s");
         $dateLivraison = "";
         $etat = "En cours de traitement";
-
+        $idUtilisateur = $_SESSION['id'];
+        echo $idUtilisateur;
         if (isset($villeLivraison, $adresse)) {
-                $commande = new Commande($dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse);
+                $commande = new Commande($dateCreation, $dateLivraison, $etat, $villeLivraison, $adresse, $idUtilisateur);
                 $numCommandee = $daoC->insererCommande($commande);
         }
         $villeLivraison = $_POST['ville'];
@@ -52,7 +56,7 @@ switch ($action) {
 
     // Décoder la chaîne JSON en tableau PHP
     $cartItems = json_decode($donneesSupplementaires, true);
-    session_start();
+    
     // Parcourir le tableau et extraire les valeurs d'ID et de quantité
     foreach ($cartItems as $item) {
         $idOfProduit = $item['id'];
