@@ -932,17 +932,7 @@ session_start();
     <script rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" type="text/css"></script>
     <script rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/css"></script>
 
-    <script src="view/js/index.js"></script>
-
-    <script>
-        function prepareFormData() {
-            var cartItems = document.cookie.replace(/(?:(?:^|.*;\s*)cartItems\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-
-            document.getElementById("donneesSupplementaires").value = cartItems;
-
-            document.cookie = "cartItems=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        }
-    </script>
+    <script src="view/js/indexFinal.js"></script>
 
 </body>
 </html>
