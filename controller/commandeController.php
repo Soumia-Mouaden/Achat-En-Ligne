@@ -74,4 +74,14 @@ switch ($action) {
         header('location: controlleFacture.php');  
     }
     break;
+
+    case 'modifier_Status':
+        $id=$_GET["numCommande"];
+        $status = $_POST['status'];
+        if (isset($status)) {
+            $daoC->Modifier_Status($id,$status);
+            header('location: ../adminhub/liste-commandes.php?msg=le status de la commande "' . $id. '" est modifié avec succès');
+        }
+        break;
+
 }

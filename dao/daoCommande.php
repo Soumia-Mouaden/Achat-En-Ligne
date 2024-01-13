@@ -3,6 +3,7 @@ include "../model/commande.php";
 include "../model/produit.php";
 include "../model/commandeProduit.php";
 
+
 class DaoCommande
 {
     private $dbh;
@@ -158,7 +159,7 @@ class DaoCommande
     }
 
 
-    
+
     public function getAll($orderBy = null, $idUser)
     {
         if ($orderBy === 'Total') {
@@ -171,12 +172,63 @@ class DaoCommande
                 $query .= " ORDER BY dateCreation DESC";
             }
         }
-    
+
         $stm = $this->dbh->prepare($query);
         $stm->execute();
         $results = $stm->fetchAll(PDO::FETCH_ASSOC);
-    
+
         return $results;
     }
-    
+
+    public function filter($dateC, $dateL, $etat)
+    {
+        // Start building the SQL query
+        $sql = "SELECT * FROM commande WHERE 1";
+
+        // Check and add filters for creation date
+        if (!empty($dateC)) {
+            $sql .= " AND dateCreation = :dateC";
+        }
+
+        // Check and add filters for delivery date
+        if (!empty($dateL)) {
+            $sql .= " AND dateLivraison = :dateL";
+        }
+
+        // Check and add filters for state
+        if (!empty($etat)) {
+            $sql .= " AND etat = :etat";
+        }
+
+        // Prepare the SQL statement
+        $stmt = $this->dbh->prepare($sql);
+
+        // Bind parameters if they are set
+        if (!empty($dateC)) {
+            $stmt->bindParam(':dateC', $dateC);
+        }
+
+        if (!empty($dateL)) {
+            $stmt->bindParam(':dateL', $dateL);
+        }
+
+        if (!empty($etat)) {
+            $stmt->bindParam(':etat', $etat);
+        }
+
+        // Execute the query
+        $stmt->execute();
+
+        // Fetch and return the results
+        return $stmt;
+    }
+
+    public function Modifier_Status($numCommande, $status)
+    {
+
+        $stm = $this->dbh->prepare("UPDATE commande SET etat = :status WHERE numCommande = :numCommande");
+        $stm->bindParam(':numCommande', $numCommande, PDO::PARAM_INT);
+        $stm->bindParam(':status', $status, PDO::PARAM_STR);
+        $stm->execute();
+    }
 }

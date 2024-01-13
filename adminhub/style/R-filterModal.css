@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+.card{
+    border-radius:11px !important;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5) ;
+    border-top-color: rgb(232, 170, 95) !important;
+}
+
+.modal-content{
+    width: calc(330px + 10 * ((100vw - 320px) / 680)) ;
+    border-radius: 11px !important;
+}
+.card-header{
+    border:0;
+    border-top: 14px solid rgb(232, 170, 95) !important;
+    border-radius:11px !important;
+    
+}
+
+.btn-outline-success{
+    border-radius: 20px !important;
+    border:2px solid rgb(232, 170, 95) !important;
+
+}
+
+.btn-outline-success:hover{
+    color: #fff !important;
+    background-color: rgb(232, 170, 95) !important;
+}
+
+
+
+.card-body{
+    border-radius: 9px !important;
+}
+
+.btn-outline-success:active, .btn-outline-success.active {
+	box-shadow: none !important;
+    outline: none !important;
+}
+
+@media (max-width: 401px) {
+    .card{
+        width: unset;
+    }   
+}
