@@ -257,7 +257,7 @@ session_start();
                                     <div class="product__item__price">' . $price . ' MAD pour 1Kg</div>
                                     <div class="cart_add">
                                     <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart">Ajouter</a>
+                                    <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image="'.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1" data-priceUnitaire="'.$price.'">Ajouter</a>
 
 
                                     </div>
@@ -280,7 +280,7 @@ session_start();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="addToCart">Ajouter</a>
+                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image="'.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1" data-priceUnitaire="'.$price.'">Ajouter</a>
                         
 
                        
@@ -303,8 +303,8 @@ session_start();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart">Ajouter</a>
-                   </div>
+                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image="'.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1" data-priceUnitaire="'.$price.'">Ajouter</a>
+                        </div>
                    </div>
                    </div>
                    </div>';
@@ -323,8 +323,8 @@ session_start();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart">Ajouter</a>
-                   </div>
+                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image="'.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1" data-priceUnitaire="'.$price.'">Ajouter</a>
+                        </div>
                    </div>
                    </div>
                    </div>';
@@ -343,8 +343,8 @@ session_start();
                     <div class="product__item__price p-1 ml-5">' . $price . ' MAD pour 1Kg</div>
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="addToCart">Ajouter</a>
-                   </div>
+                        <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image="'.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1" data-priceUnitaire="'.$price.'">Ajouter</a>
+                        </div>
                    </div>
                    </div>
                    </div>';
