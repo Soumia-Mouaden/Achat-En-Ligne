@@ -42,11 +42,7 @@ if (isset($_SESSION['utilisateur'])) {
     <!-- <link rel="stylesheet" href="css/style.css" type="text/css"> -->
     <link rel="stylesheet" href="css/commandeStyle.css" type="text/css">
     <link rel="stylesheet" href="../adminhub/style/R-detailComModal.css">
-<<<<<<< HEAD
 
-=======
-   
->>>>>>> 1f7920e48b2406eef7143940a70f0e68afe9ea1c
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -59,8 +55,8 @@ if (isset($_SESSION['utilisateur'])) {
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="header_top_inner">
-                            <div class="header_top_left">
+                        <div class="header__top__inner">
+                            <div class="header__top__left">
                                 <?php
                                 // session_start();
                                 if (isset($_SESSION['utilisateur'])) {
@@ -87,8 +83,8 @@ if (isset($_SESSION['utilisateur'])) {
                             <div class="header__logo">
                                 <a href="./index.html"><img src="img/logo.png" alt=""></a>
                             </div>
-                            <div class="header_top_right">
-                                <div class="header_topright_cart">
+                            <div class="header__top__right">
+                                <div class="header__top__right__cart">
                                     <!--   <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
                                     <div class="cart__price">Cart: <span>$0.00</span></div>-->
                                 </div>
@@ -138,7 +134,6 @@ if (isset($_SESSION['utilisateur'])) {
                             echo '<h1>Mes commandes en cours</h1> ';
                             do {
 
-<<<<<<< HEAD
                                 $liste_Prod_Com = $dao->liste_Prod($commande["numCommande"], array('En attente', 'En cours de traitement'));
                                 if (!empty($liste_Prod_Com) > 0) {
                                     $LC = "";
@@ -146,12 +141,6 @@ if (isset($_SESSION['utilisateur'])) {
                                     $c =0;
                                     while ($produit = $liste_Prod_Com->fetch(PDO::FETCH_ASSOC)) {
                                         if ($c==0) $imgPrem= $produit["image"]; $c++;
-=======
-                                $liste_Prod_Com = $dao->liste_Pro($commande["numCommande"], array('En attente', 'En cours de traitement'));
-                                if (!empty($liste_Prod_Com) > 0) {
-                                    $LC = "";
-                                    while ($produit = $liste_Prod_Com->fetch(PDO::FETCH_ASSOC)) {
->>>>>>> 1f7920e48b2406eef7143940a70f0e68afe9ea1c
 
                                         $LC .= '<div class="row row-main ">
             <div class="col-3"> <img class="img-fluid" src="../view/' . $produit["image"] . '" alt="product"> </div>
@@ -295,7 +284,6 @@ if (isset($_SESSION['utilisateur'])) {
 
                         foreach ($commandeClient as $commandes) :
                             echo '<tr>
-<<<<<<< HEAD
         <td>' . $commandes['numCommande'] . '</td>
         <td>' . $commandes['dateCreation'] . '</td>
         <td>' . $dao->Prix_Commande($commandes['numCommande']) . '</td>
@@ -305,26 +293,11 @@ if (isset($_SESSION['utilisateur'])) {
     </button></td>
     </tr>';
                             $liste_Prod_ComTab = $dao->liste_Prod($commandes["numCommande"], array('Livrée'));
-=======
-        <td>' . $commande['numCommande'] . '</td>
-        <td>' . $commande['dateCreation'] . '</td>
-        <td>' . $dao->Prix_Commande($commande['numCommande']) . '</td>
-        <td>' . $commande['dateLivraison'] . '</td>
-        <td><button type="button" class="btn btn-default btn-sm prev-slide"  data-toggle="modal" data-target="#detailComdModalTab' . $commande["numCommande"] . '">
-        Voir détails
-    </button></td>
-    </tr>'.$LC1;
-                            $liste_Prod_ComTab = $dao->liste_Prod($commande["numCommande"], array('Livrée'));
->>>>>>> 1f7920e48b2406eef7143940a70f0e68afe9ea1c
                             if (!empty($liste_Prod_ComTab) > 0) {
                                 $LC1 = "";
                                 while ($produit = $liste_Prod_ComTab->fetch(PDO::FETCH_ASSOC)) {
 
-<<<<<<< HEAD
                                     $LC .= '<div class="row row-main ">
-=======
-                                    $LC1 .= '<div class="row row-main ">
->>>>>>> 1f7920e48b2406eef7143940a70f0e68afe9ea1c
 <div class="col-3"> <img class="img-fluid" src="../view/' . $produit["image"] . '" alt="product"> </div>
 <div class="col-6">
 <div class="row d-flex">
@@ -343,13 +316,8 @@ if (isset($_SESSION['utilisateur'])) {
                                 }
                             }
 
-<<<<<<< HEAD
                             $total = $dao->Prix_Commande($commandes["numCommande"]);
                             $LC1 .= '<hr>
-=======
-                            $total = $dao->Prix_Commande($commande["numCommande"]);
-                            $LC .= '<hr>
->>>>>>> 1f7920e48b2406eef7143940a70f0e68afe9ea1c
 <div class="total">
 <div class="row">
 <div class="col"> <b> Total:</b> </div>
@@ -364,21 +332,7 @@ if (isset($_SESSION['utilisateur'])) {
 </div>
 </div>
 </div>
-<<<<<<< HEAD
 </div>  ';
-=======
-</div>  <div id="detailComdModalTab' . $commande["numCommande"] . '" class="modal fade">
-<div class="modal-dialog">
-    <div class="modal-content">
-        
-            <div class="modal-header">						
-                <h4 class="modal-title">Liste des produits</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            </div>
-            <div class="modal-body">
-    <div style="display: flex; ">
-    <div class="main">' . $LC;
->>>>>>> 1f7920e48b2406eef7143940a70f0e68afe9ea1c
                         endforeach;
                         echo '
                         <div id="detailComdModalTab' . $commandes["numCommande"] . '" class="modal fade">

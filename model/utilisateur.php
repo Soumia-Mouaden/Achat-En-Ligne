@@ -3,11 +3,7 @@ class Utilisateur
 {
     private $id,$nom, $prenom,$tel, $email, $gender, $mdp, $ville, $role;
 
-<<<<<<< HEAD
     public function __construct($nom, $prenom,$email,$tel, $gender, $mdp, $ville,$role,$id)
-=======
-    public function __construct($nom, $prenom,$email,$tel, $gender, $mdp, $ville,$role)
->>>>>>> 1f7920e48b2406eef7143940a70f0e68afe9ea1c
     {
         
         $this->nom = $nom;
@@ -18,10 +14,7 @@ class Utilisateur
         $this->mdp = $mdp;
         $this->ville = $ville;
         $this->role = $role;
-<<<<<<< HEAD
-        // $this->id = $id;
-=======
->>>>>>> 1f7920e48b2406eef7143940a70f0e68afe9ea1c
+         $this->id = $id;
 
     }
 
