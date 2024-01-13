@@ -243,7 +243,7 @@ session_start();
                     $category = $product['categorie'];
                     $idOfProduit = $product['id'];
         
-                    if ($category == "GateauBeldi" && $image == "img/shop/gateauBeldi/Corne_de_gazelle_classique.jpg") {
+                    if ($category == "GateauBeldi" && $image == "img/produit/Corne_de_gazelle_classique.jpg") {
                         echo '
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -266,7 +266,7 @@ session_start();
                         </div>';
                     }
             
-                if ($category == "GateauAuMiel" && $image == "img/shop/gateauAuMiel/1.jpg") {
+                if ($category == "GateauAuMiel" && $image == "img/produit/1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
@@ -281,6 +281,7 @@ session_start();
                         <div class="cart_add">
                         <a href="view/detailProduit.php?idOfProduit=' . $idOfProduit . '">Commander</a>&nbsp;&nbsp;&nbsp;
                         <a href="#" class="addToCart" data-id="' . $idOfProduit . '" data-image="'.$image.'"  data-name="'.$name.'" data-price="'.$price.'" data-category="'.$category.'" data-quantité="1" data-priceUnitaire="'.$price.'">Ajouter</a>
+                        
 
                        
                    </div>
@@ -288,7 +289,7 @@ session_start();
                    </div>
                    </div>';
                 }
-                if ($category == "Fekkas" && $image == "img/shop/fekkas/1.jpg") {
+                if ($category == "Fekkas" && $image == "img/produit/fekkas1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
@@ -308,7 +309,7 @@ session_start();
                    </div>
                    </div>';
                 }
-                if ($category == "DattesEtSellou" && $image == "img/shop/datteetsellou/1.jpg") {
+                if ($category == "DattesEtSellou" && $image == "img/produit/d1.jpg") {
                     echo '
                     <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
@@ -348,7 +349,6 @@ session_start();
                    </div>
                    </div>';
                 }
-
                 
             }
        
