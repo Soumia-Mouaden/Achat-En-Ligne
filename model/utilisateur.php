@@ -3,7 +3,7 @@ class Utilisateur
 {
     private $id,$nom, $prenom,$tel, $email, $gender, $mdp, $ville, $role;
 
-    public function __construct($nom, $prenom,$email,$tel, $gender, $mdp, $ville,$role,$id=null)
+    public function __construct($nom, $prenom,$email,$tel, $gender, $mdp, $ville,$role,$id)
     {
         
         $this->nom = $nom;
@@ -14,7 +14,7 @@ class Utilisateur
         $this->mdp = $mdp;
         $this->ville = $ville;
         $this->role = $role;
-        $this->id = $id;
+        // $this->id = $id;
 
     }
 
@@ -24,9 +24,6 @@ class Utilisateur
     public function getId()
     {
         return $this->id;
-    }
-    public function setId($id){
-        $this->id = $id;
     }
     public function getNom()
     {

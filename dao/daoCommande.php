@@ -139,6 +139,29 @@ class DaoCommande
         return $stm;
     }
 
+    public function liste_Prod($numCommande, $etatsAutorises = array('A')) {
+        // Assurez-vous que $etatsAutorises est un tableau
+        if (!is_array($etatsAutorises)) {
+            $etatsAutorises = array($etatsAutorises);
+        }
+    
+        // Utilisez implode pour générer la partie IN de la requête SQL
+        $etatsCondition = implode("','", $etatsAutorises);
+    
+        // Modification de la requête pour inclure la condition sur l'état
+        $query = "SELECT * 
+                  FROM commande 
+                  JOIN commande_produit ON commande.numCommande = commande_produit.numCommande_Commande
+                  JOIN produit ON commande_produit.id_Produit = produit.id 
+                  WHERE commande.numCommande = :numCommande AND etat IN ('$etatsCondition')";
+    
+        $stm = $this->dbh->prepare($query);
+        $stm->bindParam(':numCommande', $numCommande, PDO::PARAM_INT);
+        $stm->execute();
+    
+        return $stm;
+    }
+
     public function Prix_Commande($numCommande)
     {
         $stm = $this->dbh->prepare("SELECT * 
@@ -162,9 +185,9 @@ class DaoCommande
     public function getAll($orderBy = null, $idUser)
     {
         if ($orderBy === 'Total') {
-            $query = "SELECT *, (SELECT SUM(prix * quantite) FROM commande_produit JOIN produit ON commande_produit.id_Produit = produit.id WHERE numCommande_Commande = commande.numCommande) AS Prix_Commande FROM commande WHERE id_user = $idUser ORDER BY Prix_Commande DESC";
+            $query = "SELECT *, (SELECT SUM(prix * quantite) FROM commande_produit JOIN produit ON commande_produit.id_Produit = produit.id WHERE numCommande_Commande = commande.numCommande) AS Prix_Commande FROM commande WHERE id_user = $idUser AND etat = 'Livrée' ORDER BY Prix_Commande DESC";
         } else {
-            $query = "SELECT * FROM commande ";
+            $query = "SELECT * FROM commande WHERE etat = 'Livrée' AND id_user = $idUser ";
             if ($orderBy === 'dateLivraison') {
                 $query .= " ORDER BY dateLivraison DESC";
             } elseif ($orderBy === 'dateCreation') {
