@@ -1,11 +1,10 @@
 <?php
 class Utilisateur
 {
-    private $id,$nom, $prenom,$tel, $email, $gender, $mdp, $ville, $role;
+    private $id, $nom, $prenom, $tel, $email, $gender, $mdp, $ville, $role;
 
-    public function __construct($nom, $prenom,$email,$tel, $gender, $mdp, $ville,$role,$id)
+    public function __construct($nom, $prenom, $email, $tel, $gender, $mdp, $ville, $role, $id = null)
     {
-        
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->tel = $tel;
@@ -14,8 +13,7 @@ class Utilisateur
         $this->mdp = $mdp;
         $this->ville = $ville;
         $this->role = $role;
-         $this->id = $id;
-
+        $this->id = $id;
     }
 
     /**
@@ -24,6 +22,10 @@ class Utilisateur
     public function getId()
     {
         return $this->id;
+    }
+    public function setId($id)
+    {
+        $this->id = $id;
     }
     public function getNom()
     {

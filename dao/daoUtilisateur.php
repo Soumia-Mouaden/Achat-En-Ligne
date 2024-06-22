@@ -45,14 +45,21 @@ var_dump($utilisateurId);
         $utilisateur = null;
         $result = $stm->fetch(PDO::FETCH_ASSOC);
         if (!empty($result)) {
-            $utilisateur = new Utilisateur($result['nom'],$result['prenom'],$result['email'],$result['tel'], $result['genre'], $result['mdp'], $result['ville'],$result['role']);
-            echo $result['nom'];
-            echo $result['email'];
-            
-        
+            $utilisateur = new Utilisateur(
+                $result['nom'],
+                $result['prenom'],
+                $result['email'],
+                $result['tel'],
+                $result['genre'],
+                $result['mdp'],
+                $result['ville'],
+                $result['role'],
+                $result['id']
+            );
         }
         return $utilisateur;
     }
+    
     public function findUtilisateurById($id)
     {
         $stm = $this->dbh->prepare("SELECT * FROM utilisateur WHERE id=?");
